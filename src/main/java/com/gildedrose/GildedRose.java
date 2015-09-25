@@ -16,43 +16,93 @@ class GildedRose {
 
     public void updateQuality() {
         for (int index = 0; index < items.length; index++) {
-            if (not(items[index].name.equals(AGED_BRIE))
-                    && not(items[index].name.equals(BACKSTAGE_PASSES))) {
-                decreaseQualityIfQualityIsGreaterThanZero(items[index]);
-            } else {
-                if (items[index].quality < 50) {
-                    items[index].quality = items[index].quality + 1;
+            increaseQualityForAgedBriedOrBackStagePasses(items[index]);
 
-                    if (items[index].name.equals(BACKSTAGE_PASSES)) {
-                        if (items[index].sellIn < 11) {
-                            if (items[index].quality < 50) {
-                                items[index].quality = items[index].quality + 1;
-                            }
-                        }
+            decreaseQualityForAnyItemOtherThanAgedBrieOrBackStagePasses(items[index]);
 
-                        if (items[index].sellIn < 6) {
-                            if (items[index].quality < 50) {
-                                items[index].quality = items[index].quality + 1;
-                            }
-                        }
-                    }
-                }
-            }
+            decresseSellInForAnyItemOtherThanSulfurus(items[index]);
 
-            if (not(items[index].name.equals(SULFURAS_HAND_OF_RAGNAROS))) {
-                items[index].sellIn = items[index].sellIn - 1;
-            }
+            increaseQualityForAgedBrieIfSellInIsLessThan_0(items[index]);
 
-            if (items[index].sellIn < 0) {
-                if (not(items[index].name.equals(AGED_BRIE))) {
-                    decreaseQualityToZero(items[index]);
-                    decreaseQualityIfQualityIsGreaterThanZero(items[index]);
-                } else {
-                    if (items[index].quality < 50) {
-                        items[index].quality = items[index].quality + 1;
-                    }
-                }
-            }
+            decreaseQualityForAnyItemOtherThanAgedBrieIfSellInIsLessThan_0(items[index]);
+        }
+    }
+
+    private void decreaseQualityForAnyItemOtherThanAgedBrieIfSellInIsLessThan_0(Item item) {
+        if (item.sellIn < 0) {
+            decreaseQualityForAnyItemOtherThanAgedBrie(item);
+        }
+    }
+
+    private void increaseQualityForAgedBrieIfSellInIsLessThan_0(Item item) {
+        if (item.sellIn < 0) {
+            increaseQualityForAgedBrie(item);
+        }
+    }
+
+    private void decreaseQualityForAnyItemOtherThanAgedBrieOrBackStagePasses(Item item) {
+        if (not((item.name.equals(AGED_BRIE))
+                || (item.name.equals(BACKSTAGE_PASSES)))) {
+            decreaseQualityIfQualityIsGreaterThanZero(item);
+        }
+    }
+
+    private void increaseQualityForAgedBriedOrBackStagePasses(Item item) {
+        if ((item.name.equals(AGED_BRIE))
+                || (item.name.equals(BACKSTAGE_PASSES))) {
+            increaseQualityIfQualityIsLessThan_50(item);
+        }
+    }
+
+    private void decreaseQualityForAnyItemOtherThanAgedBrie(Item item) {
+        if (not(item.name.equals(AGED_BRIE))) {
+            decreaseQualityToZero(item);
+            decreaseQualityIfQualityIsGreaterThanZero(item);
+        }
+    }
+
+    private void increaseQualityForAgedBrie(Item item) {
+        if ((item.name.equals(AGED_BRIE))) {
+            increaseQualityOnlyIfQualityIsLessThan_50(item);
+        }
+    }
+
+    private void decresseSellInForAnyItemOtherThanSulfurus(Item item) {
+        if (not(item.name.equals(SULFURAS_HAND_OF_RAGNAROS))) {
+            item.sellIn = item.sellIn - 1;
+        }
+    }
+
+    private void increaseQualityIfQualityIsLessThan_50(Item item) {
+        if (item.quality < 50) {
+            item.quality = item.quality + 1;
+
+            increaseQualityForBackstagePasses(item);
+        }
+    }
+
+    private void increaseQualityForBackstagePasses(Item item) {
+        if (item.name.equals(BACKSTAGE_PASSES)) {
+            increaseQualityOnlyIfSellInIsLessThan_11(item);
+            increaseQualityOnlyIfSellInIsLessThan_6(item);
+        }
+    }
+
+    private void increaseQualityOnlyIfSellInIsLessThan_11(Item item) {
+        if (item.sellIn < 11) {
+            increaseQualityOnlyIfQualityIsLessThan_50(item);
+        }
+    }
+
+    private void increaseQualityOnlyIfSellInIsLessThan_6(Item item) {
+        if (item.sellIn < 6) {
+            increaseQualityOnlyIfQualityIsLessThan_50(item);
+        }
+    }
+
+    private void increaseQualityOnlyIfQualityIsLessThan_50(Item item) {
+        if (item.quality < 50) {
+            item.quality = item.quality + 1;
         }
     }
 
