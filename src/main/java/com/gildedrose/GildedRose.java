@@ -15,55 +15,66 @@ class GildedRose {
     }
 
     public void updateQuality() {
-        for (int i = 0; i < items.length; i++) {
-            if (!items[i].name.equals(AGED_BRIE)
-                    && !items[i].name.equals(BACKSTAGE_PASSES)) {
-                if (items[i].quality > 0) {
-                    if (!items[i].name.equals(SULFURAS_HAND_OF_RAGNAROS)) {
-                        items[i].quality = items[i].quality - 1;
-                    }
-                }
+        for (int index = 0; index < items.length; index++) {
+            if (not(items[index].name.equals(AGED_BRIE))
+                    && not(items[index].name.equals(BACKSTAGE_PASSES))) {
+                decreaseQualityIfQualityIsGreaterThanZero(items[index]);
             } else {
-                if (items[i].quality < 50) {
-                    items[i].quality = items[i].quality + 1;
+                if (items[index].quality < 50) {
+                    items[index].quality = items[index].quality + 1;
 
-                    if (items[i].name.equals(BACKSTAGE_PASSES)) {
-                        if (items[i].sellIn < 11) {
-                            if (items[i].quality < 50) {
-                                items[i].quality = items[i].quality + 1;
+                    if (items[index].name.equals(BACKSTAGE_PASSES)) {
+                        if (items[index].sellIn < 11) {
+                            if (items[index].quality < 50) {
+                                items[index].quality = items[index].quality + 1;
                             }
                         }
 
-                        if (items[i].sellIn < 6) {
-                            if (items[i].quality < 50) {
-                                items[i].quality = items[i].quality + 1;
+                        if (items[index].sellIn < 6) {
+                            if (items[index].quality < 50) {
+                                items[index].quality = items[index].quality + 1;
                             }
                         }
                     }
                 }
             }
 
-            if (!items[i].name.equals(SULFURAS_HAND_OF_RAGNAROS)) {
-                items[i].sellIn = items[i].sellIn - 1;
+            if (not(items[index].name.equals(SULFURAS_HAND_OF_RAGNAROS))) {
+                items[index].sellIn = items[index].sellIn - 1;
             }
 
-            if (items[i].sellIn < 0) {
-                if (!items[i].name.equals(AGED_BRIE)) {
-                    if (!items[i].name.equals(BACKSTAGE_PASSES)) {
-                        if (items[i].quality > 0) {
-                            if (!items[i].name.equals(SULFURAS_HAND_OF_RAGNAROS)) {
-                                items[i].quality = items[i].quality - 1;
-                            }
-                        }
-                    } else {
-                        items[i].quality = items[i].quality - items[i].quality;
-                    }
+            if (items[index].sellIn < 0) {
+                if (not(items[index].name.equals(AGED_BRIE))) {
+                    decreaseQualityToZero(items[index]);
+                    decreaseQualityIfQualityIsGreaterThanZero(items[index]);
                 } else {
-                    if (items[i].quality < 50) {
-                        items[i].quality = items[i].quality + 1;
+                    if (items[index].quality < 50) {
+                        items[index].quality = items[index].quality + 1;
                     }
                 }
             }
         }
+    }
+
+    private void decreaseQualityToZero(Item item) {
+        if (item.name.equals(BACKSTAGE_PASSES)) {
+            item.quality = item.quality - item.quality;
+        }
+    }
+
+    private void decreaseQualityIfQualityIsGreaterThanZero(Item item) {
+        if ((not(item.name.equals(BACKSTAGE_PASSES)) && (item.quality > 0))) {
+            decreaseQualityByOneForAnyItemOtherThanSulfurus(item);
+        }
+    }
+
+    private void decreaseQualityByOneForAnyItemOtherThanSulfurus(Item item) {
+        if (not(item.name.equals(SULFURAS_HAND_OF_RAGNAROS))) {
+            item.quality = item.quality - 1;
+        }
+    }
+
+    private boolean not(boolean value) {
+        return !value;
     }
 }
