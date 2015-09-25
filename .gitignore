@@ -1,0 +1,9 @@
+/target
+.classpath
+.project
+.settings
+.idea
+crafting_code.iml
+*.class
+*.tar.gz
+*.iml
