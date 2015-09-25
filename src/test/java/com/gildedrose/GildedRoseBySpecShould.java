@@ -98,7 +98,7 @@ public class GildedRoseBySpecShould {
 
         app.updateQuality();
 
-        assertThat(app.items[0].quality, is(expectedQuality));
+        assertThat(app.items[0].quality, is((expectedQuality)));
     }
 
     private GildedRose prepareGildedRoseWithItems(Item[] items) {

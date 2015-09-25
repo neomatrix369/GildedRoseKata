@@ -16,11 +16,11 @@ class GildedRose {
 
     public void updateQuality() {
         for (int index = 0; index < items.length; index++) {
-            increaseQualityForAgedBriedOrBackStagePasses(items[index]);
+            increaseQualityForAgedBrieOrBackStagePasses(items[index]);
 
             decreaseQualityForAnyItemOtherThanAgedBrieOrBackStagePasses(items[index]);
 
-            decresseSellInForAnyItemOtherThanSulfurus(items[index]);
+            decreaseSellInForAnyItemOtherThanSulfurus(items[index]);
 
             increaseQualityForAgedBrieIfSellInIsLessThan_0(items[index]);
 
@@ -29,98 +29,62 @@ class GildedRose {
     }
 
     private void decreaseQualityForAnyItemOtherThanAgedBrieIfSellInIsLessThan_0(Item item) {
-        if (item.sellIn < 0) {
-            decreaseQualityForAnyItemOtherThanAgedBrie(item);
+        if (item.name.equals(BACKSTAGE_PASSES) && (item.sellIn < 0)) {
+            item.quality = 0;
+        }
+
+        if (not(item.name.equals(AGED_BRIE))
+                && (not(item.name.equals(BACKSTAGE_PASSES))
+                && (not(item.name.equals(SULFURAS_HAND_OF_RAGNAROS))
+                && (item.sellIn < 0)
+                && (item.quality > 0)))) {
+            item.quality--;
         }
     }
 
     private void increaseQualityForAgedBrieIfSellInIsLessThan_0(Item item) {
-        if (item.sellIn < 0) {
-            increaseQualityForAgedBrie(item);
+        if ((item.name.equals(AGED_BRIE))
+                && (item.sellIn < 0)
+                && (item.quality < 50)) {
+            item.quality++;
         }
     }
 
     private void decreaseQualityForAnyItemOtherThanAgedBrieOrBackStagePasses(Item item) {
         if (not((item.name.equals(AGED_BRIE))
-                || (item.name.equals(BACKSTAGE_PASSES)))) {
-            decreaseQualityIfQualityIsGreaterThanZero(item);
+                || (item.name.equals(BACKSTAGE_PASSES)))
+                && ((not(item.name.equals(BACKSTAGE_PASSES)) && (item.quality > 0)))
+                && (not(item.name.equals(SULFURAS_HAND_OF_RAGNAROS)))) {
+            item.quality = item.quality - 1;
         }
     }
 
-    private void increaseQualityForAgedBriedOrBackStagePasses(Item item) {
-        if ((item.name.equals(AGED_BRIE))
-                || (item.name.equals(BACKSTAGE_PASSES))) {
-            increaseQualityIfQualityIsLessThan_50(item);
-        }
-    }
-
-    private void decreaseQualityForAnyItemOtherThanAgedBrie(Item item) {
-        if (not(item.name.equals(AGED_BRIE))) {
-            decreaseQualityToZero(item);
-            decreaseQualityIfQualityIsGreaterThanZero(item);
-        }
-    }
-
-    private void increaseQualityForAgedBrie(Item item) {
-        if ((item.name.equals(AGED_BRIE))) {
-            increaseQualityOnlyIfQualityIsLessThan_50(item);
-        }
-    }
-
-    private void decresseSellInForAnyItemOtherThanSulfurus(Item item) {
-        if (not(item.name.equals(SULFURAS_HAND_OF_RAGNAROS))) {
-            item.sellIn = item.sellIn - 1;
-        }
-    }
-
-    private void increaseQualityIfQualityIsLessThan_50(Item item) {
-        if (item.quality < 50) {
-            item.quality = item.quality + 1;
-
+    private void increaseQualityForAgedBrieOrBackStagePasses(Item item) {
+        if (((item.name.equals(AGED_BRIE))
+                || (item.name.equals(BACKSTAGE_PASSES)))
+                && (item.quality < 50)) {
+            item.quality++;
             increaseQualityForBackstagePasses(item);
+        }
+    }
+
+    private void decreaseSellInForAnyItemOtherThanSulfurus(Item item) {
+        if (not(item.name.equals(SULFURAS_HAND_OF_RAGNAROS))) {
+            item.sellIn--;
         }
     }
 
     private void increaseQualityForBackstagePasses(Item item) {
         if (item.name.equals(BACKSTAGE_PASSES)) {
-            increaseQualityOnlyIfSellInIsLessThan_11(item);
-            increaseQualityOnlyIfSellInIsLessThan_6(item);
-        }
-    }
+            if (item.quality < 50) {
+                if (item.sellIn < 11) {
+                    item.quality++;
+                }
 
-    private void increaseQualityOnlyIfSellInIsLessThan_11(Item item) {
-        if (item.sellIn < 11) {
-            increaseQualityOnlyIfQualityIsLessThan_50(item);
-        }
-    }
-
-    private void increaseQualityOnlyIfSellInIsLessThan_6(Item item) {
-        if (item.sellIn < 6) {
-            increaseQualityOnlyIfQualityIsLessThan_50(item);
-        }
-    }
-
-    private void increaseQualityOnlyIfQualityIsLessThan_50(Item item) {
-        if (item.quality < 50) {
-            item.quality = item.quality + 1;
-        }
-    }
-
-    private void decreaseQualityToZero(Item item) {
-        if (item.name.equals(BACKSTAGE_PASSES)) {
-            item.quality = item.quality - item.quality;
-        }
-    }
-
-    private void decreaseQualityIfQualityIsGreaterThanZero(Item item) {
-        if ((not(item.name.equals(BACKSTAGE_PASSES)) && (item.quality > 0))) {
-            decreaseQualityByOneForAnyItemOtherThanSulfurus(item);
-        }
-    }
-
-    private void decreaseQualityByOneForAnyItemOtherThanSulfurus(Item item) {
-        if (not(item.name.equals(SULFURAS_HAND_OF_RAGNAROS))) {
-            item.quality = item.quality - 1;
+                if (item.sellIn < 6) {
+                    item.quality++;
+                }
+            }
         }
     }
 
