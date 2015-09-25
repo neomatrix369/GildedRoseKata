@@ -34,8 +34,19 @@ public class GildedRoseBySpecShould {
                         },
                         {
                                 "never change the quality of item Sufluras as time passes",
-                                SULFURAS_HAND_OF_RAGNAROS, sellIn(0), qualityOf(2), qualityOf(2),
+                                SULFURAS_HAND_OF_RAGNAROS, sellIn(-1), qualityOf(80), qualityOf(80),
                         },
+
+                        {
+                                "never change the quality of item Sufluras as time passes",
+                                SULFURAS_HAND_OF_RAGNAROS, sellIn(0), qualityOf(80), qualityOf(80),
+                        },
+
+                        {
+                                "never change the quality of item Sufluras as time passes",
+                                SULFURAS_HAND_OF_RAGNAROS, sellIn(1), qualityOf(80), qualityOf(80),
+                        },
+
                         {
                                 "never change the quality of any item past 50",
                                 AGED_BRIE, sellIn(0), qualityOf(50), qualityOf(50),
@@ -68,6 +79,11 @@ public class GildedRoseBySpecShould {
                                 "decrease the quality of any other item by 2 when quality is greater than 0 and sellIn less than 1",
                                 ANY_OTHER_ITEM, sellIn(-1), qualityOf(23), qualityOf(21)
                         },
+                        {
+                                "not decrease the quality of any other item when quality is 0",
+                                ANY_OTHER_ITEM, sellIn(1), qualityOf(0), qualityOf(0)
+                        },
+
                         {
                                 "decrease the quality of Conjured item by 2 when quality is greater than 0 and sellIn less than 1",
                                 CONJURED, sellIn(-1), qualityOf(19), qualityOf(17)
