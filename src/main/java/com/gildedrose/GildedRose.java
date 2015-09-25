@@ -55,7 +55,7 @@ class GildedRose {
                 || (item.name.equals(BACKSTAGE_PASSES)))
                 && ((not(item.name.equals(BACKSTAGE_PASSES)) && (item.quality > 0)))
                 && (not(item.name.equals(SULFURAS_HAND_OF_RAGNAROS)))) {
-            item.quality = item.quality - 1;
+            item.quality--;
         }
     }
 
@@ -64,27 +64,24 @@ class GildedRose {
                 || (item.name.equals(BACKSTAGE_PASSES)))
                 && (item.quality < 50)) {
             item.quality++;
-            increaseQualityForBackstagePasses(item);
+
+            if (item.name.equals(BACKSTAGE_PASSES)) {
+                if (item.quality < 50) {
+                    if (item.sellIn < 11) {
+                        item.quality++;
+                    }
+
+                    if (item.sellIn < 6) {
+                        item.quality++;
+                    }
+                }
+            }
         }
     }
 
     private void decreaseSellInForAnyItemOtherThanSulfurus(Item item) {
         if (not(item.name.equals(SULFURAS_HAND_OF_RAGNAROS))) {
             item.sellIn--;
-        }
-    }
-
-    private void increaseQualityForBackstagePasses(Item item) {
-        if (item.name.equals(BACKSTAGE_PASSES)) {
-            if (item.quality < 50) {
-                if (item.sellIn < 11) {
-                    item.quality++;
-                }
-
-                if (item.sellIn < 6) {
-                    item.quality++;
-                }
-            }
         }
     }
 
