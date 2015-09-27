@@ -38,6 +38,8 @@ public class GildedRoseBySpecShould {
                                 ANY_ITEM, sellIn(-1), qualityOf(0), qualityOf(0)},
 
                         {"The Quality of Aged Brie can never more than 50 (near sell in date of 1)",
+                                AGED_BRIE, sellIn(1), qualityOf(45), qualityOf(46)},
+                        {"The Quality of Aged Brie can never more than 50 (near sell in date of 1)",
                                 AGED_BRIE, sellIn(1), qualityOf(50), qualityOf(50)},
                         {"The Quality of Aged Brie increases by 1 when before sell in date",
                                 AGED_BRIE, sellIn(1), qualityOf(48), qualityOf(49)},
