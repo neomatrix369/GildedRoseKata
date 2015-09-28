@@ -14,48 +14,56 @@ class GildedRose {
 
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
+            updateItemAgedBrie(items[i]);
+            updateItemBackStagePasses(items[i]);
+            updateAllOtherItems(items[i]);
+        }
+    }
 
-            if (!items[i].name.equals(AGED_BRIE)
-                    && !items[i].name.equals(BACK_STAGE_PASSES)
-                    && !items[i].name.equals(SULFURAS_HAND_OF_RAGNAROS)
-                    && (items[i].quality > 0)) {
-                decreaseQuality(items[i]);
-                decreaseSellIn(items[i]);
+    private void updateAllOtherItems(Item item) {
+        if (!item.name.equals(AGED_BRIE)
+                && !item.name.equals(BACK_STAGE_PASSES)
+                && !item.name.equals(SULFURAS_HAND_OF_RAGNAROS)
+                && (item.quality > 0)) {
+            decreaseQuality(item);
+            decreaseSellIn(item);
 
-                if ((items[i].quality > 0)
-                    && (items[i].sellIn < 0)) {
-                    decreaseQuality(items[i]);
-                }
+            if ((item.quality > 0)
+                    && (item.sellIn < 0)) {
+                decreaseQuality(item);
+            }
+        }
+    }
+
+    private void updateItemBackStagePasses(Item item) {
+        if (item.name.equals(BACK_STAGE_PASSES)) {
+            if ((item.sellIn < 11)
+                    && (item.quality < 50)) {
+                increaseQuality(item);
             }
 
-            if (items[i].name.equals(AGED_BRIE)
-                    && (items[i].quality < 50)) {
-                increaseQuality(items[i]);
-                decreaseSellIn(items[i]);
-
-                if (items[i].sellIn < 0) {
-                    increaseQuality(items[i]);
-                }
+            if ((item.sellIn < 6)
+                    && (item.quality < 50)) {
+                increaseQuality(item);
             }
 
-            if (items[i].name.equals(BACK_STAGE_PASSES)) {
-                if ((items[i].sellIn < 11)
-                        && (items[i].quality < 50)) {
-                    increaseQuality(items[i]);
-                }
+            increaseQuality(item);
+            decreaseSellIn(item);
 
-                if ((items[i].sellIn < 6)
-                        && (items[i].quality < 50)) {
-                    increaseQuality(items[i]);
-                }
+            if (item.sellIn < 0) {
+                setQualityToZero(item);
+            }
+        }
+    }
 
-                increaseQuality(items[i]);
-                decreaseSellIn(items[i]);
+    private void updateItemAgedBrie(Item item) {
+        if (item.name.equals(AGED_BRIE)
+                && (item.quality < 50)) {
+            increaseQuality(item);
+            decreaseSellIn(item);
 
-                if (items[i].name.equals(BACK_STAGE_PASSES)
-                        && (items[i].sellIn < 0)) {
-                    setQualityToZero(items[i]);
-                }
+            if (item.sellIn < 0) {
+                increaseQuality(item);
             }
         }
     }
