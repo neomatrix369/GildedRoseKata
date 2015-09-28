@@ -5,6 +5,7 @@ class GildedRose {
     public static final String AGED_BRIE = "Aged Brie";
     public static final String ANY_ITEM = "Any";
     public static final String BACK_STAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
+    public static final String CONJURED_ITEM = "Conjured";
 
     Item[] items;
 
@@ -16,7 +17,18 @@ class GildedRose {
         for (int i = 0; i < items.length; i++) {
             updateItemAgedBrie(items[i]);
             updateItemBackStagePasses(items[i]);
+            updateConjuredItem(items[i]);
             updateAllOtherItems(items[i]);
+        }
+    }
+
+    private void updateConjuredItem(Item item) {
+        if (item.name.equals(CONJURED_ITEM)) {
+            if (item.quality < 1) {
+                item.quality = 0;
+            } else {
+                decreaseQuality(item, by(2));
+            }
         }
     }
 
@@ -24,8 +36,9 @@ class GildedRose {
         if (!item.name.equals(AGED_BRIE)
                 && !item.name.equals(BACK_STAGE_PASSES)
                 && !item.name.equals(SULFURAS_HAND_OF_RAGNAROS)
+                && !item.name.equals(CONJURED_ITEM)
                 && (item.quality > 0)) {
-            decreaseQuality(item);
+            decreaseQuality(item, by(1));
             decreaseSellIn(item);
 
             decreaseQualityIfItemHasPastSellInDate(item);
@@ -70,7 +83,7 @@ class GildedRose {
     private void decreaseQualityIfItemHasPastSellInDate(Item item) {
         if ((item.quality > 0)
                 && (item.sellIn < 0)) {
-            decreaseQuality(item);
+            decreaseQuality(item, by(1));
         }
     }
 
@@ -88,7 +101,11 @@ class GildedRose {
         item.quality = item.quality + 1;
     }
 
-    private void decreaseQuality(Item item) {
-        item.quality = item.quality - 1;
+    private void decreaseQuality(Item item, int by) {
+        item.quality = item.quality - by;
+    }
+
+    private int by(int value) {
+        return value;
     }
 }

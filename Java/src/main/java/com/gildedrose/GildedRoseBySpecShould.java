@@ -10,6 +10,7 @@ import java.util.Collection;
 import static com.gildedrose.GildedRose.AGED_BRIE;
 import static com.gildedrose.GildedRose.ANY_ITEM;
 import static com.gildedrose.GildedRose.BACK_STAGE_PASSES;
+import static com.gildedrose.GildedRose.CONJURED_ITEM;
 import static com.gildedrose.GildedRose.SULFURAS_HAND_OF_RAGNAROS;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -74,6 +75,14 @@ public class GildedRoseBySpecShould {
                         {"The Quality of BackStage Passes drops to 0 after the concert (finished by 2 days)",
                                 BACK_STAGE_PASSES, sellIn(-1), qualityOf(10), qualityOf(0)},
 
+                        {"Conjured items degrade in Quality twice as fast as normal items",
+                                CONJURED_ITEM, sellIn(1), qualityOf(10), qualityOf(8)},
+
+                        {"Quality of Conjured items do not reduce to any value below 0",
+                                CONJURED_ITEM, sellIn(1), qualityOf(0), qualityOf(0)},
+
+                        {"Quality of Conjured items do not reduce to any value below 0, even if starting quality if less than 0",
+                                CONJURED_ITEM, sellIn(1), qualityOf(-1), qualityOf(0)},
                 }
         );
     }
