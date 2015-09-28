@@ -20,30 +20,27 @@ class GildedRose {
                     && !items[i].name.equals(SULFURAS_HAND_OF_RAGNAROS)
                     && (items[i].quality > 0)) {
                 decreaseQuality(items[i]);
+                decreaseSellIn(items[i]);
             }
 
             if (items[i].name.equals(AGED_BRIE)
                     && (items[i].quality < 50)) {
                 increaseQuality(items[i]);
-            }
-
-            if (items[i].name.equals(BACK_STAGE_PASSES)
-                    && (items[i].sellIn < 11)
-                    && (items[i].quality < 50)) {
-                increaseQuality(items[i]);
-            }
-            if (items[i].name.equals(BACK_STAGE_PASSES)
-                    && (items[i].sellIn < 6)
-                    && (items[i].quality < 50)) {
-                increaseQuality(items[i]);
+                decreaseSellIn(items[i]);
             }
 
             if (items[i].name.equals(BACK_STAGE_PASSES)) {
-                increaseQuality(items[i]);
-            }
+                if ((items[i].sellIn < 11)
+                        && (items[i].quality < 50)) {
+                    increaseQuality(items[i]);
+                }
 
-            if (!items[i].name.equals(SULFURAS_HAND_OF_RAGNAROS)) {
-                decreaseSellIn(i);
+                if ((items[i].sellIn < 6)
+                        && (items[i].quality < 50)) {
+                    increaseQuality(items[i]);
+                }
+                increaseQuality(items[i]);
+                decreaseSellIn(items[i]);
             }
 
             if (items[i].name.equals(AGED_BRIE)
@@ -61,18 +58,18 @@ class GildedRose {
             }
 
             if (items[i].name.equals(BACK_STAGE_PASSES)
-                    && (items[i].sellIn < 0)) {
-                setQualityToZero(i);
+                && (items[i].sellIn < 0)) {
+                setQualityToZero(items[i]);
             }
         }
     }
 
-    private void setQualityToZero(int i) {
-        items[i].quality = 0;
+    private void setQualityToZero(Item item) {
+        item.quality = 0;
     }
 
-    private void decreaseSellIn(int i) {
-        items[i].sellIn = items[i].sellIn - 1;
+    private void decreaseSellIn(Item item) {
+        item.sellIn = item.sellIn - 1;
     }
 
     private void increaseQuality(Item item) {
