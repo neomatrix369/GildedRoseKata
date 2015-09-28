@@ -77,10 +77,8 @@ public class GildedRoseBySpecShould {
 
                         {"Conjured items degrade in Quality twice as fast as normal items",
                                 CONJURED_ITEM.toString(), sellIn(1), qualityOf(10), qualityOf(8)},
-
                         {"Quality of Conjured items do not reduce to any value below 0",
                                 CONJURED_ITEM.toString(), sellIn(1), qualityOf(0), qualityOf(0)},
-
                         {"Quality of Conjured items do not reduce to any value below 0, even if starting quality if less than 0",
                                 CONJURED_ITEM.toString(), sellIn(1), qualityOf(-1), qualityOf(0)},
                 }
