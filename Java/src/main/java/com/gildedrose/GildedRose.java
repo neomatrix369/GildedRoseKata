@@ -28,10 +28,7 @@ class GildedRose {
             decreaseQuality(item);
             decreaseSellIn(item);
 
-            if ((item.quality > 0)
-                    && (item.sellIn < 0)) {
-                decreaseQuality(item);
-            }
+            decreaseQualityIfItemHasPastSellInDate(item);
         }
     }
 
@@ -50,9 +47,7 @@ class GildedRose {
             increaseQuality(item);
             decreaseSellIn(item);
 
-            if (item.sellIn < 0) {
-                setQualityToZero(item);
-            }
+            setQualityToZeroIfItemHasPastSellInDate(item);
         }
     }
 
@@ -62,14 +57,27 @@ class GildedRose {
             increaseQuality(item);
             decreaseSellIn(item);
 
-            if (item.sellIn < 0) {
-                increaseQuality(item);
-            }
+            increaseQualityIfItemHasPastSellinDate(item);
         }
     }
 
-    private void setQualityToZero(Item item) {
-        item.quality = 0;
+    private void increaseQualityIfItemHasPastSellinDate(Item item) {
+        if (item.sellIn < 0) {
+            increaseQuality(item);
+        }
+    }
+
+    private void decreaseQualityIfItemHasPastSellInDate(Item item) {
+        if ((item.quality > 0)
+                && (item.sellIn < 0)) {
+            decreaseQuality(item);
+        }
+    }
+
+    private void setQualityToZeroIfItemHasPastSellInDate(Item item) {
+        if (item.sellIn < 0) {
+            item.quality = 0;
+        }
     }
 
     private void decreaseSellIn(Item item) {
