@@ -14,10 +14,8 @@ class GildedRose {
                 increaseQualityIfQualityIsLessThan_50(items[i]);
             }
 
-            if (items[i].name.equals("Aged Brie")
-                    || items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-
-                increaseQualityOfBackstagePasses(items[i]);
+            if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                items[i].quality = items[i].quality + 1;
             }
 
             if (items[i].name.equals("Aged Brie")
