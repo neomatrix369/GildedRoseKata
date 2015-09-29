@@ -19,9 +19,14 @@ class GildedRose {
                 items[i].quality = items[i].quality + 1;
             }
 
-            if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                increaseQualityIfQualityIsLessThan_50_AndSellInIsLessThanMaxSellIn(items[i], 11);
-                increaseQualityIfQualityIsLessThan_50_AndSellInIsLessThanMaxSellIn(items[i], 6);
+            if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")
+                    && items[i].sellIn < 11) {
+                increaseQualityIfQualityIsLessThan_50(items[i]);
+            }
+
+            if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")
+                    && items[i].sellIn < 6) {
+                increaseQualityIfQualityIsLessThan_50(items[i]);
             }
 
             if (!items[i].name.equals("Aged Brie")
@@ -57,12 +62,6 @@ class GildedRose {
     private void decreaseSellInIfItemIsOtherThanSulfuras(Item item) {
         if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
             item.sellIn = item.sellIn - 1;
-        }
-    }
-
-    private void increaseQualityIfQualityIsLessThan_50_AndSellInIsLessThanMaxSellIn(Item item, int maximumSellIn) {
-        if (item.sellIn < maximumSellIn) {
-            increaseQualityIfQualityIsLessThan_50(item);
         }
     }
 
