@@ -39,7 +39,7 @@ class GildedRose {
             }
 
             if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
-                items[i].sellIn = items[i].sellIn - 1;
+                decreaseSellInDays(items[i]);
             }
 
             if (items[i].name.equals("Aged Brie")
@@ -62,6 +62,10 @@ class GildedRose {
             }
         }
 
+    }
+
+    private void decreaseSellInDays(Item item) {
+        item.sellIn = item.sellIn - 1;
     }
 
     private void decreaseQuality(Item item) {
