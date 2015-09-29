@@ -29,7 +29,8 @@ class GildedRose {
                 if (!items[i].name.equals("Aged Brie")) {
                     setToZeroIfItemIsBackstagePasses(items[i]);
                     decreaseQualityIfQualityIsGreaterThan_0_AndItemIsNotSulfurasOrBackStagePasses(items[i]);
-                } else {
+                }
+                if (items[i].name.equals("Aged Brie")) {
                     increaseQualityIfQualityIsLessThan_50(items[i]);
                 }
             }
