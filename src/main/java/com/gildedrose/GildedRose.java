@@ -10,27 +10,22 @@ class GildedRose {
 
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
-            if (items[i].name.equals("Aged Brie"))
+            if (items[i].name.equals("Aged Brie")) {
                 if (items[i].quality < 50) {
                     increaseQuality(items[i]);
                     decreaseSellInDays(items[i]);
 
-                    if (items[i].sellIn < 0) {
-                        increaseQuality(items[i]);
-                    }
+                    increaseQualityDependingOnSellIn(items[i], 0);
                 }
+            }
 
             if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                 increaseQuality(items[i]);
 
                 if (items[i].quality < 50) {
-                    if (items[i].sellIn < 11) {
-                        increaseQuality(items[i]);
-                    }
+                    increaseQualityDependingOnSellIn(items[i], 11);
 
-                    if (items[i].sellIn < 6) {
-                        increaseQuality(items[i]);
-                    }
+                    increaseQualityDependingOnSellIn(items[i], 6);
                 }
 
                 decreaseSellInDays(items[i]);
@@ -53,6 +48,12 @@ class GildedRose {
                 }
             }
 
+        }
+    }
+
+    private void increaseQualityDependingOnSellIn(Item item, int minimunSelling) {
+        if (item.sellIn < minimunSelling) {
+            increaseQuality(item);
         }
     }
 
