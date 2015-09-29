@@ -67,25 +67,6 @@ class GildedRose {
         }
     }
 
-    private void increaseQualityOfBackstagePasses(Item item) {
-        if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-            item.quality = item.quality + 1;
-        }
-    }
-
-    private void increaseQualityOfAgedBrieIfQualityIsLessThan_50(Item item) {
-        if (item.name.equals("Aged Brie")) {
-            increaseQualityIfQualityIsLessThan_50(item);
-        }
-    }
-
-    private void increaseQualityOfBackStagePassesIfQualityIsLessThan_50_AndSellInIsLessThan_11_Or_6(Item item) {
-        if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-            increaseQualityIfQualityIsLessThan_50_AndSellInIsLessThanMaxSellIn(item, 11);
-            increaseQualityIfQualityIsLessThan_50_AndSellInIsLessThanMaxSellIn(item, 6);
-        }
-    }
-
     private void increaseQualityIfQualityIsLessThan_50_AndSellInIsLessThanMaxSellIn(Item item, int maximumSellIn) {
         if (item.sellIn < maximumSellIn) {
             increaseQualityIfQualityIsLessThan_50(item);
@@ -95,18 +76,6 @@ class GildedRose {
     private void increaseQualityIfQualityIsLessThan_50(Item item) {
         if (item.quality < 50) {
             item.quality = item.quality + 1;
-        }
-    }
-
-    private void decreaseQualityIfQualityIsGreaterThan_0_AndItemIsNotSulfuras(Item item) {
-        if (item.quality > 0) {
-            decreaseQualityIfItemIsNotSulfuras(item);
-        }
-    }
-
-    private void decreaseQualityIfItemIsNotSulfuras(Item item) {
-        if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-            item.quality = item.quality - 1;
         }
     }
 }
