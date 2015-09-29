@@ -30,10 +30,17 @@ class GildedRose {
 
                 setQualityTo_0_BackstagePasses(items[i]);
 
-                if (!items[i].name.equals("Aged Brie")) {
-                    decreaseQualityIfQualityIsGreaterThan_0_AndItemIsNotSulfurasOrBackStagePasses(items[i]);
-                }
+                decreaseQualityIfQualityIsGreaterThan_0_ForItemsOtherThanAgedBriedBackstagePassesAndSulfuras(items[i]);
             }
+        }
+    }
+
+    private void decreaseQualityIfQualityIsGreaterThan_0_ForItemsOtherThanAgedBriedBackstagePassesAndSulfuras(Item item) {
+        if (!item.name.equals("Aged Brie")
+                && !item.name.equals("Backstage passes to a TAFKAL80ETC concert")
+                && !item.name.equals("Sulfuras, Hand of Ragnaros")
+                && item.quality > 0) {
+            item.quality = item.quality - 1;
         }
     }
 
