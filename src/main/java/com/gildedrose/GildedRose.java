@@ -32,7 +32,8 @@ class GildedRose {
                 if (!items[i].name.equals("Aged Brie")) {
                     if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                         setQualityToZero(items[i]);
-                    } else {
+                    }
+                    if (!items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                         decreaseQualityIfQualityIsGreaterThan_0_AndItemIsNotSulfuras(items[i]);
                     }
                 } else {
