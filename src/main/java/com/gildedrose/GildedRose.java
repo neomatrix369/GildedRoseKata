@@ -28,14 +28,18 @@ class GildedRose {
             if (items[i].sellIn < 0) {
                 increaseQualityOfAgedBrieIfQualityIsLessThan_50(items[i]);
 
-                if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                    items[i].quality = 0;
-                }
+                setQualityTo_0_BackstagePasses(items[i]);
 
                 if (!items[i].name.equals("Aged Brie")) {
                     decreaseQualityIfQualityIsGreaterThan_0_AndItemIsNotSulfurasOrBackStagePasses(items[i]);
                 }
             }
+        }
+    }
+
+    private void setQualityTo_0_BackstagePasses(Item item) {
+        if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+            item.quality = 0;
         }
     }
 
@@ -62,10 +66,6 @@ class GildedRose {
         if (!item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
             decreaseQualityIfQualityIsGreaterThan_0_AndItemIsNotSulfuras(item);
         }
-    }
-
-    private void setQualityToZero(Item item) {
-        item.quality = 0;
     }
 
     private void increaseQualityIfQualityIsLessThan_50_AndSellInIsLessThanMaxSellIn(Item item, int maximumSellIn) {
