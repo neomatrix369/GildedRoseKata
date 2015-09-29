@@ -17,7 +17,11 @@ class GildedRose {
                 increaseQualityOfBackstagePasses(items[i]);
 
                 increaseQualityOfBackStagePassesIfQualityIsLessThan_50_AndSellInIsLessThan_11_Or_6(items[i]);
-            } else {
+            }
+
+            if (!items[i].name.equals("Aged Brie")
+                    && !items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+
                 decreaseQualityIfQualityIsGreaterThan_0_AndItemIsNotSulfuras(items[i]);
             }
 
