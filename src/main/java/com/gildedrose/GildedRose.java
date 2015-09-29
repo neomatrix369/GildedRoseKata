@@ -16,6 +16,12 @@ class GildedRose {
                 decreaseSellInDays(items[i]);
             }
 
+            if (items[i].name.equals("Aged Brie")
+                    && items[i].sellIn < 0
+                    && items[i].quality < 50) {
+                increaseQuality(items[i]);
+            }
+
             if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                 increaseQuality(items[i]);
 
@@ -31,23 +37,17 @@ class GildedRose {
                 decreaseSellInDays(items[i]);
             }
 
+            if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")
+                    && items[i].sellIn < 0) {
+                items[i].quality = 0;
+            }
+
             if (!items[i].name.equals("Aged Brie")
                     && !items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")
                     && !items[i].name.equals("Sulfuras, Hand of Ragnaros")
                     && (items[i].quality > 0)) {
                 decreaseQuality(items[i]);
                 decreaseSellInDays(items[i]);
-            }
-
-            if (items[i].name.equals("Aged Brie")
-                    && items[i].sellIn < 0
-                    && items[i].quality < 50) {
-                increaseQuality(items[i]);
-            }
-
-            if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")
-                    && items[i].sellIn < 0) {
-                items[i].quality = 0;
             }
 
             if (!items[i].name.equals("Aged Brie")
@@ -58,7 +58,6 @@ class GildedRose {
                 decreaseQuality(items[i]);
             }
         }
-
     }
 
     private void decreaseSellInDays(Item item) {
