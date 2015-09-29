@@ -31,14 +31,17 @@ class GildedRose {
             if (items[i].sellIn < 0) {
                 if (!items[i].name.equals("Aged Brie")) {
                     setToZeroIfItemIsBackstagePasses(items[i]);
-
-                    if (!items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                        decreaseQualityIfQualityIsGreaterThan_0_AndItemIsNotSulfuras(items[i]);
-                    }
+                    decreaseQualityIfQualityIsGreaterThan_0_AndItemIsNotSulfurasOrBackStagePasses(items[i]);
                 } else {
                     increaseQualityIfQualityIsLessThan_50(items[i]);
                 }
             }
+        }
+    }
+
+    private void decreaseQualityIfQualityIsGreaterThan_0_AndItemIsNotSulfurasOrBackStagePasses(Item item) {
+        if (!item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+            decreaseQualityIfQualityIsGreaterThan_0_AndItemIsNotSulfuras(item);
         }
     }
 
