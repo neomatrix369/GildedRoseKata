@@ -20,13 +20,15 @@ class GildedRose {
             }
 
             if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")
-                    && items[i].sellIn < 11 && items[i].quality < 50) {
-                    items[i].quality = items[i].quality + 1;
-                }
+                    && items[i].sellIn < 11
+                    && items[i].quality < 50) {
+                items[i].quality = items[i].quality + 1;
+            }
 
             if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")
-                    && items[i].sellIn < 6) {
-                increaseQualityIfQualityIsLessThan_50(items[i]);
+                    && (items[i].sellIn < 6)
+                    && (items[i].quality < 50)) {
+                items[i].quality = items[i].quality + 1;
             }
 
             if (!items[i].name.equals("Aged Brie")
@@ -57,6 +59,7 @@ class GildedRose {
                 items[i].quality = items[i].quality - 1;
             }
         }
+
     }
 
     private void decreaseSellInIfItemIsOtherThanSulfuras(Item item) {
