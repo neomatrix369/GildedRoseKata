@@ -27,13 +27,13 @@ class GildedRose {
                     && !items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")
                     && !items[i].name.equals("Sulfuras, Hand of Ragnaros")
                     && (items[i].quality > 0)) {
-                    items[i].quality = items[i].quality - 1;
+                items[i].quality = items[i].quality - 1;
             }
 
             decreaseSellInIfItemIsOtherThanSulfuras(items[i]);
 
-            if (items[i].sellIn < 0) {
-                increaseQualityOfAgedBrieIfQualityIsLessThan_50(items[i]);
+            if (items[i].name.equals("Aged Brie") && items[i].sellIn < 0) {
+                increaseQualityIfQualityIsLessThan_50(items[i]);
             }
 
             if (items[i].sellIn < 0) {
