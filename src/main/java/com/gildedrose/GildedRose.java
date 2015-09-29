@@ -30,9 +30,7 @@ class GildedRose {
 
                 decreaseSellInDays(items[i]);
 
-                if (items[i].sellIn < 0) {
-                    items[i].quality = 0;
-                }
+                setQualityTo_0_IfSellInIsLessThan_0(items[i], 0);
             }
 
             if (!items[i].name.equals("Aged Brie")
@@ -48,6 +46,12 @@ class GildedRose {
                 }
             }
 
+        }
+    }
+
+    private void setQualityTo_0_IfSellInIsLessThan_0(Item item, int minSellIn) {
+        if (item.sellIn < minSellIn) {
+            item.quality = minSellIn;
         }
     }
 
