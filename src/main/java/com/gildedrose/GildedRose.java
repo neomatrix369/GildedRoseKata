@@ -18,9 +18,9 @@ class GildedRose {
                 items[i].quality = items[i].quality + 1;
             }
 
-            if (items[i].name.equals("Aged Brie")
-                    || items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                increaseQualityOfBackStagePassesIfQualityIsLessThan_50_AndSellInIsLessThan_11_Or_6(items[i]);
+            if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                increaseQualityIfQualityIsLessThan_50_AndSellInIsLessThanMaxSellIn(items[i], 11);
+                increaseQualityIfQualityIsLessThan_50_AndSellInIsLessThanMaxSellIn(items[i], 6);
             }
 
             if (!items[i].name.equals("Aged Brie")
