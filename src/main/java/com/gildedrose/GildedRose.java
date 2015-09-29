@@ -21,9 +21,7 @@ class GildedRose {
                 increaseQualityOfBackStagePassesIfQualityIsLessThan_50_AndSellInIsLessThan_11_Or_6(items[i]);
             }
 
-            if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
-                items[i].sellIn = items[i].sellIn - 1;
-            }
+            decreaseSellInIfItemIsOtherThanSulfuras(items[i]);
 
             if (items[i].sellIn < 0) {
                 increaseQualityOfAgedBrieIfQualityIsLessThan_50(items[i]);
@@ -32,6 +30,12 @@ class GildedRose {
 
                 decreaseQualityIfQualityIsGreaterThan_0_ForItemsOtherThanAgedBriedBackstagePassesAndSulfuras(items[i]);
             }
+        }
+    }
+
+    private void decreaseSellInIfItemIsOtherThanSulfuras(Item item) {
+        if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
+            item.sellIn = item.sellIn - 1;
         }
     }
 
