@@ -14,12 +14,10 @@ class GildedRose {
                     && items[i].quality < 50) {
                 increaseQuality(items[i]);
                 decreaseSellInDays(items[i]);
-            }
 
-            if (items[i].name.equals("Aged Brie")
-                    && items[i].sellIn < 0
-                    && items[i].quality < 50) {
-                increaseQuality(items[i]);
+                if (items[i].sellIn < 0) {
+                    increaseQuality(items[i]);
+                }
             }
 
             if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
