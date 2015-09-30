@@ -30,7 +30,7 @@ class GildedRose {
 
                 decreaseSellInDays(items[i]);
 
-                setQualityTo_0_IfSellInIsLessThan_0(items[i], 0);
+                setQualityToMinSellInIfSellInIsLessThanMininumSellIn(items[i], 0);
             }
 
             if (!items[i].name.equals("Aged Brie")
@@ -40,23 +40,27 @@ class GildedRose {
                     decreaseQuality(items[i]);
                     decreaseSellInDays(items[i]);
 
-                    if (items[i].sellIn < 0) {
-                        decreaseQuality(items[i]);
-                    }
+                    decreaseQualityIfSellInIsLessThanMinimumSellIn(items[i], 0);
                 }
             }
 
         }
     }
 
-    private void setQualityTo_0_IfSellInIsLessThan_0(Item item, int minSellIn) {
+    private void decreaseQualityIfSellInIsLessThanMinimumSellIn(Item item, int minimumSellIn) {
+        if (item.sellIn < minimumSellIn) {
+            decreaseQuality(item);
+        }
+    }
+
+    private void setQualityToMinSellInIfSellInIsLessThanMininumSellIn(Item item, int minSellIn) {
         if (item.sellIn < minSellIn) {
             item.quality = minSellIn;
         }
     }
 
-    private void increaseQualityDependingOnSellIn(Item item, int minimunSelling) {
-        if (item.sellIn < minimunSelling) {
+    private void increaseQualityDependingOnSellIn(Item item, int minimumSelling) {
+        if (item.sellIn < minimumSelling) {
             increaseQuality(item);
         }
     }
