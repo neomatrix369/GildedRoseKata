@@ -7,9 +7,7 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.Collection;
 
-import static com.gildedrose.ItemByName.AGED_BRIE;
-import static com.gildedrose.ItemByName.BACKSTAGE_PASSES;
-import static com.gildedrose.ItemByName.ANY_OTHER_ITEM;
+import static com.gildedrose.ItemName.*;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -18,7 +16,7 @@ import static org.junit.Assert.assertThat;
 public class GildedRoseByImplShould {
 
     private final String useCaseDescription;
-    private final ItemByName itemName;
+    private final ItemName itemName;
     private final int actualSellIn;
     private final int actualQuality;
     private final int expectedSellIn;
@@ -46,15 +44,25 @@ public class GildedRoseByImplShould {
                         {"The quality of Backstage Passes is set to 0, if Sell In days is past the date and quality is 1",
                                 BACKSTAGE_PASSES, sellIn(0), qualityOf(1), sellIn(-1), qualityOf(0)},
 
-                        {"The quality of Any item (other than ...) decreases by 2, if Sell In days is past the date and quality is 2",
-                                ANY_OTHER_ITEM, sellIn(0), qualityOf(2), sellIn(-1), qualityOf(0)},
+                        {"The sell in and quality of Sulfuras does not change",
+                                SULFURAS, sellIn(1), qualityOf(1), sellIn(1), qualityOf(1)},
+
+                        {"The quality of Any item (other than ...) is 0, if Sell In days is past the date and quality is 2",
+                                ANY_ITEM, sellIn(-1), qualityOf(2), sellIn(-2), qualityOf(0)},
+                        {"The quality of Any item (other than ...) is set to 0, if Sell In days is past the date and quality is 2",
+                                ANY_ITEM, sellIn(0), qualityOf(2), sellIn(-1), qualityOf(0)},
+                        {"The quality of Any item (other than ...) decreases by 1, if Sell In days is not past the date and quality is 2",
+                                ANY_ITEM, sellIn(1), qualityOf(2), sellIn(0), qualityOf(1)},
+                        {"The quality and sell in of Any item (other than ...) stays the same, if quality is 0",
+                                ANY_ITEM, sellIn(1), qualityOf(0), sellIn(1), qualityOf(0)},
+
                 }
         );
     }
 
     public GildedRoseByImplShould(
             String useCaseDescription,
-            ItemByName itemName,
+            ItemName itemName,
             int actualSellIn,
             int actualQuality,
             int expectedSellIn,
