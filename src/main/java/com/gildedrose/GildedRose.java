@@ -1,5 +1,9 @@
 package com.gildedrose;
 
+import static com.gildedrose.ItemByName.AGED_BRIE;
+import static com.gildedrose.ItemByName.BACKSTAGE_PASSES;
+import static com.gildedrose.ItemByName.SULFURAS;
+
 class GildedRose {
 
     ItemList<Item> items;
@@ -10,7 +14,7 @@ class GildedRose {
 
     public void updateQuality() {
         for (Item item : items.asList()) {
-            if (item.name.equals("Aged Brie")) {
+            if (AGED_BRIE.sameAs(item)) {
                 if (item.quality < 50) {
                     increaseQuality(item);
                     decreaseSellInDays(item);
@@ -19,7 +23,7 @@ class GildedRose {
                 }
             }
 
-            if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+            if (BACKSTAGE_PASSES.sameAs(item)) {
                 increaseQuality(item);
 
                 if (item.quality < 50) {
@@ -33,9 +37,9 @@ class GildedRose {
                 setQualityTo_0_IfSellInIsLessThanMinimumSellIn(item, 0);
             }
 
-            if (!item.name.equals("Aged Brie")
-                    && !item.name.equals("Backstage passes to a TAFKAL80ETC concert")
-                    && !item.name.equals("Sulfuras, Hand of Ragnaros")) {
+            if (!AGED_BRIE.sameAs(item)
+                    && !BACKSTAGE_PASSES.sameAs(item)
+                    && !SULFURAS.sameAs(item)) {
                 if (item.quality > 0) {
                     decreaseQuality(item);
                     decreaseSellInDays(item);
