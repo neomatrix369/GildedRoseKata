@@ -71,13 +71,16 @@ public class GildedRoseByImplShould {
 
         app.updateQuality();
 
-        assertThat("Sell in: " + useCaseDescription, app.items[0].sellIn, is(equalTo(expectedSellIn)));
-        assertThat("Quality: " + useCaseDescription, app.items[0].quality, is(equalTo(expectedQuality)));
+        Item item = app.firstItem();
+        assertThat("Sell in: " + useCaseDescription, item.sellIn, is(equalTo(expectedSellIn)));
+        assertThat("Quality: " + useCaseDescription, item.quality, is(equalTo(expectedQuality)));
     }
 
     private GildedRose prepareGildedRose() {
-        Item[] items = new Item[]{new Item(itemName, actualSellIn, actualQuality)};
-        return new GildedRose(items);
+        ItemList itemList = new ItemList(new Item[] {
+                new Item(itemName, actualSellIn, actualQuality)}
+        );
+        return new GildedRose(itemList);
     }
 
     private static int sellIn(int value) {

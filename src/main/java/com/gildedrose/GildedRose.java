@@ -2,45 +2,45 @@ package com.gildedrose;
 
 class GildedRose {
 
-    Item[] items;
+    ItemList<Item> items;
 
-    public GildedRose(Item[] items) {
+    public GildedRose(ItemList items) {
         this.items = items;
     }
 
     public void updateQuality() {
-        for (int i = 0; i < items.length; i++) {
-            if (items[i].name.equals("Aged Brie")) {
-                if (items[i].quality < 50) {
-                    increaseQuality(items[i]);
-                    decreaseSellInDays(items[i]);
+        for (Item item : items.asList()) {
+            if (item.name.equals("Aged Brie")) {
+                if (item.quality < 50) {
+                    increaseQuality(item);
+                    decreaseSellInDays(item);
 
-                    increaseQualityDependingOnSellIn(items[i], 0);
+                    increaseQualityDependingOnSellIn(item, 0);
                 }
             }
 
-            if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                increaseQuality(items[i]);
+            if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                increaseQuality(item);
 
-                if (items[i].quality < 50) {
-                    increaseQualityDependingOnSellIn(items[i], 11);
+                if (item.quality < 50) {
+                    increaseQualityDependingOnSellIn(item, 11);
 
-                    increaseQualityDependingOnSellIn(items[i], 6);
+                    increaseQualityDependingOnSellIn(item, 6);
                 }
 
-                decreaseSellInDays(items[i]);
+                decreaseSellInDays(item);
 
-                setQualityToMinSellInIfSellInIsLessThanMininumSellIn(items[i], 0);
+                setQualityTo_0_IfSellInIsLessThanMinimumSellIn(item, 0);
             }
 
-            if (!items[i].name.equals("Aged Brie")
-                    && !items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")
-                    && !items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
-                if (items[i].quality > 0) {
-                    decreaseQuality(items[i]);
-                    decreaseSellInDays(items[i]);
+            if (!item.name.equals("Aged Brie")
+                    && !item.name.equals("Backstage passes to a TAFKAL80ETC concert")
+                    && !item.name.equals("Sulfuras, Hand of Ragnaros")) {
+                if (item.quality > 0) {
+                    decreaseQuality(item);
+                    decreaseSellInDays(item);
 
-                    decreaseQualityIfSellInIsLessThanMinimumSellIn(items[i], 0);
+                    decreaseQualityIfSellInIsLessThanMinimumSellIn(item, 0);
                 }
             }
 
@@ -53,27 +53,31 @@ class GildedRose {
         }
     }
 
-    private void setQualityToMinSellInIfSellInIsLessThanMininumSellIn(Item item, int minSellIn) {
-        if (item.sellIn < minSellIn) {
-            item.quality = minSellIn;
+    private void setQualityTo_0_IfSellInIsLessThanMinimumSellIn(Item item, int minimumSellIn) {
+        if (item.sellIn < minimumSellIn) {
+            item.quality = 0;
         }
     }
 
-    private void increaseQualityDependingOnSellIn(Item item, int minimumSelling) {
-        if (item.sellIn < minimumSelling) {
+    private void increaseQualityDependingOnSellIn(Item item, int minimumSellin) {
+        if (item.sellIn < minimumSellin) {
             increaseQuality(item);
         }
     }
 
     private void decreaseSellInDays(Item item) {
-        item.sellIn = item.sellIn - 1;
+        item.sellIn--;
     }
 
     private void decreaseQuality(Item item) {
-        item.quality = item.quality - 1;
+        item.quality--;
     }
 
     private void increaseQuality(Item item) {
-        item.quality = item.quality + 1;
+        item.quality++;
+    }
+
+    public Item firstItem() {
+        return items.firstItem();
     }
 }
