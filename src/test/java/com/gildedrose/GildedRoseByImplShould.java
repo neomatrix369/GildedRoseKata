@@ -44,8 +44,8 @@ public class GildedRoseByImplShould {
                         {"The quality of Backstage Passes is set to 0, if Sell In days is past the date and quality is 1",
                                 BACKSTAGE_PASSES, sellIn(0), qualityOf(1), sellIn(-1), qualityOf(0)},
 
-                        {"The sell in and quality of Sulfuras does not change",
-                                SULFURAS, sellIn(1), qualityOf(1), sellIn(1), qualityOf(1)},
+                        {"The sell in and quality of Sulfuras does not change, quality stays at 80",
+                                SULFURAS, sellIn(1), qualityOf(80), sellIn(1), qualityOf(80)},
 
                         {"The quality of Any item (other than ...) is 0, if Sell In days is past the date and quality is 2",
                                 ANY_ITEM, sellIn(-1), qualityOf(2), sellIn(-2), qualityOf(0)},
