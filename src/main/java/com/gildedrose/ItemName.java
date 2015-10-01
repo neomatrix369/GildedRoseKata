@@ -4,6 +4,7 @@ public enum ItemName {
     AGED_BRIE("Aged Brie", new AgedBrieQualityUpdater()),
     BACKSTAGE_PASSES("Backstage passes to a TAFKAL80ETC concert", new BackstagePassesQualityUpdater()),
     SULFURAS("Sulfuras, Hand of Ragnaros", new SulfurasQualityUpdater()),
+    CONJURED_ITEM("Conjured", new ConjuredItemQualityUpdater()),
     ANY_ITEM("Any item", new AnyItemQualityUpdater());
 
     private final String itemName;

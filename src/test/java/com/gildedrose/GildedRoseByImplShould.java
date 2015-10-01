@@ -56,6 +56,14 @@ public class GildedRoseByImplShould {
                         {"The quality and sell in of Any item (other than ...) stays the same, if quality is 0",
                                 ANY_ITEM, sellIn(1), qualityOf(0), sellIn(1), qualityOf(0)},
 
+                        {"The quality of Conjured item decreases to 0, when Sell In is 1 and Quality is 1",
+                                CONJURED_ITEM, sellIn(1), qualityOf(1), sellIn(0), qualityOf(0)},
+                        {"The quality of Conjured item decreases to 0 and Sell In stays at 0, when Sell In is 0 and Quality is 2",
+                                CONJURED_ITEM, sellIn(0), qualityOf(2), sellIn(0), qualityOf(0)},
+                        {"The quality of Conjured item stays at 0, when Sell In is 1 and Quality is 0",
+                                CONJURED_ITEM, sellIn(1), qualityOf(0), sellIn(0), qualityOf(0)},
+
+
                 }
         );
     }
