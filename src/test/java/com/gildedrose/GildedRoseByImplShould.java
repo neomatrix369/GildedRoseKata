@@ -91,7 +91,7 @@ public class GildedRoseByImplShould {
         ItemList itemList = new ItemList(new Item[] {
                 new Item(itemName.toString(), actualSellIn, actualQuality)}
         );
-        return new GildedRose(itemList);
+        return new GildedRose(itemList, new ItemSellInUpdaterFactory(), new ItemQualityUpdaterFactory());
     }
 
     private static int sellIn(int value) {

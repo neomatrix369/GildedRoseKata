@@ -1,20 +1,27 @@
 package com.gildedrose;
 
 public class BackstagePassesQualityUpdater implements ItemQualityUpdater {
+
     @Override
     public void update(Item item) {
-        if (item.sellIn < 0) {
-            item.quality = 0;
-        } else if (item.quality < 50) {
-            item.quality++;
+        if (item.sellIn < MINIMUM_SELL_IN) {
+            item.quality = MINIMUM_QUALITY;
+        }
 
-            if (item.sellIn < 10) {
-                item.quality++;
-            }
+        if ((item.quality < MAXIMUM_QUALITY) &&
+                (item.sellIn >= MINIMUM_SELL_IN)) {
 
-            if (item.sellIn < 5) {
-                item.quality++;
+            if (item.sellIn < SECOND_QUALITY_INCREASE_POINT) {
+                increaseQuality(item, BY_THREE);
+            } else if (item.sellIn < FIRST_QUALITY_INCREASE_POINT) {
+                increaseQuality(item, BY_TWO);
+            } else {
+                increaseQuality(item, BY_ONE);
             }
         }
+    }
+
+    private void increaseQuality(Item item, int by) {
+        item.quality += by;
     }
 }
