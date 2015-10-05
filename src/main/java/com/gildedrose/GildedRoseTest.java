@@ -8,7 +8,7 @@ import java.util.Random;
 public class GildedRoseTest {
 
     private static final int MAX_ITEMS = 2000;
-    private static final long SOME_FIXED_SEED = 123;
+    private static final long SOME_FIXED_SEED = 100;
     private static final int MINIMUM_VALUE = -51;
     private static final int MAXIMUM_VALUE = 100;
 
@@ -22,6 +22,8 @@ public class GildedRoseTest {
             "Aged Brie",
             "Elixir of the Mongoose",
             "Sulfuras, Hand of Ragnaros",
+            "Backstage passes to a TAFKAL80ETC concert",
+            "Backstage passes to a TAFKAL80ETC concert",
             "Backstage passes to a TAFKAL80ETC concert",
     };
 
