@@ -1,10 +1,13 @@
 package com.gildedrose;
 
 import org.approvaltests.Approvals;
+import org.approvaltests.reporters.QuietReporter;
+import org.approvaltests.reporters.UseReporter;
 import org.junit.Test;
 
 import java.util.Random;
 
+@UseReporter(QuietReporter.class)
 public class GildedRoseTest {
 
     private static final int MAX_ITEMS = 2000;
