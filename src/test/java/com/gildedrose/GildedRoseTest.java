@@ -17,7 +17,7 @@ public class GildedRoseTest {
 
     private Random random = new Random(SOME_FIXED_SEED);
 
-    private OverridenItem[] randomItems = new OverridenItem[MAX_ITEMS];
+    private Item[] randomItems = new Item[MAX_ITEMS];
 
     // We have excluded "Conjured Mana Cake" from the list as this item is not available yet
     private String[] itemNames = {
@@ -25,8 +25,6 @@ public class GildedRoseTest {
             "Aged Brie",
             "Elixir of the Mongoose",
             "Sulfuras, Hand of Ragnaros",
-            "Backstage passes to a TAFKAL80ETC concert",
-            "Backstage passes to a TAFKAL80ETC concert",
             "Backstage passes to a TAFKAL80ETC concert",
     };
 
@@ -46,7 +44,7 @@ public class GildedRoseTest {
 
     private void generateRandomItems() {
         for (int index = 0; index < MAX_ITEMS; index++) {
-            randomItems[index] = new OverridenItem(randomItemName(), randomSellIn(), randomQuality());
+            randomItems[index] = new Item(randomItemName(), randomSellIn(), randomQuality());
         }
     }
 
@@ -67,26 +65,12 @@ public class GildedRoseTest {
         return minimumIndex + random.nextInt(maximumIndex);
     }
 
-    private String getStringVersionOf(OverridenItem[] items) {
+    private String getStringVersionOf(Item[] items) {
         StringBuilder result = new StringBuilder();
-        for (OverridenItem item: items) {
+        for (Item item: items) {
             result.append(item);
             result.append("\r");
         }
         return result.toString();
-    }
-
-    class OverridenItem extends Item {
-
-        public OverridenItem(String name, int sellIn, int quality) {
-            super(name, sellIn, quality);
-        }
-
-        @Override
-        public String toString() {
-            return "Item [name=" + name +
-                    ", sellIn=" + sellIn +
-                    ", quality=" + quality + "]";
-        }
     }
 }
