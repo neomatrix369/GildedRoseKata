@@ -4,11 +4,11 @@ public class Conjured extends UpdatableItem {
 
     @Override
     public void update(Item item) {
-        if (item.quality > 0) {
+        if (item.quality > MINIMUM_QUALITY) {
             decreaseQualityFor(item);
             decreaseSellInFor(item);
 
-            if (item.sellIn < 0) {
+            if (item.sellIn < MINIMUM_SELL_IN_DAYS) {
                 decreaseQualityFor(item);
                 decreaseSellInFor(item);
             }
