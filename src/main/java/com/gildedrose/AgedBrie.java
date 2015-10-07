@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-public class AgedBrie extends ItemType {
+public class AgedBrie extends UpdatableItem {
 
     @Override
     public void update(Item item) {

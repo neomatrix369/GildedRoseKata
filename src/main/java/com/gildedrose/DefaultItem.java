@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-public class DefaultType extends ItemType {
+public class DefaultItem extends UpdatableItem {
 
     @Override
     public void update(Item item) {

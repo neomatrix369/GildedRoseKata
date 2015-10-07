@@ -1,9 +1,7 @@
 package com.gildedrose;
 
-public class Sulfuras extends ItemType {
+public class Sulfuras extends UpdatableItem {
 
     @Override
-    public void update(Item item) {
-        // no change
-    }
+    public void update(Item item) {}
 }

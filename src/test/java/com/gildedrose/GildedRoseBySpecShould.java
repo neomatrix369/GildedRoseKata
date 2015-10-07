@@ -7,13 +7,14 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.Collection;
 
+import static com.gildedrose.ItemFactory.*;
+import static com.gildedrose.ItemFactory.CONJURED;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 @RunWith(Parameterized.class)
 public class GildedRoseBySpecShould {
 
-    private String testCaseDescription;
     private final String itemName;
     private final int actualSellIn;
     private final int actualQuality;
@@ -25,67 +26,67 @@ public class GildedRoseBySpecShould {
                 new Object[][]{
                         {
                                 "increase the quality of Aged Brie by 1 as item has not passed SellIn date",
-                                ItemTypeFactory.AGED_BRIE, sellIn(1), qualityOf(1), qualityOf(2)
+                                AGED_BRIE, sellIn(1), qualityOf(1), qualityOf(2)
                         },
                         {
                                 "increase the quality of Aged Brie by 2 as item has passed SellIn date",
-                                ItemTypeFactory.AGED_BRIE, sellIn(0), qualityOf(2), qualityOf(4)
+                                AGED_BRIE, sellIn(0), qualityOf(2), qualityOf(4)
                         },
                         {
                                 "never change the quality of item Sufluras as time passes",
-                                ItemTypeFactory.SULFURAS_HAND_OF_RAGNAROS, sellIn(-1), qualityOf(80), qualityOf(80),
-                        },
-
-                        {
-                                "never change the quality of item Sufluras as time passes",
-                                ItemTypeFactory.SULFURAS_HAND_OF_RAGNAROS, sellIn(0), qualityOf(80), qualityOf(80),
+                                SULFURAS_HAND_OF_RAGNAROS, sellIn(-1), qualityOf(80), qualityOf(80),
                         },
 
                         {
                                 "never change the quality of item Sufluras as time passes",
-                                ItemTypeFactory.SULFURAS_HAND_OF_RAGNAROS, sellIn(1), qualityOf(80), qualityOf(80),
+                                SULFURAS_HAND_OF_RAGNAROS, sellIn(0), qualityOf(80), qualityOf(80),
+                        },
+
+                        {
+                                "never change the quality of item Sufluras as time passes",
+                                SULFURAS_HAND_OF_RAGNAROS, sellIn(1), qualityOf(80), qualityOf(80),
                         },
 
                         {
                                 "never change the quality of any item past 50",
-                                ItemTypeFactory.AGED_BRIE, sellIn(0), qualityOf(50), qualityOf(50),
+                                AGED_BRIE, sellIn(0), qualityOf(50), qualityOf(50),
                         },
                         {
                                 "increase the quality of Backstage Passes by 2 when sellIn for it is 10 days",
-                                ItemTypeFactory.BACKSTAGE_PASSES, sellIn(10), qualityOf(25), qualityOf(27)
+                                BACKSTAGE_PASSES, sellIn(10), qualityOf(25), qualityOf(27)
                         },
                         {
                                 "increase the quality of Backstage Passes by 2 when sellIn for it is 8 days",
-                                ItemTypeFactory.BACKSTAGE_PASSES, sellIn(8), qualityOf(20), qualityOf(22)
+                                BACKSTAGE_PASSES, sellIn(8), qualityOf(20), qualityOf(22)
                         },
                         {
                                 "increase the quality of Backstage Passes by 3 when sellIn for it is 5 days",
-                                ItemTypeFactory.BACKSTAGE_PASSES, sellIn(5), qualityOf(22), qualityOf(25)
+                                BACKSTAGE_PASSES, sellIn(5), qualityOf(22), qualityOf(25)
                         },
                         {
                                 "increase the quality of Backstage Passes by 3 when sellIn for it is 3 days",
-                                ItemTypeFactory.BACKSTAGE_PASSES, sellIn(3), qualityOf(27), qualityOf(30)
+                                BACKSTAGE_PASSES, sellIn(3), qualityOf(27), qualityOf(30)
                         },
                         {
                                 "decrease the quality of Backstage Passes to 0 when sellIn for it is 0 days",
-                                ItemTypeFactory.BACKSTAGE_PASSES, sellIn(0), qualityOf(27), qualityOf(0)
+                                BACKSTAGE_PASSES, sellIn(0), qualityOf(27), qualityOf(0)
                         },
                         {
                                 "decrease the quality of any other item by 1 when quality is greater than 0",
-                                ItemTypeFactory.ANY_OTHER_ITEM, sellIn(1), qualityOf(25), qualityOf(24)
+                                ANY_OTHER_ITEM, sellIn(1), qualityOf(25), qualityOf(24)
                         },
                         {
                                 "decrease the quality of any other item by 2 when quality is greater than 0 and sellIn less than 1",
-                                ItemTypeFactory.ANY_OTHER_ITEM, sellIn(-1), qualityOf(23), qualityOf(21)
+                                ANY_OTHER_ITEM, sellIn(-1), qualityOf(23), qualityOf(21)
                         },
                         {
                                 "not decrease the quality of any other item when quality is 0",
-                                ItemTypeFactory.ANY_OTHER_ITEM, sellIn(1), qualityOf(0), qualityOf(0)
+                                ANY_OTHER_ITEM, sellIn(1), qualityOf(0), qualityOf(0)
                         },
 
                         {
                                 "decrease the quality of Conjured item by 2 when quality is greater than 0 and sellIn less than 1",
-                                ItemTypeFactory.CONJURED, sellIn(-1), qualityOf(19), qualityOf(17)
+                                CONJURED, sellIn(-1), qualityOf(19), qualityOf(17)
                         }
 
                 }
@@ -97,7 +98,6 @@ public class GildedRoseBySpecShould {
                                   int actualSellIn,
                                   int actualQuality,
                                   int expectedQuality) {
-        this.testCaseDescription = testCaseDescription;
         this.itemName = itemName;
         this.actualSellIn = actualSellIn;
         this.actualQuality = actualQuality;

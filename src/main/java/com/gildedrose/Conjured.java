@@ -1,7 +1,7 @@
 package com.gildedrose;
 
-public class Conjured extends ItemType {
-    
+public class Conjured extends UpdatableItem {
+
     @Override
     public void update(Item item) {
         if (item.quality > 0) {

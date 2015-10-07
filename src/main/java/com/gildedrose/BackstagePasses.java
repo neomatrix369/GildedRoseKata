@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-public class BackstagePasses extends ItemType {
+public class BackstagePasses extends UpdatableItem {
 
     @Override
     public void update(Item item) {
@@ -19,7 +19,7 @@ public class BackstagePasses extends ItemType {
             decreaseSellInFor(item);
 
             if (item.sellIn < 0) {
-                setQualityToZero(item);
+                setQualityToZeroFor(item);
                 decreaseSellInFor(item);
             }
         }
