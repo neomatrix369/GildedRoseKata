@@ -20,7 +20,7 @@ public abstract class UpdatableItem {
         item.quality = MINIMUM_QUALITY;
     }
 
-    public void decreaseQualityFor(Item item) {
-        item.quality--;
+    public void decreaseQualityFor(Item item, int by) {
+        item.quality-=by;
     }
 }
