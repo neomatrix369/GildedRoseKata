@@ -3,7 +3,7 @@ package com.gildedrose;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ItemFactory {
+public class ItemUpdater {
 
     public static final String AGED_BRIE = "Aged Brie";
     public static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
@@ -20,7 +20,8 @@ public class ItemFactory {
         }
     };
 
-    public static UpdatableItem get(Item item) {
-        return itemNameToUpdatableItem.getOrDefault(item.name, new DefaultItem());
+    public static void update(Item item) {
+        UpdatableItem updatableItem = itemNameToUpdatableItem.getOrDefault(item.name, new DefaultItem());
+        updatableItem.update(item);
     }
 }

@@ -10,8 +10,7 @@ class GildedRose {
 
     public void updateQuality() {
         for (int index = 0; index < items.length; index++) {
-            UpdatableItem updatableItemImpl = ItemFactory.get(items[index]);
-            updatableItemImpl.update(items[index]);
+            ItemUpdater.update(items[index]);
         }
     }
 }
