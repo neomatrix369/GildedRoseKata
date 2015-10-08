@@ -12,7 +12,14 @@ public abstract class UpdatableItem {
         this.item = item;
     }
 
-    protected abstract void update();
+    protected void update() {
+        changeSellIn();
+        changeQuality();
+    }
+
+    protected abstract void changeSellIn();
+
+    protected abstract void changeQuality();
 
     private boolean canIncreaseQuality() {
         return item.quality < MAXIMUM_QUALITY;
@@ -49,5 +56,4 @@ public abstract class UpdatableItem {
     protected void decreaseSellIn() {
         item.sellIn--;
     }
-
 }

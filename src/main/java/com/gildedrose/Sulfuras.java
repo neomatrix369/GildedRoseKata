@@ -8,4 +8,10 @@ public class Sulfuras extends UpdatableItem {
 
     @Override
     public void update() {}
+
+    @Override
+    protected void changeSellIn() {}
+
+    @Override
+    protected void changeQuality() {}
 }

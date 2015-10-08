@@ -10,11 +10,16 @@ public class BackstagePasses extends UpdatableItem {
     }
 
     @Override
-    public void update() {
-        increaseQuality();
-
+    protected void changeSellIn() {
         decreaseSellIn();
+        if (isExpired()) {
+            decreaseSellIn();
+        }
+    }
 
+    @Override
+    protected void changeQuality() {
+        increaseQuality();
         if (itemIsDueToExpireIn(TEN_DAYS)) {
             increaseQuality();
         }
@@ -25,7 +30,6 @@ public class BackstagePasses extends UpdatableItem {
 
         if (isExpired()) {
             resetQuality();
-            decreaseSellIn();
         }
     }
 }

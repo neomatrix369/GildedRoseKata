@@ -7,13 +7,17 @@ public class AgedBrie extends UpdatableItem {
     }
 
     @Override
-    public void update() {
+    protected void changeQuality() {
         increaseQuality();
-
-        decreaseSellIn();
-
         if (isExpired()) {
             increaseQuality();
+        }
+    }
+
+    @Override
+    protected void changeSellIn() {
+        decreaseSellIn();
+        if (isExpired()) {
             decreaseSellIn();
         }
     }
