@@ -15,12 +15,14 @@ public abstract class UpdatableItem {
     public abstract void update();
 
 
-    protected boolean canIncreaseQuality() {
+    private boolean canIncreaseQuality() {
         return item.quality < MAXIMUM_QUALITY;
     }
 
     public void increaseQuality() {
-        item.quality++;
+        if (canIncreaseQuality()) {
+            item.quality++;
+        }
     }
 
     protected boolean canDecreaseQuality() {

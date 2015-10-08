@@ -11,22 +11,21 @@ public class BackstagePasses extends UpdatableItem {
 
     @Override
     public void update() {
-        if (canIncreaseQuality()) {
+        increaseQuality();
+
+        decreaseSellIn();
+
+        if (itemIsDueToExpireIn(TEN_DAYS)) {
             increaseQuality();
+        }
+
+        if (itemIsDueToExpireIn(FIVE_DAYS)) {
+            increaseQuality();
+        }
+
+        if (isExpired()) {
+            resetQuality();
             decreaseSellIn();
-
-            if (itemIsDueToExpireIn(TEN_DAYS)) {
-                increaseQuality();
-            }
-
-            if (itemIsDueToExpireIn(FIVE_DAYS)) {
-                increaseQuality();
-            }
-
-            if (isExpired()) {
-                resetQuality();
-                decreaseSellIn();
-            }
         }
     }
 }
