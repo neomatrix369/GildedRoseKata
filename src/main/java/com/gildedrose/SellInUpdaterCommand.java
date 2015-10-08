@@ -2,12 +2,12 @@ package com.gildedrose;
 
 public class SellInUpdaterCommand {
     public void update(Item item) {
-        SellInUpdater sellInUpdater = new StandardSellInUpdater();
-        if (ItemNameToUpdater.SULFURAS.sameAs(item)) {
-            sellInUpdater = new SulfurasSellInUpdater();
-        } else if (ItemNameToUpdater.CONJURED_ITEM.sameAs(item)) {
-            sellInUpdater = new ConjuredSellInUpdater();
-        }
+        SellInUpdater sellInUpdater =
+                ItemNameToUpdater.SULFURAS.sameAs(item)
+                    ? new SulfurasSellInUpdater()
+                    : ItemNameToUpdater.CONJURED_ITEM.sameAs(item)
+                        ? new ConjuredSellInUpdater()
+                        : new StandardSellInUpdater();
 
         sellInUpdater.update(item);
     }
