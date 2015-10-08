@@ -10,7 +10,7 @@ public class Conjured extends UpdatableItem {
 
     @Override
     public void update() {
-        if (item.quality > MINIMUM_QUALITY) {
+        if (canChangeQuality(item)) {
             decreaseQualityBy(STANDARD_RATE);
             decreaseSellIn();
             if (isExpired(item)) {

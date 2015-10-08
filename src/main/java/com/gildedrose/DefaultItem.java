@@ -26,18 +26,4 @@ public class DefaultItem extends UpdatableItem {
             }
         }
     }
-
-    private void decreaseQuality(Item item) {
-        item.quality -= QUALITY_UNIT;
-    }
-
-    private boolean canChangeQuality(Item item) {
-        return item.quality > MINIMUM_QUALITY;
-    }
-
-    private void changeSellIn(Item item) {
-        if (canChangeQuality(item)) {
-            item.sellIn--;
-        }
-    }
 }
