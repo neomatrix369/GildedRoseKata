@@ -1,5 +1,5 @@
 package com.gildedrose;
 
-public interface ItemTypeAction {
+public interface UpdatableItem {
     void update(Item item);
 }

@@ -7,11 +7,11 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.Collection;
 
-import static com.gildedrose.ItemType.AGED_BRIE;
-import static com.gildedrose.ItemType.ANY_ITEM;
-import static com.gildedrose.ItemType.BACK_STAGE_PASSES;
-import static com.gildedrose.ItemType.CONJURED_ITEM;
-import static com.gildedrose.ItemType.SULFURAS;
+import static com.gildedrose.ItemUpdater.AGED_BRIE;
+import static com.gildedrose.ItemUpdater.ANY_ITEM;
+import static com.gildedrose.ItemUpdater.BACK_STAGE_PASSES;
+import static com.gildedrose.ItemUpdater.CONJURED_ITEM;
+import static com.gildedrose.ItemUpdater.SULFURAS;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;

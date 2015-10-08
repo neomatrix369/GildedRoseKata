@@ -1,28 +1,32 @@
 package com.gildedrose;
 
-public enum ItemType implements ItemTypeAction {
+public enum ItemUpdater implements UpdatableItem {
     AGED_BRIE("Aged Brie") {
         @Override
         public void update(Item item) {
-            if (item.quality < 50) {
+            if (item.quality < Constants.MAXIMUM_QUALITY) {
                 increaseQuality(item);
                 decreaseSellIn(item);
 
-                increaseQualityIfItemHasPastSellinDate(item);
+                increaseQualityIfItemHasPastSellInDate(item);
             }
         }
     },
 
     BACK_STAGE_PASSES("Backstage passes to a TAFKAL80ETC concert") {
+
+        private static final int FIRST_MINIMUM_SELL_IN_DAYS = 11;
+        private static final int SECOND_MINIMUM_SELL_IN_DAYS = 6;
+
         @Override
         public void update(Item item) {
-            if ((item.sellIn < 11)
-                    && (item.quality < 50)) {
+            if ((item.sellIn < FIRST_MINIMUM_SELL_IN_DAYS)
+                    && (item.quality < Constants.MAXIMUM_QUALITY)) {
                 increaseQuality(item);
             }
 
-            if ((item.sellIn < 6)
-                    && (item.quality < 50)) {
+            if ((item.sellIn < SECOND_MINIMUM_SELL_IN_DAYS)
+                    && (item.quality < Constants.MAXIMUM_QUALITY)) {
                 increaseQuality(item);
             }
 
@@ -34,38 +38,41 @@ public enum ItemType implements ItemTypeAction {
     },
 
     CONJURED_ITEM("Conjured Item") {
+
+        private final int CONJURED_ITEM_MINIMUM_QUALITY = 2;
+
         @Override
         public void update(Item item) {
-            if (item.quality < 1) {
-                item.quality = 0;
+            if (item.quality < CONJURED_ITEM_MINIMUM_QUALITY) {
+                item.quality = Constants.MINIMUM_QUALITY;
             } else {
                 decreaseQuality(item, by(2));
             }
+            decreaseSellIn(item);
         }
     },
 
     SULFURAS("Sulfuras, Hand of Ragnaros") {
         @Override
         public void update(Item item) {
-
         }
     },
 
     ANY_ITEM("Any Item") {
         @Override
         public void update(Item item) {
-            if (item.quality > 0){
+            if (item.quality > Constants.MINIMUM_QUALITY) {
                 decreaseQuality(item, by(1));
                 decreaseSellIn(item);
 
-                decreaseQualityIfItemHasPastSellInDate(item);
+                decreaseQualityIfQualityIs_0_OrMoreAndItemHasPastSellInDate(item);
             }
         }
     };
 
     private final String itemName;
 
-    ItemType(String itemName) {
+    ItemUpdater(String itemName) {
         this.itemName = itemName;
     }
 
@@ -74,22 +81,22 @@ public enum ItemType implements ItemTypeAction {
         return itemName;
     }
 
-    void increaseQualityIfItemHasPastSellinDate(Item item) {
-        if (item.sellIn < 0) {
+    void increaseQualityIfItemHasPastSellInDate(Item item) {
+        if (item.sellIn < Constants.MINIMUM_SELL_IN_DAYS) {
             increaseQuality(item);
         }
     }
 
-    void decreaseQualityIfItemHasPastSellInDate(Item item) {
-        if ((item.quality > 0)
-                && (item.sellIn < 0)) {
+    void decreaseQualityIfQualityIs_0_OrMoreAndItemHasPastSellInDate(Item item) {
+        if ((item.quality > Constants.MINIMUM_QUALITY)
+                && (item.sellIn < Constants.MINIMUM_SELL_IN_DAYS)) {
             decreaseQuality(item, by(1));
         }
     }
 
     void setQualityToZeroIfItemHasPastSellInDate(Item item) {
-        if (item.sellIn < 0) {
-            item.quality = 0;
+        if (item.sellIn < Constants.MINIMUM_SELL_IN_DAYS) {
+            item.quality = Constants.MINIMUM_QUALITY;
         }
     }
 
@@ -109,17 +116,23 @@ public enum ItemType implements ItemTypeAction {
         return value;
     }
 
-    static void updateItem(Item item) {
-        ItemType itemType = ItemType.getItemFor(item.name);
+    static void applyUpdateTo(Item item) {
+        ItemUpdater itemType = ItemUpdater.getItemFor(item.name);
         itemType.update(item);
     }
 
-    private static ItemType getItemFor(String itemName) {
-        for (ItemType itemType: values()) {
+    private static ItemUpdater getItemFor(String itemName) {
+        for (ItemUpdater itemType: values()) {
             if (itemType.itemName.equals(itemName)) {
                 return itemType;
             }
         }
         return ANY_ITEM;
+    }
+
+    private static class Constants {
+        private static final int MAXIMUM_QUALITY = 50;
+        private static final int MINIMUM_QUALITY = 0;
+        private static final int MINIMUM_SELL_IN_DAYS = 0;
     }
 }
