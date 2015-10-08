@@ -7,6 +7,7 @@ public class QualityUpdaterCommand {
         for (ItemNameToUpdater itemNameToUpdater : ItemNameToUpdater.values()) {
             if (itemNameToUpdater.sameAs(item)) {
                 qualityUpdater = itemNameToUpdater.getQualityUpdater();
+                break;
             }
         }
         qualityUpdater.update(item);
