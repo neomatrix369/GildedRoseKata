@@ -13,7 +13,7 @@ public class ItemUpdater {
     public static final String CONJURED = "Conjured";
     public static final String ANY_OTHER_ITEM = "Any Other Item";
 
-    private static Map<String, Class<? extends UpdatableItem>> itemNameToUpdatableItem
+    private final static Map<String, Class<? extends UpdatableItem>> itemNameToUpdatableItem
             = new HashMap<String, Class<? extends UpdatableItem>>() {
         {
             put(AGED_BRIE, AgedBrie.class);
