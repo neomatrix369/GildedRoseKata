@@ -2,8 +2,6 @@ package com.gildedrose;
 
 public class DefaultItem extends UpdatableItem {
 
-    private static final int DEFAULT_DECREASE_RATE = 1;
-
     public DefaultItem(Item item) {
         super(item);
     }
@@ -18,10 +16,14 @@ public class DefaultItem extends UpdatableItem {
 
     @Override
     protected void changeQuality() {
-        decreaseQualityBy(DEFAULT_DECREASE_RATE);
+        int rate;
 
         if (isExpired()) {
-            decreaseQualityBy(DEFAULT_DECREASE_RATE);
+            rate = NORMAL_RATE * 2;
+        } else {
+            rate = NORMAL_RATE;
         }
+
+        decreaseQualityBy(rate);
     }
 }

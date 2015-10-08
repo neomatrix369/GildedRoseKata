@@ -6,6 +6,8 @@ public abstract class UpdatableItem {
     protected static final int MINIMUM_SELL_IN_DAYS = 0;
     protected static final int MAXIMUM_QUALITY = 50;
 
+    protected static final int NORMAL_RATE = 1;
+
     private final Item item;
 
     public UpdatableItem(Item item) {
@@ -17,17 +19,15 @@ public abstract class UpdatableItem {
         changeQuality();
     }
 
-    protected abstract void changeSellIn();
-
     protected abstract void changeQuality();
 
     private boolean canIncreaseQuality() {
         return item.quality < MAXIMUM_QUALITY;
     }
 
-    protected void increaseQuality() {
+    protected void increaseQualityBy(int by) {
         if (canIncreaseQuality()) {
-            item.quality++;
+            item.quality += by;
         }
     }
 
@@ -45,6 +45,8 @@ public abstract class UpdatableItem {
         item.quality = MINIMUM_QUALITY;
     }
 
+    protected abstract void changeSellIn();
+
     protected boolean isExpired() {
         return item.sellIn < MINIMUM_SELL_IN_DAYS;
     }
@@ -56,4 +58,5 @@ public abstract class UpdatableItem {
     protected void decreaseSellIn() {
         item.sellIn--;
     }
+
 }

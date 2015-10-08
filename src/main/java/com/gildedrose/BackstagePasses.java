@@ -2,8 +2,8 @@ package com.gildedrose;
 
 public class BackstagePasses extends UpdatableItem {
 
-    protected static final int TEN_DAYS = 10;
-    protected static final int FIVE_DAYS = 5;
+    private static final int TEN_DAYS = 10;
+    private static final int FIVE_DAYS = 5;
 
     public BackstagePasses(Item item) {
         super(item);
@@ -19,17 +19,17 @@ public class BackstagePasses extends UpdatableItem {
 
     @Override
     protected void changeQuality() {
-        increaseQuality();
-        if (itemIsDueToExpireIn(TEN_DAYS)) {
-            increaseQuality();
-        }
-
-        if (itemIsDueToExpireIn(FIVE_DAYS)) {
-            increaseQuality();
-        }
-
         if (isExpired()) {
             resetQuality();
+        }
+        else if (itemIsDueToExpireIn(FIVE_DAYS)) {
+            increaseQualityBy(3 * NORMAL_RATE);
+        }
+        else if (itemIsDueToExpireIn(TEN_DAYS)) {
+            increaseQualityBy(2 * NORMAL_RATE);
+        }
+        else {
+            increaseQualityBy(NORMAL_RATE);
         }
     }
 }
