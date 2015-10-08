@@ -35,7 +35,10 @@ public class ItemUpdater {
         try {
             Constructor<? extends UpdatableItem> updateItemConstructor = classOfUpdatableItem.getConstructor(Item.class);
             return updateItemConstructor.newInstance(item);
-        } catch (InvocationTargetException | NoSuchMethodException | InstantiationException | IllegalAccessException ex) {
+        } catch (InvocationTargetException |
+                NoSuchMethodException |
+                InstantiationException |
+                IllegalAccessException ex) {
             throw new IllegalArgumentException(String.format("Error with item of class %s, error message: %s.",
                     classOfUpdatableItem.getSimpleName(), ex.getMessage()));
         }
