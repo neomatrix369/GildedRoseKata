@@ -58,5 +58,4 @@ public abstract class UpdatableItem {
     protected void decreaseSellIn() {
         item.sellIn--;
     }
-
 }

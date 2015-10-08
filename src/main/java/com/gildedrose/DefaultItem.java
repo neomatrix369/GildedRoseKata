@@ -16,13 +16,9 @@ public class DefaultItem extends UpdatableItem {
 
     @Override
     protected void changeQuality() {
-        int rate;
-
-        if (isExpired()) {
-            rate = NORMAL_RATE * 2;
-        } else {
-            rate = NORMAL_RATE;
-        }
+        int rate = isExpired()
+                        ? 2 * NORMAL_RATE
+                        : NORMAL_RATE;
 
         decreaseQualityBy(rate);
     }

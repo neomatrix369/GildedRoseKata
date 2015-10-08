@@ -15,13 +15,9 @@ public class Conjured extends UpdatableItem {
 
     @Override
     protected void changeQuality() {
-        int rate;
-
-        if (isExpired()) {
-            rate = 2 * CONJURED_RATE;
-        } else {
-            rate = CONJURED_RATE;
-        }
+        int rate = isExpired()
+                        ? 2 * CONJURED_RATE
+                        : CONJURED_RATE;
 
         decreaseQualityBy(rate);
     }
