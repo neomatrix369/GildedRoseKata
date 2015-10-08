@@ -12,9 +12,9 @@ public class DefaultItem extends UpdatableItem {
     public void update() {
         changeQuality();
 
-        changeSellIn();
+        decreaseSellIn();
         if (isExpired()) {
-            changeSellIn();
+            decreaseSellIn();
         }
     }
 

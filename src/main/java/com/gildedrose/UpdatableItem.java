@@ -12,14 +12,13 @@ public abstract class UpdatableItem {
         this.item = item;
     }
 
-    public abstract void update();
-
+    protected abstract void update();
 
     private boolean canIncreaseQuality() {
         return item.quality < MAXIMUM_QUALITY;
     }
 
-    public void increaseQuality() {
+    protected void increaseQuality() {
         if (canIncreaseQuality()) {
             item.quality++;
         }
@@ -29,11 +28,11 @@ public abstract class UpdatableItem {
         return item.quality > MINIMUM_QUALITY;
     }
 
-    public void decreaseQualityBy(int by) {
+    protected void decreaseQualityBy(int by) {
         item.quality -= by;
     }
 
-    public void resetQuality() {
+    protected void resetQuality() {
         item.quality = MINIMUM_QUALITY;
     }
 
@@ -45,12 +44,8 @@ public abstract class UpdatableItem {
         return item.sellIn <= daysToExpiration;
     }
 
-    public void decreaseSellIn() { item.sellIn--; }
-
-
-    protected void changeSellIn() {
-        if (canDecreaseQuality()) {
-            decreaseSellIn();
-        }
+    protected void decreaseSellIn() {
+        item.sellIn--;
     }
+
 }
