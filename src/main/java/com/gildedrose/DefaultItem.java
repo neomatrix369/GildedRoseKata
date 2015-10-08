@@ -10,19 +10,19 @@ public class DefaultItem extends UpdatableItem {
 
     @Override
     public void update() {
-        changeQuality(item);
+        changeQuality();
 
-        changeSellIn(item);
-        if (isExpired(item)) {
-            changeSellIn(item);
+        changeSellIn();
+        if (isExpired()) {
+            changeSellIn();
         }
     }
 
-    private void changeQuality(Item item) {
-        if (canChangeQuality(item)) {
-            decreaseQuality(item);
-            if (isExpired(item)) {
-                decreaseQuality(item);
+    private void changeQuality() {
+        if (canChangeQuality()) {
+            decreaseQuality();
+            if (isExpired()) {
+                decreaseQuality();
             }
         }
     }
