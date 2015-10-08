@@ -11,7 +11,7 @@ public class BackstagePasses extends UpdatableItem {
 
     @Override
     public void update() {
-        if (canIncreaseQualityOf()) {
+        if (canIncreaseQuality()) {
             increaseQuality();
             decreaseSellIn();
 
@@ -24,7 +24,7 @@ public class BackstagePasses extends UpdatableItem {
             }
 
             if (isExpired()) {
-                setQualityToZero();
+                resetQuality();
                 decreaseSellIn();
             }
         }
