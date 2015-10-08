@@ -10,12 +10,12 @@ public class Conjured extends UpdatableItem {
 
     @Override
     public void update() {
-        if (canDecreaseQuality()) {
+        decreaseQualityBy(STANDARD_RATE);
+
+        decreaseSellIn();
+
+        if (isExpired()) {
             decreaseQualityBy(STANDARD_RATE);
-            decreaseSellIn();
-            if (isExpired()) {
-                decreaseQualityBy(STANDARD_RATE);
-            }
         }
     }
 }

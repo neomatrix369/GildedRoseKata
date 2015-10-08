@@ -24,12 +24,14 @@ public abstract class UpdatableItem {
         }
     }
 
-    protected boolean canDecreaseQuality() {
+    private boolean canDecreaseQuality() {
         return item.quality > MINIMUM_QUALITY;
     }
 
     protected void decreaseQualityBy(int by) {
-        item.quality -= by;
+        if (canDecreaseQuality()) {
+            item.quality -= by;
+        }
     }
 
     protected void resetQuality() {
