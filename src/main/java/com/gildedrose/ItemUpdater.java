@@ -104,12 +104,12 @@ public enum ItemUpdater implements UpdatableItem {
         item.quality = item.quality + 1;
     }
 
-    void decreaseSellIn(Item item) {
-        item.sellIn = item.sellIn - 1;
-    }
-
     void decreaseQuality(Item item, int by) {
         item.quality = item.quality - by;
+    }
+
+    void decreaseSellIn(Item item) {
+        item.sellIn = item.sellIn - 1;
     }
 
     int by(int value) {
