@@ -2,8 +2,8 @@ package com.gildedrose;
 
 public class BackstagePasses extends UpdatableItem {
 
-    protected static final int MINIMUM_SELL_IN_DAYS_FIRST_CUT_OFF = 10;
-    protected static final int MINIMUM_SELL_IN_DAYS_SECOND_CUT_OFF = 5;
+    protected static final int TEN_DAYS = 10;
+    protected static final int FIVE_DAYS = 5;
 
     public BackstagePasses(Item item) {
         super(item);
@@ -11,19 +11,19 @@ public class BackstagePasses extends UpdatableItem {
 
     @Override
     public void update() {
-        if (item.quality < MAXIMUM_QUALITY) {
+        if (canIncreaseQualityOf(item)) {
             increaseQuality();
             decreaseSellIn();
 
-            if (item.sellIn < MINIMUM_SELL_IN_DAYS_FIRST_CUT_OFF) {
+            if (itemIsDueToExpireIn(TEN_DAYS)) {
                 increaseQuality();
             }
 
-            if (item.sellIn < MINIMUM_SELL_IN_DAYS_SECOND_CUT_OFF) {
+            if (itemIsDueToExpireIn(FIVE_DAYS)) {
                 increaseQuality();
             }
 
-            if (item.sellIn < MINIMUM_SELL_IN_DAYS) {
+            if (isExpired(item)) {
                 setQualityToZero();
                 decreaseSellIn();
             }

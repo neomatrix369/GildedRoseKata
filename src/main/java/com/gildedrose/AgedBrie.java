@@ -13,18 +13,10 @@ public class AgedBrie extends UpdatableItem {
             decreaseSellIn();
         }
 
-        if (canIncreaseQualityOf(item)
-                && isExpired(item)) {
+        if (canIncreaseQualityOf(item) && isExpired(item)) {
             increaseQuality();
             decreaseSellIn();
         }
     }
-    
-    private boolean canIncreaseQualityOf(Item item) {
-        return item.quality < MAXIMUM_QUALITY;
-    }
 
-    private boolean isExpired(Item item) {
-        return item.sellIn < MINIMUM_SELL_IN_DAYS;
-    }
 }

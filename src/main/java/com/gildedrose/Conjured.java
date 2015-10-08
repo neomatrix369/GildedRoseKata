@@ -13,7 +13,7 @@ public class Conjured extends UpdatableItem {
         if (item.quality > MINIMUM_QUALITY) {
             decreaseQualityBy(STANDARD_RATE);
             decreaseSellIn();
-            if (item.sellIn < MINIMUM_SELL_IN_DAYS) {
+            if (isExpired(item)) {
                 decreaseQualityBy(STANDARD_RATE);
             }
         }

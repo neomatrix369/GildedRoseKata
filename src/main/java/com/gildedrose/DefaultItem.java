@@ -35,10 +35,6 @@ public class DefaultItem extends UpdatableItem {
         return item.quality > MINIMUM_QUALITY;
     }
 
-    private boolean isExpired(Item item) {
-        return item.sellIn < MINIMUM_SELL_IN_DAYS;
-    }
-
     private void changeSellIn(Item item) {
         if (canChangeQuality(item)) {
             item.sellIn--;

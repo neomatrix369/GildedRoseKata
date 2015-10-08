@@ -27,4 +27,16 @@ public abstract class UpdatableItem {
     public void decreaseQualityBy(int by) {
         item.quality -= by;
     }
+
+    protected boolean canIncreaseQualityOf(Item item) {
+        return item.quality < MAXIMUM_QUALITY;
+    }
+
+    protected boolean isExpired(Item item) {
+        return item.sellIn < MINIMUM_SELL_IN_DAYS;
+    }
+
+    protected boolean itemIsDueToExpireIn(int daysToExpiration) {
+        return item.sellIn <= daysToExpiration;
+    }
 }
