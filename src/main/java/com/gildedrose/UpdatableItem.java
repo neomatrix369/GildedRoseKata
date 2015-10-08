@@ -40,17 +40,13 @@ public abstract class UpdatableItem {
         return item.sellIn <= daysToExpiration;
     }
 
-    protected void decreaseQuality() {
-        item.quality -= DefaultItem.QUALITY_UNIT;
-    }
-
     protected boolean canChangeQuality() {
         return item.quality > MINIMUM_QUALITY;
     }
 
     protected void changeSellIn() {
         if (canChangeQuality()) {
-            item.sellIn--;
+            decreaseSellIn();
         }
     }
 }

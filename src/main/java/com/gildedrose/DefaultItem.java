@@ -2,7 +2,7 @@ package com.gildedrose;
 
 public class DefaultItem extends UpdatableItem {
 
-    protected static final int QUALITY_UNIT = 1;
+    private static final int QUALITY_CHANGE_RATE = 1;
 
     public DefaultItem(Item item) {
         super(item);
@@ -20,9 +20,9 @@ public class DefaultItem extends UpdatableItem {
 
     private void changeQuality() {
         if (canChangeQuality()) {
-            decreaseQuality();
+            decreaseQualityBy(QUALITY_CHANGE_RATE);
             if (isExpired()) {
-                decreaseQuality();
+                decreaseQualityBy(QUALITY_CHANGE_RATE);
             }
         }
     }
