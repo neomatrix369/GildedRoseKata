@@ -16,17 +16,17 @@ public abstract class UpdatableItem {
 
     public abstract void update();
 
-    public void decreaseSellInFor() { item.sellIn--; }
+    public void decreaseSellIn() { item.sellIn--; }
 
-    public void increaseQualityOf() {
+    public void increaseQuality() {
         item.quality++;
     }
 
-    public void setQualityToZeroFor() {
+    public void setQualityToZero() {
         item.quality = MINIMUM_QUALITY;
     }
 
-    public void decreaseQualityFor(int by) {
+    public void decreaseQualityBy(int by) {
         item.quality -= by;
     }
 }

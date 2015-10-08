@@ -9,22 +9,22 @@ public class BackstagePasses extends UpdatableItem {
     @Override
     public void update() {
         if (item.quality < MAXIMUM_QUALITY) {
-            increaseQualityOf();
+            increaseQuality();
 
 
             if (item.sellIn < MINIMUM_SELL_IN_DAYS_FIRST_CUT_OFF) {
-                increaseQualityOf();
+                increaseQuality();
             }
 
             if (item.sellIn < MINIMUM_SELL_IN_DAYS_SECOND_CUT_OFF) {
-                increaseQualityOf();
+                increaseQuality();
             }
 
-            decreaseSellInFor();
+            decreaseSellIn();
 
             if (item.sellIn < MINIMUM_SELL_IN_DAYS) {
-                setQualityToZeroFor();
-                decreaseSellInFor();
+                setQualityToZero();
+                decreaseSellIn();
             }
         }
     }

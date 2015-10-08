@@ -9,12 +9,12 @@ public class AgedBrie extends UpdatableItem {
     @Override
     public void update() {
         if (item.quality < MAXIMUM_QUALITY) {
-            increaseQualityOf();
-            decreaseSellInFor();
+            increaseQuality();
+            decreaseSellIn();
 
             if (item.sellIn < MINIMUM_SELL_IN_DAYS) {
-                increaseQualityOf();
-                decreaseSellInFor();
+                increaseQuality();
+                decreaseSellIn();
             }
         }
     }

@@ -9,12 +9,12 @@ public class DefaultItem extends UpdatableItem {
     @Override
     public void update() {
         if (item.quality > MINIMUM_QUALITY) {
-            decreaseQualityFor(1);
-            decreaseSellInFor();
+            decreaseQualityBy(1);
+            decreaseSellIn();
 
             if (item.sellIn < MINIMUM_SELL_IN_DAYS) {
-                decreaseQualityFor(1);
-                decreaseSellInFor();
+                decreaseQualityBy(1);
+                decreaseSellIn();
             }
         } 
     }

@@ -95,9 +95,15 @@ public class GildedRoseBySpecShould {
                         },
 
                         {
-                                "decrease the quality of Conjured item by 2 when quality is greater than 0 even if sellIn is 0",
-                                CONJURED, sellIn(0), qualityOf(10), qualityOf(8)
+                                "decrease the quality of Conjured item by 2 when quality is greater than 0 even if sellIn is 1",
+                                CONJURED, sellIn(1), qualityOf(10), qualityOf(8)
                         },
+
+                        {
+                                "decrease the quality of Conjured item by 4 when quality is greater than 0 even if sellIn is -1",
+                                CONJURED, sellIn(-1), qualityOf(10), qualityOf(6)
+                        },
+
 
                 }
         );
