@@ -2,6 +2,12 @@ package com.gildedrose;
 
 public class BackstagePassesQualityUpdater implements QualityUpdater {
 
+    private static final int FIRST_QUALITY_INCREASE_POINT = 10;
+    private static final int SECOND_QUALITY_INCREASE_POINT = 5;
+
+    private static final int BY_THREE = 3;
+    private static final int BY_TWO = 2;
+
     @Override
     public void update(Item item) {
         if (item.sellIn < MINIMUM_SELL_IN) {
