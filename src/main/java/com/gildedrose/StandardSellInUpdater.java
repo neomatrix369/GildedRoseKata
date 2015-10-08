@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-public class AnyItemSellInUpdater implements ItemSellInUpdater {
+public class StandardSellInUpdater implements SellInUpdater {
 
     @Override
     public void update(Item item) {

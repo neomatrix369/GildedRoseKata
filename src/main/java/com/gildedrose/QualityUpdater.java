@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-public interface ItemQualityUpdater {
+public interface QualityUpdater {
     int MINIMUM_QUALITY = 0;
     int MAXIMUM_QUALITY = 50;
     int BY_THREE = 3;

@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-public class AnyItemQualityUpdater implements ItemQualityUpdater {
+public class StandardQualityUpdater implements QualityUpdater {
 
     @Override
     public void update(Item item) {

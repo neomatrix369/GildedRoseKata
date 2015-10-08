@@ -1,18 +1,18 @@
 package com.gildedrose;
 
-public enum ItemName {
+public enum ItemNameToUpdater {
     AGED_BRIE("Aged Brie", new AgedBrieQualityUpdater()),
     BACKSTAGE_PASSES("Backstage passes to a TAFKAL80ETC concert", new BackstagePassesQualityUpdater()),
     SULFURAS("Sulfuras, Hand of Ragnaros", new SulfurasQualityUpdater()),
-    CONJURED_ITEM("Conjured", new ConjuredItemQualityUpdater()),
-    ANY_ITEM("Any item", new AnyItemQualityUpdater());
+    CONJURED_ITEM("Conjured", new ConjuredQualityUpdater()),
+    ANY_ITEM("Any item", new StandardQualityUpdater());
 
     private final String itemName;
-    private final ItemQualityUpdater itemQualityUpdater;
+    private final QualityUpdater qualityUpdater;
 
-    ItemName(String itemName, ItemQualityUpdater itemQualityUpdater) {
+    ItemNameToUpdater(String itemName, QualityUpdater qualityUpdater) {
         this.itemName = itemName;
-        this.itemQualityUpdater = itemQualityUpdater;
+        this.qualityUpdater = qualityUpdater;
     }
 
     public boolean sameAs(Item item) {
@@ -24,7 +24,7 @@ public enum ItemName {
         return itemName;
     }
 
-    public ItemQualityUpdater getQualityUpdater() {
-        return this.itemQualityUpdater;
+    public QualityUpdater getQualityUpdater() {
+        return this.qualityUpdater;
     }
 }

@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-public class AgedBrieQualityUpdater implements ItemQualityUpdater {
+public class AgedBrieQualityUpdater implements QualityUpdater {
 
     private static final int MAXIMUM_QUALITY = 50;
     private static final int MINIMUM_SELL_IN = 0;

@@ -7,7 +7,7 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.Collection;
 
-import static com.gildedrose.ItemName.*;
+import static com.gildedrose.ItemNameToUpdater.*;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -16,7 +16,7 @@ import static org.junit.Assert.assertThat;
 public class GildedRoseByImplShould {
 
     private final String useCaseDescription;
-    private final ItemName itemName;
+    private final ItemNameToUpdater itemNameToUpdater;
     private final int actualSellIn;
     private final int actualQuality;
     private final int expectedSellIn;
@@ -70,13 +70,13 @@ public class GildedRoseByImplShould {
 
     public GildedRoseByImplShould(
             String useCaseDescription,
-            ItemName itemName,
+            ItemNameToUpdater itemNameToUpdater,
             int actualSellIn,
             int actualQuality,
             int expectedSellIn,
             int expectedQuality) {
         this.useCaseDescription = useCaseDescription;
-        this.itemName = itemName;
+        this.itemNameToUpdater = itemNameToUpdater;
         this.actualSellIn = actualSellIn;
         this.actualQuality = actualQuality;
         this.expectedSellIn = expectedSellIn;
@@ -97,9 +97,9 @@ public class GildedRoseByImplShould {
 
     private GildedRose prepareGildedRose() {
         ItemList itemList = new ItemList(new Item[] {
-                new Item(itemName.toString(), actualSellIn, actualQuality)}
+                new Item(itemNameToUpdater.toString(), actualSellIn, actualQuality)}
         );
-        return new GildedRose(itemList, new ItemSellInUpdaterFactory(), new ItemQualityUpdaterFactory());
+        return new GildedRose(itemList, new SellInUpdaterCommand(), new QualityUpdaterCommand());
     }
 
     private static int sellIn(int value) {

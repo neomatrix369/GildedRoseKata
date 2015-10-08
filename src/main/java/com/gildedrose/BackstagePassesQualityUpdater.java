@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-public class BackstagePassesQualityUpdater implements ItemQualityUpdater {
+public class BackstagePassesQualityUpdater implements QualityUpdater {
 
     @Override
     public void update(Item item) {

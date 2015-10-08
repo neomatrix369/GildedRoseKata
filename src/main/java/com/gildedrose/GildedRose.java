@@ -4,26 +4,21 @@ class GildedRose {
 
     ItemList<Item> items;
 
-    private ItemSellInUpdaterFactory itemSellInUpdaterFactory;
-    private ItemQualityUpdaterFactory itemQualityUpdaterFactory;
+    private SellInUpdaterCommand sellInUpdaterCommand;
+    private QualityUpdaterCommand qualityUpdaterCommand;
 
     public GildedRose(ItemList items,
-                      ItemSellInUpdaterFactory itemSellInUpdaterFactory,
-                      ItemQualityUpdaterFactory itemQualityUpdaterFactory) {
+                      SellInUpdaterCommand sellInUpdaterCommand,
+                      QualityUpdaterCommand qualityUpdaterCommand) {
         this.items = items;
-        this.itemSellInUpdaterFactory = itemSellInUpdaterFactory;
-        this.itemQualityUpdaterFactory = itemQualityUpdaterFactory;
+        this.sellInUpdaterCommand = sellInUpdaterCommand;
+        this.qualityUpdaterCommand = qualityUpdaterCommand;
     }
 
     public void updateQuality() {
         for (Item item : items.asList()) {
-            itemSellInUpdaterFactory
-                    .getUpdaterFor(item)
-                    .update(item);
-
-            itemQualityUpdaterFactory
-                    .getUpdaterFor(item)
-                    .update(item);
+            sellInUpdaterCommand.update(item);
+            qualityUpdaterCommand.update(item);
         }
     }
 
