@@ -13,18 +13,16 @@ public enum ProductUpdater implements Updater {
 
     BACK_STAGE_PASSES("Backstage passes to a TAFKAL80ETC concert") {
 
-        private static final int FIRST_MINIMUM_SELL_IN_DAYS = 11;
-        private static final int SECOND_MINIMUM_SELL_IN_DAYS = 6;
+        private static final int TEN_DAYS = 10;
+        private static final int FIVE_DAYS = 5;
 
         @Override
         public void update(Item item) {
-            if ((item.sellIn < FIRST_MINIMUM_SELL_IN_DAYS)
-                    && (item.quality < Constants.MAXIMUM_QUALITY)) {
+            if (canIncreaseIfItemExpiresIn(item, TEN_DAYS)) {
                 increaseQuality(item);
             }
 
-            if ((item.sellIn < SECOND_MINIMUM_SELL_IN_DAYS)
-                    && (item.quality < Constants.MAXIMUM_QUALITY)) {
+            if (canIncreaseIfItemExpiresIn(item, FIVE_DAYS)) {
                 increaseQuality(item);
             }
 
@@ -32,6 +30,10 @@ public enum ProductUpdater implements Updater {
             decreaseSellIn(item);
 
             setQualityToZeroIfExpired(item);
+        }
+
+        private boolean canIncreaseIfItemExpiresIn(Item item, int minimumSellInDays) {
+            return item.sellIn <= minimumSellInDays;
         }
     },
 
