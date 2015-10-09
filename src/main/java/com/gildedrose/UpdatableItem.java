@@ -15,7 +15,7 @@ abstract class UpdatableItem {
         this.item = item;
     }
 
-    protected void update() {
+    void update() {
         changeQuality();
         changeSellIn();
         changeQualityIfExpired();
