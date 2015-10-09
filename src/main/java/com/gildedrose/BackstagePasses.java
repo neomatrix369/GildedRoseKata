@@ -4,29 +4,23 @@ public class BackstagePasses extends Product {
     private static final int TEN_DAYS = 10;
     private static final int FIVE_DAYS = 5;
 
-    private final Item item;
-
     public BackstagePasses(Item item) {
-        this.item = item;
+        super(item);
     }
 
     @Override
     public void update() {
-        if (canIncreaseIfItemExpiresIn(item, TEN_DAYS)) {
-            increaseQuality(item);
+        if (canIncreaseQualityIfItemExpiresIn(TEN_DAYS)) {
+            increaseQuality();
         }
 
-        if (canIncreaseIfItemExpiresIn(item, FIVE_DAYS)) {
-            increaseQuality(item);
+        if (canIncreaseQualityIfItemExpiresIn(FIVE_DAYS)) {
+            increaseQuality();
         }
 
-        increaseQuality(item);
-        decreaseSellIn(item);
+        increaseQuality();
+        decreaseSellIn();
 
-        setQualityToZeroIfExpired(item);
-    }
-
-    private boolean canIncreaseIfItemExpiresIn(Item item, int minimumSellInDays) {
-        return item.sellIn <= minimumSellInDays;
+        setQualityToZeroIfExpired();
     }
 }

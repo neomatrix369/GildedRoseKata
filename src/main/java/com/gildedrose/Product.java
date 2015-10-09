@@ -5,44 +5,63 @@ abstract class Product {
     static final int MAXIMUM_QUALITY = 50;
     static final int MINIMUM_SELL_IN_DAYS = 0;
 
+    private final Item item;
+
+    public Product(Item item) {
+        this.item = item;
+    }
+
     public abstract void update();
 
-    void increaseQuality(Item item) {
-        if (item.quality < MAXIMUM_QUALITY) {
+    void increaseQuality() {
+        if (canIncreaseQuality()) {
             item.quality = item.quality + 1;
         }
     }
-    void increaseQualityIfExpired(Item item) {
-        if (isExpired(item)) {
-            increaseQuality(item);
+
+    private boolean canIncreaseQuality() {
+        return item.quality < MAXIMUM_QUALITY;
+    }
+
+    boolean canIncreaseQualityIfItemExpiresIn(int minimumSellInDays) {
+        return item.sellIn <= minimumSellInDays;
+    }
+
+    void increaseQualityIfExpired() {
+        if (isExpired()) {
+            increaseQuality();
         }
     }
 
-    void setQualityToZeroIfExpired(Item item) {
-        if (isExpired(item)) {
-            setQualityToZero(item);
+    protected boolean canSetQualityToMinimumQuality(int minimumQuality) {
+        return item.quality < minimumQuality;
+    }
+
+    void setQualityToZeroIfExpired() {
+        if (isExpired()) {
+            setQualityToZero();
         }
     }
 
-    void setQualityToZero(Item item) {
+    void setQualityToZero() {
         item.quality = 0;
     }
 
-    void decreaseQuality(Item item, int by) {
-        if (item.quality > MINIMUM_QUALITY) {
+    void decreaseQualityBy(int by) {
+        if (canDecreaseQuality()) {
             item.quality = item.quality - by;
         }
     }
 
-    int by(int value) {
-        return value;
+    private boolean canDecreaseQuality() {
+        return item.quality > MINIMUM_QUALITY;
     }
 
-    void decreaseSellIn(Item item) {
+    void decreaseSellIn() {
         item.sellIn = item.sellIn - 1;
     }
 
-    boolean isExpired(Item item) {
+    boolean isExpired() {
         return item.sellIn < MINIMUM_SELL_IN_DAYS;
     }
 }

@@ -1,19 +1,17 @@
 package com.gildedrose;
 
 public class DefaultItem extends Product {
-    private final Item item;
-
     public DefaultItem(Item item) {
-        this.item = item;
+        super(item);
     }
 
     @Override
     public void update() {
-        decreaseQuality(item, by(1));
-        decreaseSellIn(item);
+        decreaseQualityBy(1);
+        decreaseSellIn();
 
-        if (isExpired(item)) {
-            decreaseQuality(item, by(1));
+        if (isExpired()) {
+            decreaseQualityBy(1);
         }
     }
 }

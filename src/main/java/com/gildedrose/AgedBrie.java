@@ -2,17 +2,15 @@ package com.gildedrose;
 
 public class AgedBrie extends Product {
 
-    private final Item item;
-
     public AgedBrie(Item item) {
-        this.item = item;
+        super(item);
     }
 
     @Override
     public void update() {
-        increaseQuality(item);
-        decreaseSellIn(item);
+        increaseQuality();
+        decreaseSellIn();
 
-        increaseQualityIfExpired(item);
+        increaseQualityIfExpired();
     }
 }

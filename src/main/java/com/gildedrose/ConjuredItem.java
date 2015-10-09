@@ -3,23 +3,17 @@ package com.gildedrose;
 public class ConjuredItem extends Product {
     private static final int CONJURED_ITEM_MINIMUM_QUALITY = 2;
 
-    private final Item item;
-
     public ConjuredItem(Item item) {
-        this.item = item;
+        super(item);
     }
 
     @Override
     public void update() {
-        if (canSetQualityToMinimumQuality(item)) {
-            setQualityToZero(item);
+        if (canSetQualityToMinimumQuality(CONJURED_ITEM_MINIMUM_QUALITY)) {
+            setQualityToZero();
         } else {
-            decreaseQuality(item, by(2));
+            decreaseQualityBy(2);
         }
-        decreaseSellIn(item);
-    }
-
-    private boolean canSetQualityToMinimumQuality(Item item) {
-        return item.quality < CONJURED_ITEM_MINIMUM_QUALITY;
+        decreaseSellIn();
     }
 }
