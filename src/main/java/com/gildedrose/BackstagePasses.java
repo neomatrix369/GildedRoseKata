@@ -1,14 +1,14 @@
 package com.gildedrose;
 
 public class BackstagePasses extends Product {
+    private static final int TEN_DAYS = 10;
+    private static final int FIVE_DAYS = 5;
+
     private final Item item;
 
     public BackstagePasses(Item item) {
         this.item = item;
     }
-
-    private static final int TEN_DAYS = 10;
-    private static final int FIVE_DAYS = 5;
 
     @Override
     public void update() {

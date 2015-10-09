@@ -20,8 +20,12 @@ abstract class Product {
 
     void setQualityToZeroIfExpired(Item item) {
         if (isExpired(item)) {
-            item.quality = MINIMUM_QUALITY;
+            setQualityToZero(item);
         }
+    }
+
+    void setQualityToZero(Item item) {
+        item.quality = 0;
     }
 
     void decreaseQuality(Item item, int by) {

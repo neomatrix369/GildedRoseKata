@@ -25,7 +25,7 @@ public class GildedRoseBySpecShould {
     private final int actualQuality;
     private final int expectedQuality;
 
-    @Parameterized.Parameters(name = "{0}: Quality of item {1} with a sell in days of {2}, and quality of {3}, gets quality of {4}")
+    @Parameterized.Parameters(name = "{0}: Quality of item {1}: Sell in days: {2}, quality: {3}, changes to quality: {4}")
     public static Collection<Object[]> data() {
         return Arrays.asList(
                 new Object[][]{

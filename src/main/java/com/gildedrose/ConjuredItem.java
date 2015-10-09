@@ -22,8 +22,4 @@ public class ConjuredItem extends Product {
     private boolean canSetQualityToMinimumQuality(Item item) {
         return item.quality < CONJURED_ITEM_MINIMUM_QUALITY;
     }
-
-    private void setQualityToZero(Item item) {
-        item.quality = MINIMUM_QUALITY;
-    }
 }
