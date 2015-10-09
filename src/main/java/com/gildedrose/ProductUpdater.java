@@ -43,12 +43,20 @@ public enum ProductUpdater implements Updater {
 
         @Override
         public void update(Item item) {
-            if (item.quality < CONJURED_ITEM_MINIMUM_QUALITY) {
-                item.quality = Constants.MINIMUM_QUALITY;
+            if (canSetQualityToMinimumQuality(item)) {
+                setQualityToZero(item);
             } else {
                 decreaseQuality(item, by(2));
             }
             decreaseSellIn(item);
+        }
+
+        private void setQualityToZero(Item item) {
+            item.quality = ProductUpdater.Constants.MINIMUM_QUALITY;
+        }
+
+        private boolean canSetQualityToMinimumQuality(Item item) {
+            return item.quality < CONJURED_ITEM_MINIMUM_QUALITY;
         }
     },
 
