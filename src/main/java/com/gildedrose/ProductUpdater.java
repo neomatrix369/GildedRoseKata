@@ -17,24 +17,9 @@ public enum ProductUpdater implements Updater {
 
     CONJURED_ITEM("Conjured Item") {
 
-        private static final int CONJURED_ITEM_MINIMUM_QUALITY = 2;
-
         @Override
         public void update(Item item) {
-            if (canSetQualityToMinimumQuality(item)) {
-                setQualityToZero(item);
-            } else {
-                decreaseQuality(item, by(2));
-            }
-            decreaseSellIn(item);
-        }
-
-        private boolean canSetQualityToMinimumQuality(Item item) {
-            return item.quality < CONJURED_ITEM_MINIMUM_QUALITY;
-        }
-
-        private void setQualityToZero(Item item) {
-            item.quality = Constants.MINIMUM_QUALITY;
+            new ConjuredItem(item).update();
         }
     },
 

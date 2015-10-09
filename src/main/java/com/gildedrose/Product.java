@@ -24,6 +24,16 @@ abstract class Product {
         }
     }
 
+    void decreaseQuality(Item item, int by) {
+        if (item.quality > MINIMUM_QUALITY) {
+            item.quality = item.quality - by;
+        }
+    }
+
+    int by(int value) {
+        return value;
+    }
+
     void decreaseSellIn(Item item) {
         item.sellIn = item.sellIn - 1;
     }
