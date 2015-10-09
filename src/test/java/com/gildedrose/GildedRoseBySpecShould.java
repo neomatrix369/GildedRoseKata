@@ -76,6 +76,11 @@ public class GildedRoseBySpecShould {
                                 "increase the quality of Backstage Passes by 3 when sellIn for it is 3 days",
                                 BACKSTAGE_PASSES, sellIn(3), qualityOf(27), qualityOf(30)
                         },
+
+                        {
+                                "Set the quality of Backstage Passes to 0 when sellIn for it is -1 days",
+                                BACKSTAGE_PASSES, sellIn(-1), qualityOf(27), qualityOf(0)
+                        },
                         {
                                 "decrease the quality of Backstage Passes to 0 when sellIn for it is 0 days",
                                 BACKSTAGE_PASSES, sellIn(0), qualityOf(27), qualityOf(0)
