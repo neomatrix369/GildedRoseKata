@@ -8,7 +8,7 @@ public class AgedBrie extends Product {
 
     @Override
     public void update() {
-        increaseQuality();
+        increaseQualityBy(NORMAL_QUALITY_CHANGE_RATE);
         decreaseSellIn();
 
         increaseQualityIfExpired();

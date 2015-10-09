@@ -1,6 +1,8 @@
 package com.gildedrose;
 
 abstract class Product {
+    static final int NORMAL_QUALITY_CHANGE_RATE = 1;
+
     static final int MINIMUM_QUALITY = 0;
     static final int MAXIMUM_QUALITY = 50;
     static final int MINIMUM_SELL_IN_DAYS = 0;
@@ -13,9 +15,9 @@ abstract class Product {
 
     public abstract void update();
 
-    void increaseQuality() {
+    void increaseQualityBy(int by) {
         if (canIncreaseQuality()) {
-            item.quality = item.quality + 1;
+            item.quality = item.quality + by;
         }
     }
 
@@ -29,7 +31,7 @@ abstract class Product {
 
     void increaseQualityIfExpired() {
         if (isExpired()) {
-            increaseQuality();
+            increaseQualityBy(NORMAL_QUALITY_CHANGE_RATE);
         }
     }
 
@@ -44,7 +46,7 @@ abstract class Product {
     }
 
     void setQualityToZero() {
-        item.quality = 0;
+        item.quality = MINIMUM_QUALITY;
     }
 
     void decreaseQualityBy(int by) {

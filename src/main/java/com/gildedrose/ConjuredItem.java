@@ -1,7 +1,7 @@
 package com.gildedrose;
 
 public class ConjuredItem extends Product {
-    private static final int CONJURED_ITEM_MINIMUM_QUALITY = 2;
+    private static final int CONJURED_ITEM_QUALITY_CHANGE_RATE = 2 * NORMAL_QUALITY_CHANGE_RATE;
 
     public ConjuredItem(Item item) {
         super(item);
@@ -9,13 +9,13 @@ public class ConjuredItem extends Product {
 
     @Override
     public void update() {
-        if (canSetQualityToMinimumQuality(CONJURED_ITEM_MINIMUM_QUALITY)) {
+        if (canSetQualityToMinimumQuality(CONJURED_ITEM_QUALITY_CHANGE_RATE)) {
             setQualityToZero();
         } else {
             if (isExpired()) {
-                decreaseQualityBy(2 * CONJURED_ITEM_MINIMUM_QUALITY);
+                decreaseQualityBy(2 * CONJURED_ITEM_QUALITY_CHANGE_RATE);
             } else {
-                decreaseQualityBy(CONJURED_ITEM_MINIMUM_QUALITY);
+                decreaseQualityBy(CONJURED_ITEM_QUALITY_CHANGE_RATE);
             }
         }
         decreaseSellIn();

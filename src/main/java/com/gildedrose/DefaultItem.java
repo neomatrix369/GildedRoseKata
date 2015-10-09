@@ -7,11 +7,11 @@ public class DefaultItem extends Product {
 
     @Override
     public void update() {
-        decreaseQualityBy(1);
+        decreaseQualityBy(NORMAL_QUALITY_CHANGE_RATE);
         decreaseSellIn();
 
         if (isExpired()) {
-            decreaseQualityBy(1);
+            decreaseQualityBy(NORMAL_QUALITY_CHANGE_RATE);
         }
     }
 }

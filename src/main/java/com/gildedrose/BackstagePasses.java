@@ -11,14 +11,14 @@ public class BackstagePasses extends Product {
     @Override
     public void update() {
         if (canIncreaseQualityIfItemExpiresIn(TEN_DAYS)) {
-            increaseQuality();
+            increaseQualityBy(NORMAL_QUALITY_CHANGE_RATE);
         }
 
         if (canIncreaseQualityIfItemExpiresIn(FIVE_DAYS)) {
-            increaseQuality();
+            increaseQualityBy(NORMAL_QUALITY_CHANGE_RATE);
         }
 
-        increaseQuality();
+        increaseQualityBy(NORMAL_QUALITY_CHANGE_RATE);
         decreaseSellIn();
 
         setQualityToZeroIfExpired();
