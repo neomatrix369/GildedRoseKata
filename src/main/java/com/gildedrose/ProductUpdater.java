@@ -47,17 +47,13 @@ public enum ProductUpdater implements Updater {
         return itemName;
     }
 
-    static void applyUpdateTo(Item item) {
-        ProductUpdater itemType = ProductUpdater.getItemFor(item.name);
-        itemType.update(item);
-    }
-
-    private static ProductUpdater getItemFor(String itemName) {
+    static void applyTo(Item item) {
         for (ProductUpdater itemType : values()) {
-            if (itemType.itemName.equals(itemName)) {
-                return itemType;
+            if (itemType.itemName.equals(item.name)) {
+                itemType.update(item);
+                return;
             }
         }
-        return DEFAULT_ITEM;
+        DEFAULT_ITEM.update(item);
     }
 }
