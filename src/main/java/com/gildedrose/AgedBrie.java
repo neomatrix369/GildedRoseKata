@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-class AgedBrie extends UpdatableItem {
+class AgedBrie extends Product {
 
     public AgedBrie(Item item) {
         super(item);

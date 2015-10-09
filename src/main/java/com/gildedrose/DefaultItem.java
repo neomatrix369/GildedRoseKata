@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-class DefaultItem extends UpdatableItem {
+class DefaultItem extends Product {
 
     public DefaultItem(Item item) {
         super(item);

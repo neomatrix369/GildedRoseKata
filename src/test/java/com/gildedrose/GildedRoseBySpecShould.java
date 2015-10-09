@@ -7,11 +7,11 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.Collection;
 
-import static com.gildedrose.ItemUpdater.AGED_BRIE;
-import static com.gildedrose.ItemUpdater.BACKSTAGE_PASSES;
-import static com.gildedrose.ItemUpdater.CONJURED;
-import static com.gildedrose.ItemUpdater.SULFURAS_HAND_OF_RAGNAROS;
-import static com.gildedrose.ItemUpdater.DEFAULT_ITEM;
+import static com.gildedrose.ProductUpdater.AGED_BRIE;
+import static com.gildedrose.ProductUpdater.BACKSTAGE_PASSES;
+import static com.gildedrose.ProductUpdater.CONJURED;
+import static com.gildedrose.ProductUpdater.SULFURAS_HAND_OF_RAGNAROS;
+import static com.gildedrose.ProductUpdater.DEFAULT_ITEM;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 

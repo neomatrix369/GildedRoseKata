@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-class ItemUpdater {
+class ProductUpdater {
 
     public static final String AGED_BRIE = "Aged Brie";
     public static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
@@ -8,7 +8,7 @@ class ItemUpdater {
     public static final String CONJURED = "Conjured";
     public static final String DEFAULT_ITEM = "Default Item";
 
-    private static UpdatableItem createUpdatableItemFrom(Item item) {
+    private static Product createProductFrom(Item item) {
         switch (item.name) {
             case AGED_BRIE: return new AgedBrie(item);
             case BACKSTAGE_PASSES: return new BackstagePasses(item);
@@ -19,7 +19,7 @@ class ItemUpdater {
     }
 
     public static void update(Item item) {
-        final UpdatableItem updatableItem = createUpdatableItemFrom(item);
-        updatableItem.update();
+        final Product product = createProductFrom(item);
+        product.update();
     }
 }

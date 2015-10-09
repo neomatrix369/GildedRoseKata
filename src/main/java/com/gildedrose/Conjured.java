@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-class Conjured extends UpdatableItem {
+class Conjured extends Product {
 
     private static final int CONJURED_RATE = 2 * NORMAL_QUALITY_CHANGE_RATE;
 

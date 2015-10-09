@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-abstract class UpdatableItem {
+abstract class Product {
 
     private static final int MINIMUM_QUALITY = 0;
     private static final int MINIMUM_SELL_IN_DAYS = 0;
@@ -11,7 +11,7 @@ abstract class UpdatableItem {
 
     private final Item item;
 
-    UpdatableItem(Item item) {
+    Product(Item item) {
         this.item = item;
     }
 

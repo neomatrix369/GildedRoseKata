@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-class Sulfuras extends UpdatableItem {
+class Sulfuras extends Product {
 
     public Sulfuras(Item item) {
         super(item);
