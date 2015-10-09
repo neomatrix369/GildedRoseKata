@@ -8,11 +8,12 @@ public class AgedBrie extends Product {
 
     @Override
     public void update() {
-        increaseQualityBy(NORMAL_QUALITY_CHANGE_RATE);
         decreaseSellIn();
 
-        if (isExpired()) {
-            increaseQualityBy(NORMAL_QUALITY_CHANGE_RATE);
-        }
+        int rate = isExpired()
+                        ? 2 * NORMAL_QUALITY_CHANGE_RATE
+                        : NORMAL_QUALITY_CHANGE_RATE;
+
+        increaseQualityBy(rate);
     }
 }
