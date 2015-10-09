@@ -13,9 +13,9 @@ public class ConjuredItem extends Product {
             setQualityToZero();
         } else {
             if (isExpired()) {
-                decreaseQualityBy(4);
+                decreaseQualityBy(2 * CONJURED_ITEM_MINIMUM_QUALITY);
             } else {
-                decreaseQualityBy(2);
+                decreaseQualityBy(CONJURED_ITEM_MINIMUM_QUALITY);
             }
         }
         decreaseSellIn();
