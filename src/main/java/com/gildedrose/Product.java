@@ -29,20 +29,8 @@ abstract class Product {
         return item.sellIn <= minimumSellInDays;
     }
 
-    void increaseQualityIfExpired() {
-        if (isExpired()) {
-            increaseQualityBy(NORMAL_QUALITY_CHANGE_RATE);
-        }
-    }
-
     protected boolean canSetQualityToMinimumQuality(int minimumQuality) {
         return item.quality < minimumQuality;
-    }
-
-    void setQualityToZeroIfExpired() {
-        if (isExpired()) {
-            setQualityToZero();
-        }
     }
 
     void setQualityToZero() {

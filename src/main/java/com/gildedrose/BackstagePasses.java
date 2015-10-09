@@ -21,6 +21,8 @@ public class BackstagePasses extends Product {
         increaseQualityBy(NORMAL_QUALITY_CHANGE_RATE);
         decreaseSellIn();
 
-        setQualityToZeroIfExpired();
+        if (isExpired()) {
+            setQualityToZero();
+        }
     }
 }

@@ -11,6 +11,8 @@ public class AgedBrie extends Product {
         increaseQualityBy(NORMAL_QUALITY_CHANGE_RATE);
         decreaseSellIn();
 
-        increaseQualityIfExpired();
+        if (isExpired()) {
+            increaseQualityBy(NORMAL_QUALITY_CHANGE_RATE);
+        }
     }
 }
