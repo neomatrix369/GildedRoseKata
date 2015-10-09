@@ -6,7 +6,8 @@ public abstract class UpdatableItem {
     protected static final int MINIMUM_SELL_IN_DAYS = 0;
     protected static final int MAXIMUM_QUALITY = 50;
 
-    protected static final int NORMAL_RATE = 1;
+    protected static final int NORMAL_QUALITY_CHANGE_RATE = 1;
+    protected static final int NORMAL_SELL_IN_CHANGE_RATE = 1;
 
     private final Item item;
 
@@ -55,7 +56,7 @@ public abstract class UpdatableItem {
         return item.sellIn <= daysToExpiration;
     }
 
-    protected void decreaseSellIn() {
-        item.sellIn--;
+    protected void decreaseSellInBy(int by) {
+        item.sellIn -= by;
     }
 }

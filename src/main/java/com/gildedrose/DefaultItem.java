@@ -8,18 +8,17 @@ public class DefaultItem extends UpdatableItem {
 
     @Override
     protected void changeSellIn() {
-        decreaseSellIn();
-        if (isExpired()) {
-            decreaseSellIn();
-        }
+        int rate = isExpired()
+                        ? 2 * NORMAL_SELL_IN_CHANGE_RATE
+                        : NORMAL_SELL_IN_CHANGE_RATE;
+        decreaseSellInBy(rate);
     }
 
     @Override
     protected void changeQuality() {
         int rate = isExpired()
-                        ? 2 * NORMAL_RATE
-                        : NORMAL_RATE;
-
+                        ? 2 * NORMAL_QUALITY_CHANGE_RATE
+                        : NORMAL_QUALITY_CHANGE_RATE;
         decreaseQualityBy(rate);
     }
 }

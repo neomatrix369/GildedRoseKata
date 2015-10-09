@@ -2,7 +2,7 @@ package com.gildedrose;
 
 public class Conjured extends UpdatableItem {
 
-    private static final int CONJURED_RATE = 2 * NORMAL_RATE;
+    private static final int CONJURED_RATE = 2 * NORMAL_QUALITY_CHANGE_RATE;
 
     public Conjured(Item item) {
         super(item);
@@ -10,7 +10,7 @@ public class Conjured extends UpdatableItem {
 
     @Override
     protected void changeSellIn() {
-        decreaseSellIn();
+        decreaseSellInBy(NORMAL_SELL_IN_CHANGE_RATE);
     }
 
     @Override
@@ -18,7 +18,6 @@ public class Conjured extends UpdatableItem {
         int rate = isExpired()
                         ? 2 * CONJURED_RATE
                         : CONJURED_RATE;
-
         decreaseQualityBy(rate);
     }
 }
