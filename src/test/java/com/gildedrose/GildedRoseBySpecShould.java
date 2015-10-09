@@ -25,7 +25,7 @@ public class GildedRoseBySpecShould {
     private final int actualQuality;
     private final int expectedQuality;
 
-    @Parameterized.Parameters(name = "{0}: Quality of item {1}: Sell in days: {2}, quality: {3}, changes to quality: {4}")
+    @Parameterized.Parameters(name = "{0}: Item {1}: Sell in days: {2}, quality: {3}, changes to quality: {4}")
     public static Collection<Object[]> data() {
         return Arrays.asList(
                 new Object[][]{
@@ -82,6 +82,8 @@ public class GildedRoseBySpecShould {
                         {"Quality of Conjured items do not reduce to any value below 0, even if starting quality if less than 0",
                                 CONJURED_ITEM.toString(), sellIn(1), qualityOf(-1), qualityOf(0)},
                         {"Quality of Conjured items reduces by 2 only, if item is near expiry but not expired",
+                                CONJURED_ITEM.toString(), sellIn(1), qualityOf(10), qualityOf(8)},
+                        {"Quality of Conjured items reduces by 4, if item is expired",
                                 CONJURED_ITEM.toString(), sellIn(0), qualityOf(10), qualityOf(8)},
                         {"Quality of Conjured items reduces by 4, if item is expired",
                                 CONJURED_ITEM.toString(), sellIn(-1), qualityOf(10), qualityOf(6)},
