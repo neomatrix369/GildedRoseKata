@@ -10,7 +10,7 @@ class GildedRose {
 
     public void updateQuality() {
         for (Item item: items) {
-            ItemUpdater.applyUpdateTo(item);
+            ProductUpdater.applyUpdateTo(item);
         }
 
     }

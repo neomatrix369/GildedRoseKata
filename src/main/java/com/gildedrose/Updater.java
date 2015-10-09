@@ -1,5 +1,5 @@
 package com.gildedrose;
 
-public interface UpdatableItem {
+public interface Updater {
     void update(Item item);
 }

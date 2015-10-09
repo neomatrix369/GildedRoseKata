@@ -7,11 +7,11 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.Collection;
 
-import static com.gildedrose.ItemUpdater.AGED_BRIE;
-import static com.gildedrose.ItemUpdater.ANY_ITEM;
-import static com.gildedrose.ItemUpdater.BACK_STAGE_PASSES;
-import static com.gildedrose.ItemUpdater.CONJURED_ITEM;
-import static com.gildedrose.ItemUpdater.SULFURAS;
+import static com.gildedrose.ProductUpdater.AGED_BRIE;
+import static com.gildedrose.ProductUpdater.DEFAULT_ITEM;
+import static com.gildedrose.ProductUpdater.BACK_STAGE_PASSES;
+import static com.gildedrose.ProductUpdater.CONJURED_ITEM;
+import static com.gildedrose.ProductUpdater.SULFURAS;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -30,13 +30,13 @@ public class GildedRoseBySpecShould {
         return Arrays.asList(
                 new Object[][]{
                         {"Decrease quality by 2 if item has passed its sell in date",
-                                ANY_ITEM.toString(), sellIn(-1), qualityOf(2), qualityOf(0)},
+                                DEFAULT_ITEM.toString(), sellIn(-1), qualityOf(2), qualityOf(0)},
                         {"The Quality of an item is never negative (past sell in date)",
-                                ANY_ITEM.toString(), sellIn(-1), qualityOf(1), qualityOf(0)},
+                                DEFAULT_ITEM.toString(), sellIn(-1), qualityOf(1), qualityOf(0)},
                         {"The Quality of an item is never negative (past sell in date)",
-                                ANY_ITEM.toString(), sellIn(0), qualityOf(1), qualityOf(0)},
+                                DEFAULT_ITEM.toString(), sellIn(0), qualityOf(1), qualityOf(0)},
                         {"The Quality of an item is never negative (past sell in date)",
-                                ANY_ITEM.toString(), sellIn(-1), qualityOf(0), qualityOf(0)},
+                                DEFAULT_ITEM.toString(), sellIn(-1), qualityOf(0), qualityOf(0)},
 
                         {"The Quality of Aged Brie can never more than 50 (near sell in date of 1)",
                                 AGED_BRIE.toString(), sellIn(1), qualityOf(45), qualityOf(46)},
