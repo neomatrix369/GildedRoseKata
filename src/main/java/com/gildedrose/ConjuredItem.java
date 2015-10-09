@@ -12,7 +12,11 @@ public class ConjuredItem extends Product {
         if (canSetQualityToMinimumQuality(CONJURED_ITEM_MINIMUM_QUALITY)) {
             setQualityToZero();
         } else {
-            decreaseQualityBy(2);
+            if (isExpired()) {
+                decreaseQualityBy(4);
+            } else {
+                decreaseQualityBy(2);
+            }
         }
         decreaseSellIn();
     }
