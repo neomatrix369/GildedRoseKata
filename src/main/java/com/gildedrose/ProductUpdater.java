@@ -26,6 +26,7 @@ public enum ProductUpdater implements Updater {
     SULFURAS("Sulfuras, Hand of Ragnaros") {
         @Override
         public void update(Item item) {
+            new Sulfuras(item).update();
         }
     },
 
