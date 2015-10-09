@@ -1,7 +1,4 @@
 /target
-.classpath
-.project
-.settings
 .idea
 .*
 !.gitignore

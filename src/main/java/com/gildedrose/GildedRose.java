@@ -1,15 +1,18 @@
 package com.gildedrose;
 
+
+import java.util.Arrays;
+
 class GildedRose {
 
     Item[] items;
 
     public GildedRose(Item[] items) {
-        this.items = items;
+        this.items = Arrays.copyOf(items, items.length);
     }
 
     public void updateQuality() {
-        for (Item item: items) {
+        for (final Item item: items) {
             ItemUpdater.update(item);
         }
     }
