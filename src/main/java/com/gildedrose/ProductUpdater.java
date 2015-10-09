@@ -4,10 +4,7 @@ public enum ProductUpdater implements Updater {
     AGED_BRIE("Aged Brie") {
         @Override
         public void update(Item item) {
-            increaseQuality(item);
-            decreaseSellIn(item);
-
-            increaseQualityIfExpired(item);
+            new AgedBrie(item).update();
         }
     },
 
@@ -91,12 +88,6 @@ public enum ProductUpdater implements Updater {
 
     boolean isExpired(Item item) {
         return item.sellIn < Constants.MINIMUM_SELL_IN_DAYS;
-    }
-
-    void increaseQualityIfExpired(Item item) {
-        if (isExpired(item)) {
-            increaseQuality(item);
-        }
     }
 
     void setQualityToZeroIfExpired(Item item) {
