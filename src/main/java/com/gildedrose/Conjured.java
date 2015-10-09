@@ -9,14 +9,7 @@ class Conjured extends UpdatableItem {
     }
 
     @Override
-    protected void changeQualityIfExpired() {
-        if (isExpired()) {
-            decreaseQualityBy(CONJURED_RATE);
-        }
-    }
-
-    @Override
-    protected void changeSellIn() {
+    protected void decreaseSellIn() {
         decreaseSellInBy(NORMAL_SELL_IN_CHANGE_RATE);
     }
 
@@ -26,5 +19,12 @@ class Conjured extends UpdatableItem {
                         ? 2 * CONJURED_RATE
                         : CONJURED_RATE;
         decreaseQualityBy(rate);
+    }
+
+    @Override
+    protected void changeQualityIfExpired() {
+        if (isExpired()) {
+            decreaseQualityBy(CONJURED_RATE);
+        }
     }
 }

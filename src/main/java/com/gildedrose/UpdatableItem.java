@@ -17,7 +17,7 @@ abstract class UpdatableItem {
 
     void update() {
         changeQuality();
-        changeSellIn();
+        decreaseSellIn();
         changeQualityIfExpired();
     }
 
@@ -49,7 +49,7 @@ abstract class UpdatableItem {
         item.quality = MINIMUM_QUALITY;
     }
 
-    abstract void changeSellIn();
+    abstract void decreaseSellIn();
 
     boolean isExpired() {
         return item.sellIn < MINIMUM_SELL_IN_DAYS;

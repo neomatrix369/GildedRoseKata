@@ -6,14 +6,12 @@ class Sulfuras extends UpdatableItem {
         super(item);
     }
 
-    @Override
-    public void update() {}
-
-    @Override
-    protected void changeSellIn() {}
 
     @Override
     protected void changeQuality() {}
+
+    @Override
+    protected void decreaseSellIn() {}
 
     @Override
     protected void changeQualityIfExpired() {}

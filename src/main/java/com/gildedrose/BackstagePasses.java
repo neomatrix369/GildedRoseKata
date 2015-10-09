@@ -10,25 +10,6 @@ class BackstagePasses extends UpdatableItem {
     }
 
     @Override
-    protected void update() {
-        changeQuality();
-        changeSellIn();
-        changeQualityIfExpired();
-    }
-
-    @Override
-    protected void changeQualityIfExpired() {
-        if (isExpired()) {
-            resetQuality();
-        }
-    }
-
-    @Override
-    protected void changeSellIn() {
-        decreaseSellInBy(NORMAL_SELL_IN_CHANGE_RATE);
-    }
-
-    @Override
     protected void changeQuality() {
         if (isExpired()) {
             resetQuality();
@@ -41,6 +22,18 @@ class BackstagePasses extends UpdatableItem {
         }
         else {
             increaseQualityBy(NORMAL_QUALITY_CHANGE_RATE);
+        }
+    }
+
+    @Override
+    protected void decreaseSellIn() {
+        decreaseSellInBy(NORMAL_SELL_IN_CHANGE_RATE);
+    }
+
+    @Override
+    protected void changeQualityIfExpired() {
+        if (isExpired()) {
+            resetQuality();
         }
     }
 }
