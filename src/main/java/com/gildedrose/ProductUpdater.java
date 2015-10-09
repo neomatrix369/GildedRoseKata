@@ -16,7 +16,6 @@ public enum ProductUpdater implements Updater {
     },
 
     CONJURED_ITEM("Conjured Item") {
-
         @Override
         public void update(Item item) {
             new ConjuredItem(item).update();
@@ -33,12 +32,7 @@ public enum ProductUpdater implements Updater {
     DEFAULT_ITEM("Default Item") {
         @Override
         public void update(Item item) {
-            decreaseQuality(item, by(1));
-            decreaseSellIn(item);
-
-            if (isExpired(item)) {
-                decreaseQuality(item, by(1));
-            }
+            new DefaultItem(item).update();
         }
     };
 
@@ -53,24 +47,6 @@ public enum ProductUpdater implements Updater {
         return itemName;
     }
 
-    boolean isExpired(Item item) {
-        return item.sellIn < Constants.MINIMUM_SELL_IN_DAYS;
-    }
-
-    void decreaseQuality(Item item, int by) {
-        if (item.quality > Constants.MINIMUM_QUALITY) {
-            item.quality = item.quality - by;
-        }
-    }
-
-    void decreaseSellIn(Item item) {
-        item.sellIn = item.sellIn - 1;
-    }
-
-    int by(int value) {
-        return value;
-    }
-
     static void applyUpdateTo(Item item) {
         ProductUpdater itemType = ProductUpdater.getItemFor(item.name);
         itemType.update(item);
@@ -83,10 +59,5 @@ public enum ProductUpdater implements Updater {
             }
         }
         return DEFAULT_ITEM;
-    }
-
-    private static class Constants {
-        private static final int MINIMUM_QUALITY = 0;
-        private static final int MINIMUM_SELL_IN_DAYS = 0;
     }
 }
