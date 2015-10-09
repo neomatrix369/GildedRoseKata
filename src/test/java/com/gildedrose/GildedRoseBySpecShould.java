@@ -23,7 +23,7 @@ public class GildedRoseBySpecShould {
     private final int actualQuality;
     private final int expectedQuality;
 
-    @Parameterized.Parameters(name = "{0} with sell in {1} and quality of {2}, changes to quality of {3}.")
+    @Parameterized.Parameters(name = "{0}: Sell in days: {2}, quality: {3}, quality changes to {4}.")
     public static Collection<Object[]> data() {
         return Arrays.asList(
                 new Object[][]{
@@ -52,29 +52,39 @@ public class GildedRoseBySpecShould {
 
                         {
                                 "never change the quality of any item past 50",
-                                AGED_BRIE, sellIn(0), qualityOf(50), qualityOf(50),
+                                AGED_BRIE, sellIn(1), qualityOf(50), qualityOf(50),
                         },
 
                         {
-                                "increase the quality of Backstage Passes by 1 when sellIn for it is 11 days",
+                                "increase the quality of Backstage Passes by 1 when sellIn is 11 days",
                                 BACKSTAGE_PASSES, sellIn(11), qualityOf(25), qualityOf(26)
                         },
 
                         {
-                                "increase the quality of Backstage Passes by 2 when sellIn for it is 10 days",
+                                "increase the quality of Backstage Passes by 2 when sellIn is 10 days",
                                 BACKSTAGE_PASSES, sellIn(10), qualityOf(25), qualityOf(27)
                         },
                         {
-                                "increase the quality of Backstage Passes by 2 when sellIn for it is 8 days",
+                                "increase the quality of Backstage Passes by 2 when sellIn is 8 days",
                                 BACKSTAGE_PASSES, sellIn(8), qualityOf(20), qualityOf(22)
                         },
                         {
-                                "increase the quality of Backstage Passes by 3 when sellIn for it is 5 days",
+                                "increase the quality of Backstage Passes by 3 when sellIn is 5 days",
                                 BACKSTAGE_PASSES, sellIn(5), qualityOf(22), qualityOf(25)
                         },
                         {
                                 "increase the quality of Backstage Passes by 3 when sellIn for it is 3 days",
                                 BACKSTAGE_PASSES, sellIn(3), qualityOf(27), qualityOf(30)
+                        },
+
+                        {
+                                "increase the quality of Backstage Passes by 3 when sellIn for it is 1 days",
+                                BACKSTAGE_PASSES, sellIn(1), qualityOf(24), qualityOf(27)
+                        },
+
+                        {
+                                "Set the quality of Backstage Passes to 0 when sellIn for it is 0 days",
+                                BACKSTAGE_PASSES, sellIn(0), qualityOf(24), qualityOf(0)
                         },
 
                         {
@@ -86,39 +96,37 @@ public class GildedRoseBySpecShould {
                                 BACKSTAGE_PASSES, sellIn(0), qualityOf(27), qualityOf(0)
                         },
                         {
-                                "decrease the quality of default item by 1 when quality is 25 (> 0) and sell in is 1 (> 0)",
+                                "decrease the quality of default item by 1 when sell in is 1 day (> 0)",
                                 DEFAULT_ITEM, sellIn(1), qualityOf(25), qualityOf(24)
                         },
                         {
-                                "decrease the quality of default item by 2 when quality is 23 (> 0) and sell in is 0 (= 0)",
+                                "decrease the quality of default item by 2 when sell in is 0 days",
                                 DEFAULT_ITEM, sellIn(0), qualityOf(23), qualityOf(21)
                         },
                         {
-                                "not decrease the quality of default item when quality is 0",
+                                "not decrease the quality of default item when quality is 0 already",
                                 DEFAULT_ITEM, sellIn(1), qualityOf(0), qualityOf(0)
                         },
 
                         {
-                                "decrease the quality of Conjured item by 2 when quality is 19 (> 0) and sellIn is 1 (> 0)",
+                                "decrease the quality of Conjured item by 2 when sellIn is 1 day (> 0)",
                                 CONJURED, sellIn(1), qualityOf(19), qualityOf(17)
                         },
 
                         {
-                                "the quality of Conjured item stays at 0 when quality is 2 and sellIn is 0",
+                                "the quality of Conjured item is set to 0 when quality is close to minimum quality and sellIn is 0 days",
                                 CONJURED, sellIn(0), qualityOf(2), qualityOf(0)
                         },
 
                         {
-                                "decrease the quality of Conjured item by 2 when quality is 8 (> 0) and sellIn is 1",
+                                "decrease the quality of Conjured item by 2 when sellIn is 1 day",
                                 CONJURED, sellIn(1), qualityOf(10), qualityOf(8)
                         },
 
                         {
-                                "decrease the quality of Conjured item by 4 when quality 10 (> 0) and sellIn is 0",
+                                "decrease the quality of Conjured item by 4 when  quality is further away than minimum quality and sellIn is 0 days",
                                 CONJURED, sellIn(0), qualityOf(10), qualityOf(6)
                         },
-
-
                 }
         );
     }
