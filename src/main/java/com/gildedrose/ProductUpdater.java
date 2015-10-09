@@ -51,12 +51,12 @@ public enum ProductUpdater implements Updater {
             decreaseSellIn(item);
         }
 
-        private void setQualityToZero(Item item) {
-            item.quality = ProductUpdater.Constants.MINIMUM_QUALITY;
-        }
-
         private boolean canSetQualityToMinimumQuality(Item item) {
             return item.quality < CONJURED_ITEM_MINIMUM_QUALITY;
+        }
+
+        private void setQualityToZero(Item item) {
+            item.quality = ProductUpdater.Constants.MINIMUM_QUALITY;
         }
     },
 
@@ -69,14 +69,11 @@ public enum ProductUpdater implements Updater {
     DEFAULT_ITEM("Default Item") {
         @Override
         public void update(Item item) {
-            if (item.quality > Constants.MINIMUM_QUALITY) {
-                decreaseQuality(item, by(1));
-                decreaseSellIn(item);
+            decreaseQuality(item, by(1));
+            decreaseSellIn(item);
 
-                if ((item.quality > Constants.MINIMUM_QUALITY)
-                        && (item.sellIn < Constants.MINIMUM_SELL_IN_DAYS)) {
-                    decreaseQuality(item, by(1));
-                }
+            if (item.sellIn < Constants.MINIMUM_SELL_IN_DAYS) {
+                decreaseQuality(item, by(1));
             }
         }
     };
@@ -111,7 +108,9 @@ public enum ProductUpdater implements Updater {
     }
 
     void decreaseQuality(Item item, int by) {
-        item.quality = item.quality - by;
+        if (item.quality > Constants.MINIMUM_QUALITY) {
+            item.quality = item.quality - by;
+        }
     }
 
     void decreaseSellIn(Item item) {
