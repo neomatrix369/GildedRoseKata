@@ -1,6 +1,7 @@
 package com.gildedrose;
 
 abstract class Product {
+    static final int MINIMUM_QUALITY = 0;
     static final int MAXIMUM_QUALITY = 50;
     static final int MINIMUM_SELL_IN_DAYS = 0;
 
@@ -14,6 +15,12 @@ abstract class Product {
     void increaseQualityIfExpired(Item item) {
         if (isExpired(item)) {
             increaseQuality(item);
+        }
+    }
+
+    void setQualityToZeroIfExpired(Item item) {
+        if (isExpired(item)) {
+            item.quality = MINIMUM_QUALITY;
         }
     }
 

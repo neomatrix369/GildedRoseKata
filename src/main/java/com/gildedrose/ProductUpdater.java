@@ -9,28 +9,9 @@ public enum ProductUpdater implements Updater {
     },
 
     BACK_STAGE_PASSES("Backstage passes to a TAFKAL80ETC concert") {
-
-        private static final int TEN_DAYS = 10;
-        private static final int FIVE_DAYS = 5;
-
         @Override
         public void update(Item item) {
-            if (canIncreaseIfItemExpiresIn(item, TEN_DAYS)) {
-                increaseQuality(item);
-            }
-
-            if (canIncreaseIfItemExpiresIn(item, FIVE_DAYS)) {
-                increaseQuality(item);
-            }
-
-            increaseQuality(item);
-            decreaseSellIn(item);
-
-            setQualityToZeroIfExpired(item);
-        }
-
-        private boolean canIncreaseIfItemExpiresIn(Item item, int minimumSellInDays) {
-            return item.sellIn <= minimumSellInDays;
+            new BackstagePasses(item).update();
         }
     },
 
@@ -90,18 +71,6 @@ public enum ProductUpdater implements Updater {
         return item.sellIn < Constants.MINIMUM_SELL_IN_DAYS;
     }
 
-    void setQualityToZeroIfExpired(Item item) {
-        if (isExpired(item)) {
-            item.quality = Constants.MINIMUM_QUALITY;
-        }
-    }
-
-    void increaseQuality(Item item) {
-        if (item.quality < Constants.MAXIMUM_QUALITY) {
-            item.quality = item.quality + 1;
-        }
-    }
-
     void decreaseQuality(Item item, int by) {
         if (item.quality > Constants.MINIMUM_QUALITY) {
             item.quality = item.quality - by;
@@ -131,7 +100,6 @@ public enum ProductUpdater implements Updater {
     }
 
     private static class Constants {
-        private static final int MAXIMUM_QUALITY = 50;
         private static final int MINIMUM_QUALITY = 0;
         private static final int MINIMUM_SELL_IN_DAYS = 0;
     }
