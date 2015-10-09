@@ -56,7 +56,7 @@ public enum ProductUpdater implements Updater {
         }
 
         private void setQualityToZero(Item item) {
-            item.quality = ProductUpdater.Constants.MINIMUM_QUALITY;
+            item.quality = Constants.MINIMUM_QUALITY;
         }
     },
 
@@ -72,7 +72,7 @@ public enum ProductUpdater implements Updater {
             decreaseQuality(item, by(1));
             decreaseSellIn(item);
 
-            if (item.sellIn < Constants.MINIMUM_SELL_IN_DAYS) {
+            if (isExpired(item)) {
                 decreaseQuality(item, by(1));
             }
         }
@@ -89,14 +89,18 @@ public enum ProductUpdater implements Updater {
         return itemName;
     }
 
+    boolean isExpired(Item item) {
+        return item.sellIn < Constants.MINIMUM_SELL_IN_DAYS;
+    }
+
     void increaseQualityIfExpired(Item item) {
-        if (item.sellIn < Constants.MINIMUM_SELL_IN_DAYS) {
+        if (isExpired(item)) {
             increaseQuality(item);
         }
     }
 
     void setQualityToZeroIfExpired(Item item) {
-        if (item.sellIn < Constants.MINIMUM_SELL_IN_DAYS) {
+        if (isExpired(item)) {
             item.quality = Constants.MINIMUM_QUALITY;
         }
     }
