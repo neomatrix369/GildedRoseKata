@@ -37,6 +37,8 @@ public class GildedRoseBySpecShould {
                                 DEFAULT_ITEM.toString(), sellIn(0), qualityOf(1), qualityOf(0)},
                         {"The Quality of an item is never negative (past sell in date)",
                                 DEFAULT_ITEM.toString(), sellIn(-1), qualityOf(0), qualityOf(0)},
+                        {"Decrease quality by 1 if item is within the sell in date",
+                                DEFAULT_ITEM.toString(), sellIn(1), qualityOf(2), qualityOf(1)},
 
                         {"The Quality of Aged Brie can never more than 50 (near sell in date of 1)",
                                 AGED_BRIE.toString(), sellIn(1), qualityOf(45), qualityOf(46)},
