@@ -10,8 +10,6 @@ public class ConjuredSellInUpdater implements SellInUpdater {
 
     @Override
     public void update() {
-        if (item.sellIn > MINIMUM_QUALITY) {
-            item.sellIn--;
-        }
+        item.sellIn--;
     }
 }

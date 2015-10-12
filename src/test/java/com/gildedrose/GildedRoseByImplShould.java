@@ -63,8 +63,8 @@ public class GildedRoseByImplShould {
 
                         {"The quality of Conjured item decreases to 0, when Sell In is 1 and Quality is 1",
                                 Constants.CONJURED, sellIn(1), qualityOf(1), sellIn(0), qualityOf(0)},
-                        {"The quality of Conjured item decreases to 0 and Sell In stays at 0, when Sell In is 0 and Quality is 2",
-                                Constants.CONJURED, sellIn(0), qualityOf(2), sellIn(0), qualityOf(0)},
+                        {"The quality of Conjured item decreases to 0 and Sell In becomes -1, when Sell In is 0 and Quality is 2",
+                                Constants.CONJURED, sellIn(0), qualityOf(2), sellIn(-1), qualityOf(0)},
                         {"The quality of Conjured item stays at 0, when Sell In is 1 and Quality is 0",
                                 Constants.CONJURED, sellIn(1), qualityOf(0), sellIn(0), qualityOf(0)},
 
