@@ -16,7 +16,6 @@ public class BackstagePassesQualityUpdater implements QualityUpdater {
 
         if ((item.quality < MAXIMUM_QUALITY) &&
                 (item.sellIn >= MINIMUM_SELL_IN)) {
-
             if (item.sellIn < SECOND_QUALITY_INCREASE_POINT) {
                 increaseQuality(item, BY_THREE);
             } else if (item.sellIn < FIRST_QUALITY_INCREASE_POINT) {
