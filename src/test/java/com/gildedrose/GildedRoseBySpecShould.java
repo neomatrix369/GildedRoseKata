@@ -33,7 +33,7 @@ public class GildedRoseBySpecShould {
                                 DEFAULT_ITEM.toString(), sellIn(-1), qualityOf(2), qualityOf(0)},
                         {"The Quality of an item is never negative (past sell in date)",
                                 DEFAULT_ITEM.toString(), sellIn(-1), qualityOf(1), qualityOf(0)},
-                        {"The Quality of an item is never negative (past sell in date)",
+                        {"The Quality of an item is never negative (near expiry)",
                                 DEFAULT_ITEM.toString(), sellIn(0), qualityOf(1), qualityOf(0)},
                         {"The Quality of an item is never negative (past sell in date)",
                                 DEFAULT_ITEM.toString(), sellIn(-1), qualityOf(0), qualityOf(0)},

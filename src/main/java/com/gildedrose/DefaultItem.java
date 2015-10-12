@@ -7,9 +7,9 @@ public class DefaultItem extends Product {
 
     @Override
     public void update() {
-        decreaseSellIn();
-
         decreaseQuality();
+
+        decreaseSellIn();
 
         setQualityToZeroIfBelowZero();
     }
