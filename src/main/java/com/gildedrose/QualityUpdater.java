@@ -7,5 +7,5 @@ public interface QualityUpdater {
 
     int BY_ONE = 1;
 
-    void update(Item item);
+    void update();
 }

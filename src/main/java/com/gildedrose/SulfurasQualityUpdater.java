@@ -1,6 +1,9 @@
 package com.gildedrose;
 
 public class SulfurasQualityUpdater implements QualityUpdater {
-    public void update(Item item) {
+    public SulfurasQualityUpdater(Item item) {
+    }
+
+    public void update() {
     }
 }

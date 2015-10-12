@@ -7,28 +7,28 @@ public class QualityUpdaterCommand {
 
         switch (item.name) {
             case Constants.AGED_BRIE: {
-                qualityUpdater = new AgedBrieQualityUpdater();
+                qualityUpdater = new AgedBrieQualityUpdater(item);
                 break;
             }
 
             case Constants.BACKSTAGE_PASSES: {
-                qualityUpdater = new BackstagePassesQualityUpdater();
+                qualityUpdater = new BackstagePassesQualityUpdater(item);
                 break;
             }
 
             case Constants.CONJURED: {
-                qualityUpdater = new ConjuredQualityUpdater();
+                qualityUpdater = new ConjuredQualityUpdater(item);
                 break;
             }
 
             case Constants.SULFURAS: {
-                qualityUpdater = new SulfurasQualityUpdater();
+                qualityUpdater = new SulfurasQualityUpdater(item);
                 break;
             }
 
-            default: qualityUpdater = new StandardQualityUpdater();
+            default: qualityUpdater = new StandardQualityUpdater(item);
         }
 
-        qualityUpdater.update(item);
+        qualityUpdater.update();
     }
 }
