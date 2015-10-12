@@ -14,6 +14,10 @@ public class AgedBrieQualityUpdater implements QualityUpdater {
                 increase(item);
             }
         }
+
+        if (item.quality > MAXIMUM_QUALITY) {
+            item.quality = MAXIMUM_QUALITY;
+        }
     }
 
     private void increase(Item item) {

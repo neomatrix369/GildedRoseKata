@@ -32,6 +32,12 @@ public class GildedRoseByImplShould {
                                 AGED_BRIE, sellIn(1), qualityOf(1), sellIn(0), qualityOf(2)},
                         {"The quality of Aged Brie increases by 2, if its past the Sell in date, only if quality is less than 50",
                                 AGED_BRIE, sellIn(0), qualityOf(47), sellIn(-1), qualityOf(49)},
+                        {"The quality of Aged Brie increases, but not past 50 as Sell In days decreases",
+                                AGED_BRIE, sellIn(1), qualityOf(50), sellIn(0), qualityOf(50)},
+                        {"The quality of Aged Brie increases by 1, but not past 50 even when item is expired",
+                                AGED_BRIE, sellIn(-1), qualityOf(49), sellIn(-2), qualityOf(50)},
+                        {"The quality of Aged Brie stays at 50 even when item is expired, and sell in days continue to decrease",
+                                AGED_BRIE, sellIn(-1), qualityOf(50), sellIn(-2), qualityOf(50)},
 
                         {"The quality of Backstage Passes increases by 1, if quality is less than 50 and Sell In days is 11",
                                 BACKSTAGE_PASSES, sellIn(11), qualityOf(1), sellIn(10), qualityOf(2)},
