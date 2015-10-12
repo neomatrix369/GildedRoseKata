@@ -10,8 +10,6 @@ public class StandardSellInUpdater implements SellInUpdater {
 
     @Override
     public void update() {
-        if (item.quality > MINIMUM_QUALITY) {
-            item.sellIn--;
-        }
+        item.sellIn--;
     }
 }
