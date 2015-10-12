@@ -7,21 +7,21 @@ public class DefaultItem extends Product {
 
     @Override
     public void update() {
-        decreaseQuality();
+        changeQuality();
 
         decreaseSellIn();
 
-        setQualityToZeroIfBelowZero();
+        changeQualityAgain();
     }
 
-    private void decreaseQuality() {
+    private void changeQuality() {
         int rate = isExpired()
                         ? 2 * NORMAL_QUALITY_CHANGE_RATE
                         : NORMAL_QUALITY_CHANGE_RATE;
         decreaseQualityBy(rate);
     }
 
-    private void setQualityToZeroIfBelowZero() {
+    private void changeQualityAgain() {
         if (canSetQualityToMinimumQuality(MINIMUM_QUALITY)) {
             setQualityToZero();
         }

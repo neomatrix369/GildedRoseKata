@@ -8,14 +8,14 @@ public class AgedBrie extends Product {
 
     @Override
     public void update() {
-        increaseQuality();
+        changeQuality();
 
         decreaseSellIn();
 
-        increaseQualityAgainIfExpired();
+        changeQualityAgain();
     }
 
-    private void increaseQuality() {
+    private void changeQuality() {
         int rate = isExpired()
                 ? 2 * NORMAL_QUALITY_CHANGE_RATE
                 : NORMAL_QUALITY_CHANGE_RATE;
@@ -23,7 +23,7 @@ public class AgedBrie extends Product {
         increaseQualityBy(rate);
     }
 
-    private void increaseQualityAgainIfExpired() {
+    private void changeQualityAgain() {
         if (isExpired()) {
             increaseQualityBy(NORMAL_QUALITY_CHANGE_RATE);
         }
