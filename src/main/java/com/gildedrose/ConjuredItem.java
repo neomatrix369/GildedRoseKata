@@ -9,15 +9,19 @@ public class ConjuredItem extends Product {
 
     @Override
     public void update() {
+        decreaseSellIn();
+
         if (canSetQualityToMinimumQuality(CONJURED_ITEM_QUALITY_CHANGE_RATE)) {
             setQualityToZero();
         } else {
-            if (isExpired()) {
-                decreaseQualityBy(2 * CONJURED_ITEM_QUALITY_CHANGE_RATE);
-            } else {
-                decreaseQualityBy(CONJURED_ITEM_QUALITY_CHANGE_RATE);
-            }
+            decreaseQuality();
         }
-        decreaseSellIn();
+    }
+
+    private void decreaseQuality() {
+        int rate = isExpired()
+                        ? 2 * CONJURED_ITEM_QUALITY_CHANGE_RATE
+                        : CONJURED_ITEM_QUALITY_CHANGE_RATE;
+        decreaseQualityBy(rate);
     }
 }
