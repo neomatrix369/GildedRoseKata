@@ -1,11 +1,11 @@
 package com.gildedrose;
 
 public enum ItemNameToUpdater {
-    AGED_BRIE("Aged Brie", new AgedBrieQualityUpdater()),
-    BACKSTAGE_PASSES("Backstage passes to a TAFKAL80ETC concert", new BackstagePassesQualityUpdater()),
-    SULFURAS("Sulfuras, Hand of Ragnaros", new SulfurasQualityUpdater()),
-    CONJURED_ITEM("Conjured", new ConjuredQualityUpdater()),
-    ANY_ITEM("Any item", new StandardQualityUpdater());
+    AGED_BRIE(Constants.AGED_BRIE, new AgedBrieQualityUpdater()),
+    BACKSTAGE_PASSES(Constants.BACKSTAGE_PASSES, new BackstagePassesQualityUpdater()),
+    SULFURAS(Constants.SULFURAS, new SulfurasQualityUpdater()),
+    CONJURED_ITEM(Constants.CONJURED, new ConjuredQualityUpdater()),
+    STANDARD_ITEM(Constants.STANDARD_ITEM, new StandardQualityUpdater());
 
     private final String itemName;
     private final QualityUpdater qualityUpdater;
