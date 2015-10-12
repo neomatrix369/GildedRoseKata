@@ -87,8 +87,8 @@ public class GildedRoseBySpecShould {
                                 CONJURED_ITEM.toString(), sellIn(1), qualityOf(-1), qualityOf(0)},
                         {"Quality of Conjured items reduces by 2 only, if item is near expiry but not expired",
                                 CONJURED_ITEM.toString(), sellIn(1), qualityOf(10), qualityOf(8)},
-                        {"Quality of Conjured items reduces by 4, if item is expired",
-                                CONJURED_ITEM.toString(), sellIn(0), qualityOf(10), qualityOf(6)},
+                        {"Quality of Conjured items reduces by 2, if item is near expiry but not expired",
+                                CONJURED_ITEM.toString(), sellIn(0), qualityOf(10), qualityOf(8)},
                         {"Quality of Conjured items reduces by 4, if item is expired",
                                 CONJURED_ITEM.toString(), sellIn(-1), qualityOf(10), qualityOf(6)},
                 }

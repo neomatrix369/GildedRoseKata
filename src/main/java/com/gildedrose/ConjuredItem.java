@@ -9,9 +9,9 @@ public class ConjuredItem extends Product {
 
     @Override
     public void update() {
-        decreaseSellIn();
-
         decreaseQuality();
+
+        decreaseSellIn();
 
         setQualityToZeroIfBelowZero();
     }
