@@ -13,7 +13,17 @@ abstract class Product {
         this.item = item;
     }
 
-    public abstract void update();
+    public void update() {
+        changeQuality();
+
+        decreaseSellIn();
+
+        changeQualityAgain();
+    }
+
+    protected abstract void changeQuality();
+
+    protected abstract void changeQualityAgain();
 
     void increaseQualityBy(int by) {
         if (canIncreaseQuality()) {
@@ -29,8 +39,11 @@ abstract class Product {
         return item.sellIn <= minimumSellInDays;
     }
 
-    protected boolean canSetQualityToMinimumQuality(int minimumQuality) {
-        return item.quality < minimumQuality;
+
+    protected void setQualityToZeroIfBelow(int minimumQuality) {
+        if (item.quality < minimumQuality) {
+            setQualityToZero();
+        }
     }
 
     void setQualityToZero() {
@@ -47,11 +60,11 @@ abstract class Product {
         return item.quality > MINIMUM_QUALITY;
     }
 
-    void decreaseSellIn() {
-        item.sellIn = item.sellIn - 1;
-    }
-
     boolean isExpired() {
         return item.sellIn < MINIMUM_SELL_IN_DAYS;
+    }
+
+    void decreaseSellIn() {
+        item.sellIn = item.sellIn - 1;
     }
 }

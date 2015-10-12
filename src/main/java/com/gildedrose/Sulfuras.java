@@ -7,4 +7,10 @@ public class Sulfuras extends Product {
 
     @Override
     public void update() {}
+
+    @Override
+    protected void changeQuality() {}
+
+    @Override
+    protected void changeQualityAgain() {}
 }

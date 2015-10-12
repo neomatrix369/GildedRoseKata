@@ -9,15 +9,7 @@ public class BackstagePasses extends Product {
     }
 
     @Override
-    public void update() {
-        changeQuality();
-
-        decreaseSellIn();
-
-        changeQualityAgain();
-    }
-
-    private void changeQuality() {
+    protected void changeQuality() {
         if (canIncreaseQualityIfItemExpiresIn(FIVE_DAYS)) {
             increaseQualityBy(3 * NORMAL_QUALITY_CHANGE_RATE);
         } else if (canIncreaseQualityIfItemExpiresIn(TEN_DAYS)) {
@@ -27,7 +19,8 @@ public class BackstagePasses extends Product {
         }
     }
 
-    private void changeQualityAgain() {
+    @Override
+    protected  void changeQualityAgain() {
         if (isExpired()) {
             setQualityToZero();
         }
