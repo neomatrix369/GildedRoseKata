@@ -6,16 +6,16 @@ public class SellInUpdaterCommand {
 
         switch (item.name) {
             case Constants.SULFURAS: {
-                sellInUpdater = new SulfurasSellInUpdater();
+                sellInUpdater = new SulfurasSellInUpdater(item);
                 break;
             }
             case Constants.CONJURED: {
-                sellInUpdater = new ConjuredSellInUpdater();
+                sellInUpdater = new ConjuredSellInUpdater(item);
                 break;
             }
-            default: sellInUpdater = new StandardSellInUpdater();
+            default: sellInUpdater = new StandardSellInUpdater(item);
         }
 
-        sellInUpdater.update(item);
+        sellInUpdater.update();
     }
 }
