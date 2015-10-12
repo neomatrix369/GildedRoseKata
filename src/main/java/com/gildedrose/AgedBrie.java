@@ -9,6 +9,7 @@ public class AgedBrie extends Product {
     @Override
     public void update() {
         increaseQuality();
+
         decreaseSellIn();
     }
 
