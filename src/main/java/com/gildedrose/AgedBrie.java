@@ -11,6 +11,8 @@ public class AgedBrie extends Product {
         increaseQuality();
 
         decreaseSellIn();
+
+        increaseQualityAgainIfExpired();
     }
 
     private void increaseQuality() {
@@ -19,5 +21,11 @@ public class AgedBrie extends Product {
                 : NORMAL_QUALITY_CHANGE_RATE;
 
         increaseQualityBy(rate);
+    }
+
+    private void increaseQualityAgainIfExpired() {
+        if (isExpired()) {
+            increaseQualityBy(NORMAL_QUALITY_CHANGE_RATE);
+        }
     }
 }
