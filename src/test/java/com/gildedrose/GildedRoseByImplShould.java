@@ -7,11 +7,6 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.Collection;
 
-import static com.gildedrose.ItemNameToUpdater.AGED_BRIE;
-import static com.gildedrose.ItemNameToUpdater.BACKSTAGE_PASSES;
-import static com.gildedrose.ItemNameToUpdater.CONJURED_ITEM;
-import static com.gildedrose.ItemNameToUpdater.SULFURAS;
-import static com.gildedrose.ItemNameToUpdater.STANDARD_ITEM;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -20,7 +15,7 @@ import static org.junit.Assert.assertThat;
 public class GildedRoseByImplShould {
 
     private final String useCaseDescription;
-    private final ItemNameToUpdater itemNameToUpdater;
+    private final String itemName;
     private final int actualSellIn;
     private final int actualQuality;
     private final int expectedSellIn;
@@ -31,47 +26,47 @@ public class GildedRoseByImplShould {
         return Arrays.asList(
                 new Object[][]{
                         {"The quality of Aged Brie increases as Sell In days decreases",
-                                AGED_BRIE, sellIn(2), qualityOf(1), sellIn(1), qualityOf(2)},
+                                Constants.AGED_BRIE, sellIn(2), qualityOf(1), sellIn(1), qualityOf(2)},
                         {"The quality of Aged Brie increases, if quality is less than 50 as Sell In days decreases",
-                                AGED_BRIE, sellIn(1), qualityOf(1), sellIn(0), qualityOf(2)},
+                                Constants.AGED_BRIE, sellIn(1), qualityOf(1), sellIn(0), qualityOf(2)},
                         {"The quality of Aged Brie increases by 2, if its past the Sell in date, only if quality is less than 50",
-                                AGED_BRIE, sellIn(0), qualityOf(47), sellIn(-1), qualityOf(49)},
+                                Constants.AGED_BRIE, sellIn(0), qualityOf(47), sellIn(-1), qualityOf(49)},
                         {"The quality of Aged Brie increases, but not past 50 as Sell In days decreases",
-                                AGED_BRIE, sellIn(1), qualityOf(50), sellIn(0), qualityOf(50)},
+                                Constants.AGED_BRIE, sellIn(1), qualityOf(50), sellIn(0), qualityOf(50)},
                         {"The quality of Aged Brie increases by 1, but not past 50 even when item is expired",
-                                AGED_BRIE, sellIn(-1), qualityOf(49), sellIn(-2), qualityOf(50)},
+                                Constants.AGED_BRIE, sellIn(-1), qualityOf(49), sellIn(-2), qualityOf(50)},
                         {"The quality of Aged Brie stays at 50 even when item is expired, and sell in days continue to decrease",
-                                AGED_BRIE, sellIn(-1), qualityOf(50), sellIn(-2), qualityOf(50)},
+                                Constants.AGED_BRIE, sellIn(-1), qualityOf(50), sellIn(-2), qualityOf(50)},
 
                         {"The quality of Backstage Passes increases by 1, if quality is less than 50 and Sell In days is 11",
-                                BACKSTAGE_PASSES, sellIn(11), qualityOf(1), sellIn(10), qualityOf(2)},
+                                Constants.BACKSTAGE_PASSES, sellIn(11), qualityOf(1), sellIn(10), qualityOf(2)},
                         {"The quality of Backstage Passes increases by 2, if quality is less than 50 and Sell In days is 10",
-                                BACKSTAGE_PASSES, sellIn(10), qualityOf(1), sellIn(9), qualityOf(3)},
+                                Constants.BACKSTAGE_PASSES, sellIn(10), qualityOf(1), sellIn(9), qualityOf(3)},
                         {"The quality of Backstage Passes increases by 2, if quality is less than 50 and Sell In days is 10",
-                                BACKSTAGE_PASSES, sellIn(10), qualityOf(1), sellIn(9), qualityOf(3)},
+                                Constants.BACKSTAGE_PASSES, sellIn(10), qualityOf(1), sellIn(9), qualityOf(3)},
                         {"The quality of Backstage Passes increases by 3, if quality is less than 50 and Sell In days is 5",
-                                BACKSTAGE_PASSES, sellIn(5), qualityOf(1), sellIn(4), qualityOf(4)},
+                                Constants.BACKSTAGE_PASSES, sellIn(5), qualityOf(1), sellIn(4), qualityOf(4)},
                         {"The quality of Backstage Passes is set to 0, if Sell In days is past the date and quality is 1",
-                                BACKSTAGE_PASSES, sellIn(0), qualityOf(1), sellIn(-1), qualityOf(0)},
+                                Constants.BACKSTAGE_PASSES, sellIn(0), qualityOf(1), sellIn(-1), qualityOf(0)},
 
                         {"The sell in and quality of Sulfuras does not change, quality stays at 80",
-                                SULFURAS, sellIn(1), qualityOf(80), sellIn(1), qualityOf(80)},
+                                Constants.SULFURAS, sellIn(1), qualityOf(80), sellIn(1), qualityOf(80)},
 
                         {"The quality of Standard item (other than ...) is 0, if Sell In days is past the date and quality is 2",
-                                STANDARD_ITEM, sellIn(-1), qualityOf(2), sellIn(-2), qualityOf(0)},
+                                Constants.STANDARD_ITEM, sellIn(-1), qualityOf(2), sellIn(-2), qualityOf(0)},
                         {"The quality of Standard item (other than ...) is set to 0, if Sell In days is past the date and quality is 2",
-                                STANDARD_ITEM, sellIn(0), qualityOf(2), sellIn(-1), qualityOf(0)},
+                                Constants.STANDARD_ITEM, sellIn(0), qualityOf(2), sellIn(-1), qualityOf(0)},
                         {"The quality of Standard item (other than ...) decreases by 1, if Sell In days is not past the date and quality is 2",
-                                STANDARD_ITEM, sellIn(1), qualityOf(2), sellIn(0), qualityOf(1)},
+                                Constants.STANDARD_ITEM, sellIn(1), qualityOf(2), sellIn(0), qualityOf(1)},
                         {"The quality and sell in of Standard item (other than ...) stays the same, if quality is 0",
-                                STANDARD_ITEM, sellIn(1), qualityOf(0), sellIn(1), qualityOf(0)},
+                                Constants.STANDARD_ITEM, sellIn(1), qualityOf(0), sellIn(1), qualityOf(0)},
 
                         {"The quality of Conjured item decreases to 0, when Sell In is 1 and Quality is 1",
-                                CONJURED_ITEM, sellIn(1), qualityOf(1), sellIn(0), qualityOf(0)},
+                                Constants.CONJURED, sellIn(1), qualityOf(1), sellIn(0), qualityOf(0)},
                         {"The quality of Conjured item decreases to 0 and Sell In stays at 0, when Sell In is 0 and Quality is 2",
-                                CONJURED_ITEM, sellIn(0), qualityOf(2), sellIn(0), qualityOf(0)},
+                                Constants.CONJURED, sellIn(0), qualityOf(2), sellIn(0), qualityOf(0)},
                         {"The quality of Conjured item stays at 0, when Sell In is 1 and Quality is 0",
-                                CONJURED_ITEM, sellIn(1), qualityOf(0), sellIn(0), qualityOf(0)},
+                                Constants.CONJURED, sellIn(1), qualityOf(0), sellIn(0), qualityOf(0)},
 
 
                 }
@@ -80,13 +75,13 @@ public class GildedRoseByImplShould {
 
     public GildedRoseByImplShould(
             String useCaseDescription,
-            ItemNameToUpdater itemNameToUpdater,
+            String itemName,
             int actualSellIn,
             int actualQuality,
             int expectedSellIn,
             int expectedQuality) {
         this.useCaseDescription = useCaseDescription;
-        this.itemNameToUpdater = itemNameToUpdater;
+        this.itemName = itemName;
         this.actualSellIn = actualSellIn;
         this.actualQuality = actualQuality;
         this.expectedSellIn = expectedSellIn;
@@ -107,7 +102,7 @@ public class GildedRoseByImplShould {
 
     private GildedRose prepareGildedRose() {
         ItemList itemList = new ItemList(new Item[] {
-                new Item(itemNameToUpdater.toString(), actualSellIn, actualQuality)}
+                new Item(itemName, actualSellIn, actualQuality)}
         );
         return new GildedRose(itemList, new SellInUpdaterCommand(), new QualityUpdaterCommand());
     }
