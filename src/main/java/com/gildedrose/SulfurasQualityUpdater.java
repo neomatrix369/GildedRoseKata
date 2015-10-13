@@ -10,7 +10,7 @@ public class SulfurasQualityUpdater extends QualityUpdater {
     public void update() {}
 
     @Override
-    public int rateOfChange() {
+    protected int rateOfChange() {
         return NO_CHANGE_TO_QUALITY;
     }
 }

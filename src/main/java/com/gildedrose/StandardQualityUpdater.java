@@ -12,7 +12,7 @@ public class StandardQualityUpdater extends QualityUpdater {
     }
 
     @Override
-    public int rateOfChange() {
+    protected int rateOfChange() {
         return isExpired()
                     ? 2 * NORMAL_RATE_OF_CHANGE_OF_QUALITY
                     : NORMAL_RATE_OF_CHANGE_OF_QUALITY;

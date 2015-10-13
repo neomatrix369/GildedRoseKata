@@ -16,7 +16,7 @@ public abstract class QualityUpdater {
     }
 
     public abstract void update();
-    public abstract int rateOfChange();
+    protected abstract int rateOfChange();
 
     boolean isExpired() {
         return expiresIn(MINIMUM_SELL_IN);

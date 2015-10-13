@@ -19,7 +19,7 @@ public class BackstagePassesQualityUpdater extends QualityUpdater {
     }
 
     @Override
-    public int rateOfChange() {
+    protected int rateOfChange() {
         if (expiresIn(FIVE_DAYS)) return 3 * NORMAL_RATE_OF_CHANGE_OF_QUALITY;
 
         if (expiresIn(TEN_DAYS)) return 2 * NORMAL_RATE_OF_CHANGE_OF_QUALITY;
