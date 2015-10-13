@@ -56,8 +56,7 @@ public class AgedBrieQualityUpdaterShould {
     change_quality_item_with_respective_sellin_date_and_starting_quality() {
         Item item = new Item(itemName, initialSellIn, initialQuality);
 
-        AgedBrieQualityUpdater agedBrieQualityUpdater = new AgedBrieQualityUpdater(item);
-        agedBrieQualityUpdater.update();
+        new AgedBrieQualityUpdater(item).update();
 
         assertThat(useCaseDescription, item.quality, is(equalTo(expectedQuality)));
     }
