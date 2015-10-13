@@ -8,6 +8,8 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import static com.gildedrose.Constants.AGED_BRIE;
+import static com.gildedrose.TestHelper.qualityOf;
+import static com.gildedrose.TestHelper.sellInOf;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -25,15 +27,15 @@ public class AgedBrieQualityUpdaterShould {
         return Arrays.asList(
                 new Object[][] {
                         {"The quality of Aged Brie increases as Sell In days decreases",
-                                AGED_BRIE, sellIn(2), qualityOf(1), qualityOf(2)},
+                                AGED_BRIE, sellInOf(2), qualityOf(1), qualityOf(2)},
                         {"The quality of Aged Brie increases, if quality is less than 50 as Sell In days decreases",
-                                AGED_BRIE, sellIn(1), qualityOf(1), qualityOf(2)},
+                                AGED_BRIE, sellInOf(1), qualityOf(1), qualityOf(2)},
                         {"The quality of Aged Brie increases, but not past 50 as Sell In days decreases",
-                                AGED_BRIE, sellIn(1), qualityOf(50), qualityOf(50)},
+                                AGED_BRIE, sellInOf(1), qualityOf(50), qualityOf(50)},
                         {"The quality of Aged Brie increases by 1, but not past 50 even when item is expired",
-                                AGED_BRIE, sellIn(-1), qualityOf(49), qualityOf(50)},
+                                AGED_BRIE, sellInOf(-1), qualityOf(49), qualityOf(50)},
                         {"The quality of Aged Brie stays at 50 even when item is expired, and sell in days continue to decrease",
-                                AGED_BRIE, sellIn(-1), qualityOf(50), qualityOf(50)},
+                                AGED_BRIE, sellInOf(-1), qualityOf(50), qualityOf(50)},
                 }
         );
     }
@@ -59,13 +61,5 @@ public class AgedBrieQualityUpdaterShould {
         new AgedBrieQualityUpdater(item).update();
 
         assertThat(useCaseDescription, item.quality, is(equalTo(expectedQuality)));
-    }
-
-    private static int sellIn(int value) {
-        return value;
-    }
-
-    private static int qualityOf(int value) {
-        return value;
     }
 }
