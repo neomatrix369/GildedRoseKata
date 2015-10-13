@@ -2,11 +2,8 @@ package com.gildedrose;
 
 public class BackstagePassesQualityUpdater implements QualityUpdater {
 
-    private static final int FIRST_QUALITY_INCREASE_POINT = 10;
-    private static final int SECOND_QUALITY_INCREASE_POINT = 5;
-
-    private static final int BY_THREE = 3;
-    private static final int BY_TWO = 2;
+    private static final int TEN_DAYS = 10;
+    private static final int FIVE_DAYS = 5;
 
     private final Item item;
 
@@ -16,23 +13,36 @@ public class BackstagePassesQualityUpdater implements QualityUpdater {
 
     @Override
     public void update() {
-        if (item.sellIn < MINIMUM_SELL_IN) {
-            item.quality = MINIMUM_QUALITY;
-        }
-
-        if ((item.quality < MAXIMUM_QUALITY) &&
-                (item.sellIn >= MINIMUM_SELL_IN)) {
-            if (item.sellIn < SECOND_QUALITY_INCREASE_POINT) {
-                increaseQuality(item, BY_THREE);
-            } else if (item.sellIn < FIRST_QUALITY_INCREASE_POINT) {
-                increaseQuality(item, BY_TWO);
+        if (isExpired()) {
+            setQualityToMinimum();
+        } else if (canIncreaseQuality()) {
+            if (expiresIn(FIVE_DAYS)) {
+                increaseQualityBy(3);
+            } else if (expiresIn(TEN_DAYS)) {
+                increaseQualityBy(2);
             } else {
-                increaseQuality(item, BY_ONE);
+                increaseQualityBy(1);
             }
         }
     }
 
-    private void increaseQuality(Item item, int by) {
+    private boolean isExpired() {
+        return expiresIn(MINIMUM_SELL_IN);
+    }
+
+    private void setQualityToMinimum() {
+        item.quality = MINIMUM_QUALITY;
+    }
+
+    private boolean canIncreaseQuality() {
+        return item.quality < MAXIMUM_QUALITY;
+    }
+
+    private boolean expiresIn(int daysToExpiration) {
+        return item.sellIn < daysToExpiration;
+    }
+
+    private void increaseQualityBy(int by) {
         item.quality += by;
     }
 }
