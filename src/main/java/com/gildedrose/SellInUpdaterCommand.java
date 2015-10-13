@@ -9,10 +9,8 @@ public class SellInUpdaterCommand {
                 sellInUpdater = new SulfurasSellInUpdater(item);
                 break;
             }
-            case Constants.CONJURED: {
-                sellInUpdater = new ConjuredSellInUpdater(item);
-                break;
-            }
+
+            case Constants.CONJURED:
             default: sellInUpdater = new StandardSellInUpdater(item);
         }
 
