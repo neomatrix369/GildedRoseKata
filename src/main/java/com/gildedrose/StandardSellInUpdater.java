@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-public class StandardSellInUpdater implements SellInUpdater {
+public class StandardSellInUpdater extends SellInUpdater {
 
     private final Item item;
 

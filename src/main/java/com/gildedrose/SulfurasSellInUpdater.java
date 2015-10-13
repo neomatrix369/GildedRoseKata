@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-public class SulfurasSellInUpdater implements SellInUpdater {
+public class SulfurasSellInUpdater extends SellInUpdater {
 
     public SulfurasSellInUpdater(Item item) {}
 
