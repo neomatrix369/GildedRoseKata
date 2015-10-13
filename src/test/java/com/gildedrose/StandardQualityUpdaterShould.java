@@ -56,8 +56,7 @@ public class StandardQualityUpdaterShould {
     change_quality_item_with_respective_sellin_date_and_starting_quality() {
         Item item = new Item(itemName, initialSellIn, initialQuality);
 
-        StandardQualityUpdater standardQualityUpdater = new StandardQualityUpdater(item);
-        standardQualityUpdater.update();
+        new StandardQualityUpdater(item).update();
 
         assertThat(useCaseDescription, item.quality, is(equalTo(expectedQuality)));
     }
