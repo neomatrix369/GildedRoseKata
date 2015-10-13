@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-public class ConjuredQualityUpdater implements QualityUpdater {
+public class ConjuredQualityUpdater extends QualityUpdater {
 
     private final Item item;
 

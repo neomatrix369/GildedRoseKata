@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-public class BackstagePassesQualityUpdater implements QualityUpdater {
+public class BackstagePassesQualityUpdater extends QualityUpdater {
 
     private static final int TEN_DAYS = 10;
     private static final int FIVE_DAYS = 5;

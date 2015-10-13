@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-public class AgedBrieQualityUpdater implements QualityUpdater {
+public class AgedBrieQualityUpdater extends QualityUpdater {
 
     private final Item item;
 
