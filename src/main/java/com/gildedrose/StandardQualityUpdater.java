@@ -2,20 +2,22 @@ package com.gildedrose;
 
 public class StandardQualityUpdater extends QualityUpdater {
 
-    private final Item item;
-
     public StandardQualityUpdater(Item item) {
-        this.item = item;
+        super(item);
     }
 
     @Override
     public void update() {
-        if (item.quality > MINIMUM_QUALITY) {
-            item.quality--;
+        if (canDecreaseQuality()) {
+            decreaseQualityBy(1);
 
-            if (item.sellIn < MINIMUM_SELL_IN) {
-                item.quality = MINIMUM_QUALITY;
+            if (isExpired()) {
+                setQualityToMinimum();
             }
         }
+    }
+
+    private boolean canDecreaseQuality() {
+        return item.quality > MINIMUM_QUALITY;
     }
 }
