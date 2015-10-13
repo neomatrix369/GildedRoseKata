@@ -15,8 +15,8 @@ public class AgedBrieQualityUpdater extends QualityUpdater {
 
     private void changeQuality() {
         int rate = isExpired()
-                        ? 2
-                        : 1;
+                        ? 2 * NORMAL_RATE_OF_CHANGE_OF_QUALITY
+                        : NORMAL_RATE_OF_CHANGE_OF_QUALITY;
         increaseQualityBy(rate);
     }
 

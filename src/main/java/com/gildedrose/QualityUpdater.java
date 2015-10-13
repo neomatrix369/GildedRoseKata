@@ -3,9 +3,11 @@ package com.gildedrose;
 public abstract class QualityUpdater {
     protected final Item item;
 
-    protected int MINIMUM_QUALITY = 0;
-    protected int MAXIMUM_QUALITY = 50;
-    protected int MINIMUM_SELL_IN = 0;
+    protected static final int MINIMUM_QUALITY = 0;
+    protected static final int MAXIMUM_QUALITY = 50;
+    protected static final int MINIMUM_SELL_IN = 0;
+
+    protected static final int NORMAL_RATE_OF_CHANGE_OF_QUALITY = 1;
 
     public QualityUpdater(Item item) {
         this.item = item;

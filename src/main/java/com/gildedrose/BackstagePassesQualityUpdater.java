@@ -19,11 +19,11 @@ public class BackstagePassesQualityUpdater extends QualityUpdater {
     private void changeQuality() {
         if (canIncreaseQuality()) {
             if (expiresIn(FIVE_DAYS)) {
-                increaseQualityBy(3);
+                increaseQualityBy(3 * NORMAL_RATE_OF_CHANGE_OF_QUALITY);
             } else if (expiresIn(TEN_DAYS)) {
-                increaseQualityBy(2);
+                increaseQualityBy(2 * NORMAL_RATE_OF_CHANGE_OF_QUALITY);
             } else {
-                increaseQualityBy(1);
+                increaseQualityBy(NORMAL_RATE_OF_CHANGE_OF_QUALITY);
             }
         }
     }

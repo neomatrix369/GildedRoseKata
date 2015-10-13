@@ -14,7 +14,7 @@ public class ConjuredQualityUpdater extends QualityUpdater {
     }
 
     private void changeQuality() {
-        decreaseQualityBy(2);
+        decreaseQualityBy(2 * NORMAL_RATE_OF_CHANGE_OF_QUALITY);
     }
 
     private void changeQualityAgain() {

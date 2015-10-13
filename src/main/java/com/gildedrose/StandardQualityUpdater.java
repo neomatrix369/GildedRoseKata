@@ -14,7 +14,7 @@ public class StandardQualityUpdater extends QualityUpdater {
     }
 
     private void changeQuality() {
-        decreaseQualityBy(1);
+        decreaseQualityBy(NORMAL_RATE_OF_CHANGE_OF_QUALITY);
     }
 
     private void changeQualityAgain() {
