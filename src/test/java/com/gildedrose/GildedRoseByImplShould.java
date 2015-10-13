@@ -1,5 +1,6 @@
 package com.gildedrose;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -10,8 +11,8 @@ import java.util.Collection;
 import static com.gildedrose.Constants.AGED_BRIE;
 import static com.gildedrose.Constants.BACKSTAGE_PASSES;
 import static com.gildedrose.Constants.CONJURED;
-import static com.gildedrose.Constants.STANDARD_ITEM;
 import static com.gildedrose.Constants.SULFURAS;
+import static com.gildedrose.Constants.STANDARD_ITEM;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -96,7 +97,7 @@ public class GildedRoseByImplShould {
         this.expectedQuality = expectedQuality;
     }
 
-    @Test
+    @Test @Ignore
     public void
     change_quality_item_with_respective_sellin_date_and_starting_quality() {
         GildedRose app = prepareGildedRose();
