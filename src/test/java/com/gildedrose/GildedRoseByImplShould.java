@@ -38,8 +38,8 @@ public class GildedRoseByImplShould {
                         {"The quality of Aged Brie stays at 50 even when item is expired, and sell in days continue to decrease",
                                 Constants.AGED_BRIE, sellIn(-1), qualityOf(50), sellIn(-2), qualityOf(50)},
 
-                        {"The quality of Backstage Passes increases by 1, if quality is less than 50 and Sell In days is 11",
-                                Constants.BACKSTAGE_PASSES, sellIn(11), qualityOf(1), sellIn(10), qualityOf(2)},
+                        {"The quality of Backstage Passes increases by 1, if quality is less than 50 and Sell In days is 12",
+                                Constants.BACKSTAGE_PASSES, sellIn(12), qualityOf(1), sellIn(11), qualityOf(2)},
                         {"The quality of Backstage Passes increases by 2, if quality is less than 50 and Sell In days is 10",
                                 Constants.BACKSTAGE_PASSES, sellIn(10), qualityOf(1), sellIn(9), qualityOf(3)},
                         {"The quality of Backstage Passes increases by 2, if quality is less than 50 and Sell In days is 10",

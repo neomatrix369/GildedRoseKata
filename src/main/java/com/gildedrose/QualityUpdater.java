@@ -19,7 +19,7 @@ public abstract class QualityUpdater {
     protected abstract int rateOfChange();
 
     boolean isExpired() {
-        return expiresIn(MINIMUM_SELL_IN);
+        return item.sellIn < MINIMUM_SELL_IN;
     }
 
     void increaseQualityBy(int rate) {
@@ -59,7 +59,7 @@ public abstract class QualityUpdater {
     }
 
     protected boolean expiresIn(int daysToExpiration) {
-        return item.sellIn < daysToExpiration;
+        return item.sellIn <= daysToExpiration;
     }
 
     protected boolean canSetQualityToMaximum() {
