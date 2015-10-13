@@ -16,8 +16,8 @@ public class GildedRoseByImplShould {
 
     private final String useCaseDescription;
     private final String itemName;
-    private final int actualSellIn;
-    private final int actualQuality;
+    private final int initialSellIn;
+    private final int initialQuality;
     private final int expectedSellIn;
     private final int expectedQuality;
 
@@ -79,14 +79,14 @@ public class GildedRoseByImplShould {
     public GildedRoseByImplShould(
             String useCaseDescription,
             String itemName,
-            int actualSellIn,
-            int actualQuality,
+            int initialSellIn,
+            int initialQuality,
             int expectedSellIn,
             int expectedQuality) {
         this.useCaseDescription = useCaseDescription;
         this.itemName = itemName;
-        this.actualSellIn = actualSellIn;
-        this.actualQuality = actualQuality;
+        this.initialSellIn = initialSellIn;
+        this.initialQuality = initialQuality;
         this.expectedSellIn = expectedSellIn;
         this.expectedQuality = expectedQuality;
     }
@@ -105,7 +105,7 @@ public class GildedRoseByImplShould {
 
     private GildedRose prepareGildedRose() {
         ItemList itemList = new ItemList(new Item[] {
-                new Item(itemName, actualSellIn, actualQuality)}
+                new Item(itemName, initialSellIn, initialQuality)}
         );
         return new GildedRose(itemList, new SellInUpdaterCommand(), new QualityUpdaterCommand());
     }
