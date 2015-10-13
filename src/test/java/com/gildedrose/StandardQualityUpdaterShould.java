@@ -7,6 +7,7 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.Collection;
 
+import static com.gildedrose.Constants.STANDARD_ITEM;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -24,15 +25,15 @@ public class StandardQualityUpdaterShould {
         return Arrays.asList(
                 new Object[][]{
                         {"The quality of Standard item decreases by 1, if Sell In days is not past the date and quality is 2",
-                                Constants.STANDARD_ITEM, sellIn(1), qualityOf(2), qualityOf(1)},
+                                STANDARD_ITEM, sellIn(1), qualityOf(2), qualityOf(1)},
                         {"The quality Standard item stays the same, if quality is 0 to start with",
-                                Constants.STANDARD_ITEM, sellIn(1), qualityOf(0), qualityOf(0)},
+                                STANDARD_ITEM, sellIn(1), qualityOf(0), qualityOf(0)},
                         {"The quality of Standard item decreases by 1, if Sell In days is near expiry and quality is 2",
-                                Constants.STANDARD_ITEM, sellIn(0), qualityOf(2), qualityOf(1)},
+                                STANDARD_ITEM, sellIn(0), qualityOf(2), qualityOf(1)},
                         {"The quality of Standard item decreases by 2 (twice as fast as normal), if Sell In days is past the date and quality is 2",
-                                Constants.STANDARD_ITEM, sellIn(-1), qualityOf(2), qualityOf(0)},
+                                STANDARD_ITEM, sellIn(-1), qualityOf(2), qualityOf(0)},
                         {"The quality of Standard item decreases by 2 (twice as fast as normal), if Sell In days is past the date and quality is 4",
-                                Constants.STANDARD_ITEM, sellIn(-1), qualityOf(4), qualityOf(2)},
+                                STANDARD_ITEM, sellIn(-1), qualityOf(4), qualityOf(2)},
                 }
         );
     }

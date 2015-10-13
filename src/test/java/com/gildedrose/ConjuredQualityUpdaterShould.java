@@ -7,6 +7,7 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.Collection;
 
+import static com.gildedrose.Constants.CONJURED;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -24,13 +25,13 @@ public class ConjuredQualityUpdaterShould {
         return Arrays.asList(
                 new Object[][] {
                         {"The quality of Conjured item decreases to 0, when Sell In is 1 and Quality is 1",
-                                Constants.CONJURED, sellIn(1), qualityOf(1), qualityOf(0)},
+                                CONJURED, sellIn(1), qualityOf(1), qualityOf(0)},
                         {"The quality of Conjured item decreases to 0, when Sell In is near expiry and Quality is 2",
-                                Constants.CONJURED, sellIn(0), qualityOf(2), qualityOf(0)},
+                                CONJURED, sellIn(0), qualityOf(2), qualityOf(0)},
                         {"The quality of Conjured item stays at 0, when Sell In is 1 and Quality is 0",
-                                Constants.CONJURED, sellIn(1), qualityOf(0), qualityOf(0)},
+                                CONJURED, sellIn(1), qualityOf(0), qualityOf(0)},
                         {"The quality of Conjured item decreases by 4 (twice as fast as normal), when Sell In is -1 and Quality is 6",
-                                Constants.CONJURED, sellIn(-1), qualityOf(6), qualityOf(2)},
+                                CONJURED, sellIn(-1), qualityOf(6), qualityOf(2)},
                 }
         );
     }

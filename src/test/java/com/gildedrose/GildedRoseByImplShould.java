@@ -7,6 +7,11 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.Collection;
 
+import static com.gildedrose.Constants.AGED_BRIE;
+import static com.gildedrose.Constants.BACKSTAGE_PASSES;
+import static com.gildedrose.Constants.CONJURED;
+import static com.gildedrose.Constants.STANDARD_ITEM;
+import static com.gildedrose.Constants.SULFURAS;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -26,51 +31,51 @@ public class GildedRoseByImplShould {
         return Arrays.asList(
                 new Object[][]{
                         {"The quality of Aged Brie increases as Sell In days decreases",
-                                Constants.AGED_BRIE, sellIn(2), qualityOf(1), sellIn(1), qualityOf(2)},
+                                AGED_BRIE, sellIn(2), qualityOf(1), sellIn(1), qualityOf(2)},
                         {"The quality of Aged Brie increases, if quality is less than 50 as Sell In days decreases",
-                                Constants.AGED_BRIE, sellIn(1), qualityOf(1), sellIn(0), qualityOf(2)},
+                                AGED_BRIE, sellIn(1), qualityOf(1), sellIn(0), qualityOf(2)},
                         {"The quality of Aged Brie increases by 2, if its past the Sell in date, only if quality is less than 50",
-                                Constants.AGED_BRIE, sellIn(0), qualityOf(47), sellIn(-1), qualityOf(49)},
+                                AGED_BRIE, sellIn(0), qualityOf(47), sellIn(-1), qualityOf(49)},
                         {"The quality of Aged Brie increases, but not past 50 as Sell In days decreases",
-                                Constants.AGED_BRIE, sellIn(1), qualityOf(50), sellIn(0), qualityOf(50)},
+                                AGED_BRIE, sellIn(1), qualityOf(50), sellIn(0), qualityOf(50)},
                         {"The quality of Aged Brie increases by 1, but not past 50 even when item is expired",
-                                Constants.AGED_BRIE, sellIn(-1), qualityOf(49), sellIn(-2), qualityOf(50)},
+                                AGED_BRIE, sellIn(-1), qualityOf(49), sellIn(-2), qualityOf(50)},
                         {"The quality of Aged Brie stays at 50 even when item is expired, and sell in days continue to decrease",
-                                Constants.AGED_BRIE, sellIn(-1), qualityOf(50), sellIn(-2), qualityOf(50)},
+                                AGED_BRIE, sellIn(-1), qualityOf(50), sellIn(-2), qualityOf(50)},
 
                         {"The quality of Backstage Passes increases by 1, if quality is less than 50 and Sell In days is 12",
-                                Constants.BACKSTAGE_PASSES, sellIn(12), qualityOf(1), sellIn(11), qualityOf(2)},
+                                BACKSTAGE_PASSES, sellIn(12), qualityOf(1), sellIn(11), qualityOf(2)},
                         {"The quality of Backstage Passes increases by 2, if quality is less than 50 and Sell In days is 10",
-                                Constants.BACKSTAGE_PASSES, sellIn(10), qualityOf(1), sellIn(9), qualityOf(3)},
+                                BACKSTAGE_PASSES, sellIn(10), qualityOf(1), sellIn(9), qualityOf(3)},
                         {"The quality of Backstage Passes increases by 2, if quality is less than 50 and Sell In days is 10",
-                                Constants.BACKSTAGE_PASSES, sellIn(10), qualityOf(1), sellIn(9), qualityOf(3)},
+                                BACKSTAGE_PASSES, sellIn(10), qualityOf(1), sellIn(9), qualityOf(3)},
                         {"The quality of Backstage Passes increases by 3, if quality is less than 50 and Sell In days is 5",
-                                Constants.BACKSTAGE_PASSES, sellIn(5), qualityOf(1), sellIn(4), qualityOf(4)},
+                                BACKSTAGE_PASSES, sellIn(5), qualityOf(1), sellIn(4), qualityOf(4)},
                         {"The quality of Backstage Passes is set to 0, if Sell In days is past the date and quality is 1",
-                                Constants.BACKSTAGE_PASSES, sellIn(0), qualityOf(1), sellIn(-1), qualityOf(0)},
+                                BACKSTAGE_PASSES, sellIn(0), qualityOf(1), sellIn(-1), qualityOf(0)},
 
                         {"The sell in and quality of Sulfuras does not change, quality stays at 80",
-                                Constants.SULFURAS, sellIn(1), qualityOf(80), sellIn(1), qualityOf(80)},
+                                SULFURAS, sellIn(1), qualityOf(80), sellIn(1), qualityOf(80)},
 
                         {"The quality of Standard item decreases by 1, if Sell In days is not past the date and quality is 2",
-                                Constants.STANDARD_ITEM, sellIn(1), qualityOf(2), sellIn(0), qualityOf(1)},
+                                STANDARD_ITEM, sellIn(1), qualityOf(2), sellIn(0), qualityOf(1)},
                         {"The quality Standard item stays the same, if quality is 0 to start with",
-                                Constants.STANDARD_ITEM, sellIn(1), qualityOf(0), sellIn(0), qualityOf(0)},
+                                STANDARD_ITEM, sellIn(1), qualityOf(0), sellIn(0), qualityOf(0)},
                         {"The quality of Standard item decreases by 2 (twice as fast as normal), if Sell In days is near expiry and quality is 2",
-                                Constants.STANDARD_ITEM, sellIn(0), qualityOf(2), sellIn(-1), qualityOf(0)},
+                                STANDARD_ITEM, sellIn(0), qualityOf(2), sellIn(-1), qualityOf(0)},
                         {"The quality of Standard item decreases by 2 (twice as fast as normal), if Sell In days is past the date and quality is 2",
-                                Constants.STANDARD_ITEM, sellIn(-1), qualityOf(2), sellIn(-2), qualityOf(0)},
+                                STANDARD_ITEM, sellIn(-1), qualityOf(2), sellIn(-2), qualityOf(0)},
                         {"The quality of Standard item decreases by 2 (twice as fast as normal), if Sell In days is past the date and quality is 4",
-                                Constants.STANDARD_ITEM, sellIn(-1), qualityOf(4), sellIn(-2), qualityOf(2)},
+                                STANDARD_ITEM, sellIn(-1), qualityOf(4), sellIn(-2), qualityOf(2)},
 
                         {"The quality of Conjured item decreases to 0, when Sell In is 1 and Quality is 1",
-                                Constants.CONJURED, sellIn(1), qualityOf(1), sellIn(0), qualityOf(0)},
+                                CONJURED, sellIn(1), qualityOf(1), sellIn(0), qualityOf(0)},
                         {"The quality of Conjured item decreases to 0 and Sell In becomes -1, when Sell In is near expiry and Quality is 2",
-                                Constants.CONJURED, sellIn(0), qualityOf(2), sellIn(-1), qualityOf(0)},
+                                CONJURED, sellIn(0), qualityOf(2), sellIn(-1), qualityOf(0)},
                         {"The quality of Conjured item stays at 0, when Sell In is 1 and Quality is 0",
-                                Constants.CONJURED, sellIn(1), qualityOf(0), sellIn(0), qualityOf(0)},
+                                CONJURED, sellIn(1), qualityOf(0), sellIn(0), qualityOf(0)},
                         {"The quality of Conjured item decreases by 4 (twice as fast as normal), when Sell In is -1 and Quality is 6",
-                                Constants.CONJURED, sellIn(-1), qualityOf(6), sellIn(-2), qualityOf(2)},
+                                CONJURED, sellIn(-1), qualityOf(6), sellIn(-2), qualityOf(2)},
 
                 }
         );

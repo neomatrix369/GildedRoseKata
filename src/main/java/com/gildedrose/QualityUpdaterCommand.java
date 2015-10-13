@@ -1,27 +1,32 @@
 package com.gildedrose;
 
+import static com.gildedrose.Constants.AGED_BRIE;
+import static com.gildedrose.Constants.BACKSTAGE_PASSES;
+import static com.gildedrose.Constants.CONJURED;
+import static com.gildedrose.Constants.SULFURAS;
+
 public class QualityUpdaterCommand {
 
     public void update(Item item) {
         QualityUpdater qualityUpdater;
 
         switch (item.name) {
-            case Constants.AGED_BRIE: {
+            case AGED_BRIE: {
                 qualityUpdater = new AgedBrieQualityUpdater(item);
                 break;
             }
 
-            case Constants.BACKSTAGE_PASSES: {
+            case BACKSTAGE_PASSES: {
                 qualityUpdater = new BackstagePassesQualityUpdater(item);
                 break;
             }
 
-            case Constants.CONJURED: {
+            case CONJURED: {
                 qualityUpdater = new ConjuredQualityUpdater(item);
                 break;
             }
 
-            case Constants.SULFURAS: {
+            case SULFURAS: {
                 qualityUpdater = new SulfurasQualityUpdater(item);
                 break;
             }

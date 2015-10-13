@@ -1,16 +1,19 @@
 package com.gildedrose;
 
+import static com.gildedrose.Constants.SULFURAS;
+import static com.gildedrose.Constants.CONJURED;
+
 public class SellInUpdaterCommand {
     public void update(Item item) {
         SellInUpdater sellInUpdater;
 
         switch (item.name) {
-            case Constants.SULFURAS: {
+            case SULFURAS: {
                 sellInUpdater = new SulfurasSellInUpdater(item);
                 break;
             }
 
-            case Constants.CONJURED:
+            case CONJURED:
             default: sellInUpdater = new StandardSellInUpdater(item);
         }
 

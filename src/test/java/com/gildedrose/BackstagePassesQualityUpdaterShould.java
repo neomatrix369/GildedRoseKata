@@ -7,6 +7,7 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.Collection;
 
+import static com.gildedrose.Constants.BACKSTAGE_PASSES;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -24,15 +25,15 @@ public class BackstagePassesQualityUpdaterShould {
         return Arrays.asList(
                 new Object[][]{
                         {"The quality of Backstage Passes increases by 1, if quality is less than 50 and Sell In days is 11",
-                                Constants.BACKSTAGE_PASSES, sellIn(11), qualityOf(1), qualityOf(2)},
+                                BACKSTAGE_PASSES, sellIn(11), qualityOf(1), qualityOf(2)},
                         {"The quality of Backstage Passes increases by 2, if quality is less than 50 and Sell In days is 10",
-                                Constants.BACKSTAGE_PASSES, sellIn(10), qualityOf(1), qualityOf(3)},
+                                BACKSTAGE_PASSES, sellIn(10), qualityOf(1), qualityOf(3)},
                         {"The quality of Backstage Passes increases by 3, if quality is less than 50 and Sell In days is 5",
-                                Constants.BACKSTAGE_PASSES, sellIn(5), qualityOf(1), qualityOf(4)},
+                                BACKSTAGE_PASSES, sellIn(5), qualityOf(1), qualityOf(4)},
                         {"The quality of Backstage Passes is set to 4, if Sell In days is near the expiry date and quality is 1",
-                                Constants.BACKSTAGE_PASSES, sellIn(0), qualityOf(1), qualityOf(4)},
+                                BACKSTAGE_PASSES, sellIn(0), qualityOf(1), qualityOf(4)},
                         {"The quality of Backstage Passes is set to 0, if item is past sell in date (expired) and quality is 1",
-                                Constants.BACKSTAGE_PASSES, sellIn(-1), qualityOf(1), qualityOf(0)},
+                                BACKSTAGE_PASSES, sellIn(-1), qualityOf(1), qualityOf(0)},
                 }
         );
     }
