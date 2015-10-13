@@ -7,17 +7,12 @@ public class ConjuredQualityUpdater extends QualityUpdater {
     }
 
     @Override
-    public void update() {
-        changeQuality();
-
-        changeQualityAgain();
-    }
-
-    private void changeQuality() {
+    protected void changeQuality() {
         decreaseQualityBy(2 * NORMAL_RATE_OF_CHANGE_OF_QUALITY);
     }
 
-    private void changeQualityAgain() {
+    @Override
+    protected void changeQualityAgain() {
         if (canSetQualityToMinimum()) {
             setQualityToMinimum();
         }

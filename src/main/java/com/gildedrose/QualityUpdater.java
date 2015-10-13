@@ -13,7 +13,15 @@ public abstract class QualityUpdater {
         this.item = item;
     }
 
-    abstract void update();
+    public void update() {
+        changeQuality();
+
+        changeQualityAgain();
+    }
+
+    protected abstract void changeQuality();
+
+    protected abstract void changeQualityAgain();
 
     boolean isExpired() {
         return expiresIn(MINIMUM_SELL_IN);
