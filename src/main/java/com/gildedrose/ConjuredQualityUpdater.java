@@ -10,6 +10,10 @@ public class ConjuredQualityUpdater extends QualityUpdater {
     public void update() {
         decreaseQualityBy(2);
 
+        changeQualityAgain();
+    }
+
+    private void changeQualityAgain() {
         if (canSetQualityToMinimum()) {
             setQualityToMinimum();
         }
