@@ -56,20 +56,21 @@ public class GildedRoseByImplShould {
                                 Constants.STANDARD_ITEM, sellIn(1), qualityOf(2), sellIn(0), qualityOf(1)},
                         {"The quality Standard item stays the same, if quality is 0 to start with",
                                 Constants.STANDARD_ITEM, sellIn(1), qualityOf(0), sellIn(0), qualityOf(0)},
-                        {"The quality of Standard item decreases by 2, if Sell In days is near expiry and quality is 2",
+                        {"The quality of Standard item decreases by 2 (twice as fast as normal), if Sell In days is near expiry and quality is 2",
                                 Constants.STANDARD_ITEM, sellIn(0), qualityOf(2), sellIn(-1), qualityOf(0)},
-                        {"The quality of Standard item decreases by 2, if Sell In days is past the date and quality is 2",
+                        {"The quality of Standard item decreases by 2 (twice as fast as normal), if Sell In days is past the date and quality is 2",
                                 Constants.STANDARD_ITEM, sellIn(-1), qualityOf(2), sellIn(-2), qualityOf(0)},
-                        {"The quality of Standard item decreases by 2, if Sell In days is past the date and quality is 4",
+                        {"The quality of Standard item decreases by 2 (twice as fast as normal), if Sell In days is past the date and quality is 4",
                                 Constants.STANDARD_ITEM, sellIn(-1), qualityOf(4), sellIn(-2), qualityOf(2)},
 
                         {"The quality of Conjured item decreases to 0, when Sell In is 1 and Quality is 1",
                                 Constants.CONJURED, sellIn(1), qualityOf(1), sellIn(0), qualityOf(0)},
-                        {"The quality of Conjured item decreases to 0 and Sell In becomes -1, when Sell In is 0 and Quality is 2",
+                        {"The quality of Conjured item decreases to 0 and Sell In becomes -1, when Sell In is near expiry and Quality is 2",
                                 Constants.CONJURED, sellIn(0), qualityOf(2), sellIn(-1), qualityOf(0)},
                         {"The quality of Conjured item stays at 0, when Sell In is 1 and Quality is 0",
                                 Constants.CONJURED, sellIn(1), qualityOf(0), sellIn(0), qualityOf(0)},
-
+                        {"The quality of Conjured item decreases by 4 (twice as fast as normal), when Sell In is -1 and Quality is 6",
+                                Constants.CONJURED, sellIn(-1), qualityOf(6), sellIn(-2), qualityOf(2)},
 
                 }
         );
