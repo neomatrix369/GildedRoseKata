@@ -22,9 +22,9 @@ public abstract class QualityUpdater {
         return expiresIn(MINIMUM_SELL_IN);
     }
 
-    void increaseQualityBy(int by) {
+    void increaseQualityBy(int rate) {
         if (canIncreaseQuality()) {
-            item.quality += by;
+            item.quality += rate;
         }
 
         if (canSetQualityToMaximum()) {
@@ -32,9 +32,9 @@ public abstract class QualityUpdater {
         }
     }
 
-    void decreaseQualityBy(int by) {
+    void decreaseQualityBy(int rate) {
         if (canDecreaseQuality()) {
-            item.quality -= by;
+            item.quality -= rate;
         }
 
         if (canSetQualityToMinimum()) {
