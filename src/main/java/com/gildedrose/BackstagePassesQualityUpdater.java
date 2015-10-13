@@ -13,22 +13,17 @@ public class BackstagePassesQualityUpdater extends QualityUpdater {
     public void update() {
         if (isExpired()) {
             setQualityToMinimum();
-        } else if (canIncreaseQuality()) {
-            increaseQuality();
+        } else {
+            increaseQualityBy(rateOfChange());
         }
     }
 
-    private void increaseQuality() {
-        int rate;
+    @Override
+    public int rateOfChange() {
+        if (expiresIn(FIVE_DAYS)) return 3 * NORMAL_RATE_OF_CHANGE_OF_QUALITY;
 
-        if (expiresIn(FIVE_DAYS)) {
-            rate = 3 * NORMAL_RATE_OF_CHANGE_OF_QUALITY;
-        } else if (expiresIn(TEN_DAYS)) {
-            rate = 2 * NORMAL_RATE_OF_CHANGE_OF_QUALITY;
-        } else {
-            rate = NORMAL_RATE_OF_CHANGE_OF_QUALITY;
-        }
+        if (expiresIn(TEN_DAYS)) return 2 * NORMAL_RATE_OF_CHANGE_OF_QUALITY;
 
-        increaseQualityBy(rate);
+        return 1 * NORMAL_RATE_OF_CHANGE_OF_QUALITY;
     }
 }

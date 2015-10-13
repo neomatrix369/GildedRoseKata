@@ -10,11 +10,13 @@ public class ConjuredQualityUpdater extends QualityUpdater {
 
     @Override
     public void update() {
-        int rate = isExpired()
-                        ? 2 * CONJURED_RATE_OF_CHANGE_OF_QUALITY
-                        : CONJURED_RATE_OF_CHANGE_OF_QUALITY;
-
-        decreaseQualityBy(rate);
+        decreaseQualityBy(rateOfChange());
     }
 
+    @Override
+    public int rateOfChange() {
+        return isExpired()
+                    ? 2 * CONJURED_RATE_OF_CHANGE_OF_QUALITY
+                    : CONJURED_RATE_OF_CHANGE_OF_QUALITY;
+    }
 }

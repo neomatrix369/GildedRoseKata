@@ -4,9 +4,11 @@ public abstract class QualityUpdater {
     protected final Item item;
 
     protected static final int MINIMUM_QUALITY = 0;
+
     protected static final int MAXIMUM_QUALITY = 50;
     protected static final int MINIMUM_SELL_IN = 0;
 
+    protected static final int NO_CHANGE_TO_QUALITY = 0;
     protected static final int NORMAL_RATE_OF_CHANGE_OF_QUALITY = 1;
 
     public QualityUpdater(Item item) {
@@ -14,6 +16,7 @@ public abstract class QualityUpdater {
     }
 
     public abstract void update();
+    public abstract int rateOfChange();
 
     boolean isExpired() {
         return expiresIn(MINIMUM_SELL_IN);
@@ -24,7 +27,7 @@ public abstract class QualityUpdater {
             item.quality += by;
         }
 
-        if (qualityIsMoreThanMaximum()) {
+        if (canSetQualityToMaximum()) {
             setQualityToMaximum();
         }
     }
@@ -59,7 +62,7 @@ public abstract class QualityUpdater {
         return item.sellIn < daysToExpiration;
     }
 
-    protected boolean qualityIsMoreThanMaximum() {
+    protected boolean canSetQualityToMaximum() {
         return item.quality > MAXIMUM_QUALITY;
     }
 
