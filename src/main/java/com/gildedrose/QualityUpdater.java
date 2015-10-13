@@ -62,4 +62,8 @@ public abstract class QualityUpdater {
     protected boolean qualityIsMoreThanMaximum() {
         return item.quality > MAXIMUM_QUALITY;
     }
+
+    protected void setQualityToMaximum() {
+        item.quality = MAXIMUM_QUALITY;
+    }
 }

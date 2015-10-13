@@ -17,7 +17,7 @@ public class AgedBrieQualityUpdater extends QualityUpdater {
     @Override
     protected void changeQualityAgain() {
         if (qualityIsMoreThanMaximum()) {
-            item.quality = MAXIMUM_QUALITY;
+            setQualityToMaximum();
         }
     }
 }
