@@ -10,20 +10,24 @@ public class AgedBrieQualityUpdater implements QualityUpdater {
 
     @Override
     public void update() {
-        if (item.quality < MAXIMUM_QUALITY) {
+        increase(item);
+
+        if (isExpired()) {
             increase(item);
-
-            if (item.sellIn < MINIMUM_SELL_IN) {
-                increase(item);
-            }
-        }
-
-        if (item.quality > MAXIMUM_QUALITY) {
-            item.quality = MAXIMUM_QUALITY;
         }
     }
 
+    private boolean canIncreaseQuality() {
+        return item.quality < MAXIMUM_QUALITY;
+    }
+
+    private boolean isExpired() {
+        return item.sellIn < MINIMUM_SELL_IN;
+    }
+
     private void increase(Item item) {
-        item.quality++;
+        if (canIncreaseQuality()) {
+            item.quality++;
+        }
     }
 }
