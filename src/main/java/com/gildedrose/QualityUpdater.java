@@ -5,7 +5,5 @@ public interface QualityUpdater {
     int MAXIMUM_QUALITY = 50;
     int MINIMUM_SELL_IN = 0;
 
-    int ONE = 1;
-
     void update();
 }

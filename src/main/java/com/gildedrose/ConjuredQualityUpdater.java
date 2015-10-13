@@ -2,8 +2,6 @@ package com.gildedrose;
 
 public class ConjuredQualityUpdater implements QualityUpdater {
 
-    private static final int TWO = 2;
-
     private final Item item;
 
     public ConjuredQualityUpdater(Item item) {
@@ -12,7 +10,7 @@ public class ConjuredQualityUpdater implements QualityUpdater {
 
     @Override
     public void update() {
-        decreaseQualityBy(TWO);
+        decreaseQualityBy(2);
 
         if (canSetQualityToMinimum()) {
             setQualityToMinimum();
