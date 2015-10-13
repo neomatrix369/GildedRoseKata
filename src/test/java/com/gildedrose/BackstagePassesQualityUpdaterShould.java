@@ -29,9 +29,10 @@ public class BackstagePassesQualityUpdaterShould {
                                 Constants.BACKSTAGE_PASSES, sellIn(10), qualityOf(1), qualityOf(3)},
                         {"The quality of Backstage Passes increases by 3, if quality is less than 50 and Sell In days is 5",
                                 Constants.BACKSTAGE_PASSES, sellIn(5), qualityOf(1), qualityOf(4)},
-                        {"The quality of Backstage Passes is set to 0, if Sell In days is past the date and quality is 1",
-                                Constants.BACKSTAGE_PASSES, sellIn(0), qualityOf(1), qualityOf(0)},
-
+                        {"The quality of Backstage Passes is set to 4, if Sell In days is near the expiry date and quality is 1",
+                                Constants.BACKSTAGE_PASSES, sellIn(0), qualityOf(1), qualityOf(4)},
+                        {"The quality of Backstage Passes is set to 0, if item is past sell in date (expired) and quality is 1",
+                                Constants.BACKSTAGE_PASSES, sellIn(-1), qualityOf(1), qualityOf(0)},
                 }
         );
     }
