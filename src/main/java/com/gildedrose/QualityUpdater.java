@@ -2,6 +2,7 @@ package com.gildedrose;
 
 public abstract class QualityUpdater {
     protected final Item item;
+
     protected int MINIMUM_QUALITY = 0;
     protected int MAXIMUM_QUALITY = 50;
     protected int MINIMUM_SELL_IN = 0;
@@ -10,31 +11,41 @@ public abstract class QualityUpdater {
         this.item = item;
     }
 
-    void update() {}
+    abstract void update();
 
-    private boolean canIncreaseQuality() {
-        return item.quality < MAXIMUM_QUALITY;
+    boolean isExpired() {
+        return expiresIn(MINIMUM_SELL_IN);
     }
 
-    protected boolean isExpired() {
-        return item.sellIn < MINIMUM_SELL_IN;
-    }
-
-    protected void increaseQualityBy(int by) {
+    void increaseQualityBy(int by) {
         if (canIncreaseQuality()) {
             item.quality += by;
         }
     }
 
-    protected void decreaseQualityBy(int by) {
-        item.quality -= by;
+    void decreaseQualityBy(int by) {
+        if (canDecreaseQuality()) {
+            item.quality -= by;
+        }
     }
 
-    protected boolean canSetQualityToMinimum() {
+    private boolean canDecreaseQuality() {
+        return item.quality > MINIMUM_QUALITY;
+    }
+
+    boolean canSetQualityToMinimum() {
         return item.quality < MINIMUM_QUALITY;
     }
 
-    protected void setQualityToMinimum() {
+    void setQualityToMinimum() {
         item.quality = MINIMUM_QUALITY;
+    }
+
+    protected boolean canIncreaseQuality() {
+        return item.quality < MAXIMUM_QUALITY;
+    }
+
+    protected boolean expiresIn(int daysToExpiration) {
+        return item.sellIn < daysToExpiration;
     }
 }

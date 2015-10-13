@@ -24,11 +24,4 @@ public class BackstagePassesQualityUpdater extends QualityUpdater {
         }
     }
 
-    private boolean canIncreaseQuality() {
-        return item.quality < MAXIMUM_QUALITY;
-    }
-
-    private boolean expiresIn(int daysToExpiration) {
-        return item.sellIn < daysToExpiration;
-    }
 }

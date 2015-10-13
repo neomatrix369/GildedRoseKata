@@ -8,16 +8,10 @@ public class StandardQualityUpdater extends QualityUpdater {
 
     @Override
     public void update() {
-        if (canDecreaseQuality()) {
-            decreaseQualityBy(1);
+        decreaseQualityBy(1);
 
-            if (isExpired()) {
-                setQualityToMinimum();
-            }
+        if (isExpired()) {
+            setQualityToMinimum();
         }
-    }
-
-    private boolean canDecreaseQuality() {
-        return item.quality > MINIMUM_QUALITY;
     }
 }
