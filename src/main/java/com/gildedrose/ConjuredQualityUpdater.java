@@ -9,7 +9,7 @@ public class ConjuredQualityUpdater extends QualityUpdater {
     }
 
     @Override
-    protected void changeQuality() {
+    public void update() {
         int rate = isExpired()
                         ? 2 * CONJURED_RATE_OF_CHANGE_OF_QUALITY
                         : CONJURED_RATE_OF_CHANGE_OF_QUALITY;
@@ -17,10 +17,4 @@ public class ConjuredQualityUpdater extends QualityUpdater {
         decreaseQualityBy(rate);
     }
 
-    @Override
-    protected void changeQualityAgain() {
-        if (canSetQualityToMinimum()) {
-            setQualityToMinimum();
-        }
-    }
 }

@@ -7,13 +7,11 @@ public class StandardQualityUpdater extends QualityUpdater {
     }
 
     @Override
-    protected void changeQuality() {
+    public void update() {
         int rate = isExpired()
                         ? 2 * NORMAL_RATE_OF_CHANGE_OF_QUALITY
                         : NORMAL_RATE_OF_CHANGE_OF_QUALITY;
         decreaseQualityBy(rate);
     }
 
-    @Override
-    protected void changeQualityAgain() {}
 }

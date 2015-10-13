@@ -10,22 +10,25 @@ public class BackstagePassesQualityUpdater extends QualityUpdater {
     }
 
     @Override
-    protected void changeQuality() {
-        if (canIncreaseQuality()) {
-            if (expiresIn(FIVE_DAYS)) {
-                increaseQualityBy(3 * NORMAL_RATE_OF_CHANGE_OF_QUALITY);
-            } else if (expiresIn(TEN_DAYS)) {
-                increaseQualityBy(2 * NORMAL_RATE_OF_CHANGE_OF_QUALITY);
-            } else {
-                increaseQualityBy(NORMAL_RATE_OF_CHANGE_OF_QUALITY);
-            }
+    public void update() {
+        if (isExpired()) {
+            setQualityToMinimum();
+        } else if (canIncreaseQuality()) {
+            increaseQuality();
         }
     }
 
-    @Override
-    protected void changeQualityAgain() {
-        if (isExpired()) {
-            setQualityToMinimum();
+    private void increaseQuality() {
+        int rate;
+
+        if (expiresIn(FIVE_DAYS)) {
+            rate = 3 * NORMAL_RATE_OF_CHANGE_OF_QUALITY;
+        } else if (expiresIn(TEN_DAYS)) {
+            rate = 2 * NORMAL_RATE_OF_CHANGE_OF_QUALITY;
+        } else {
+            rate = NORMAL_RATE_OF_CHANGE_OF_QUALITY;
         }
+
+        increaseQualityBy(rate);
     }
 }

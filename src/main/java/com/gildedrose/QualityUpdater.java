@@ -13,15 +13,7 @@ public abstract class QualityUpdater {
         this.item = item;
     }
 
-    public void update() {
-        changeQuality();
-
-        changeQualityAgain();
-    }
-
-    protected abstract void changeQuality();
-
-    protected abstract void changeQualityAgain();
+    public abstract void update();
 
     boolean isExpired() {
         return expiresIn(MINIMUM_SELL_IN);
@@ -31,11 +23,19 @@ public abstract class QualityUpdater {
         if (canIncreaseQuality()) {
             item.quality += by;
         }
+
+        if (qualityIsMoreThanMaximum()) {
+            setQualityToMaximum();
+        }
     }
 
     void decreaseQualityBy(int by) {
         if (canDecreaseQuality()) {
             item.quality -= by;
+        }
+
+        if (canSetQualityToMinimum()) {
+            setQualityToMinimum();
         }
     }
 

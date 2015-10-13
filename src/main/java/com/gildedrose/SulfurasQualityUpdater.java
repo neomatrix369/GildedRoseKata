@@ -7,8 +7,5 @@ public class SulfurasQualityUpdater extends QualityUpdater {
     }
 
     @Override
-    protected void changeQuality() {}
-
-    @Override
-    protected void changeQualityAgain() {}
+    public void update() {}
 }
