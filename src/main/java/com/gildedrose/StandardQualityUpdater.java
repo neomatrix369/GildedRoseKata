@@ -14,7 +14,7 @@ public class StandardQualityUpdater extends QualityUpdater {
     @Override
     protected void changeQualityAgain() {
         if (isExpired()) {
-            setQualityToMinimum();
+            decreaseQualityBy(NORMAL_RATE_OF_CHANGE_OF_QUALITY);
         }
     }
 }
