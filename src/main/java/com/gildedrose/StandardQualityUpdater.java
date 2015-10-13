@@ -8,8 +8,16 @@ public class StandardQualityUpdater extends QualityUpdater {
 
     @Override
     public void update() {
-        decreaseQualityBy(1);
+        changeQuality();
 
+        changeQualityAgain();
+    }
+
+    private void changeQuality() {
+        decreaseQualityBy(1);
+    }
+
+    private void changeQualityAgain() {
         if (isExpired()) {
             setQualityToMinimum();
         }

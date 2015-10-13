@@ -8,9 +8,13 @@ public class ConjuredQualityUpdater extends QualityUpdater {
 
     @Override
     public void update() {
-        decreaseQualityBy(2);
+        changeQuality();
 
         changeQualityAgain();
+    }
+
+    private void changeQuality() {
+        decreaseQualityBy(2);
     }
 
     private void changeQualityAgain() {

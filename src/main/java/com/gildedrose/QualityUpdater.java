@@ -48,4 +48,8 @@ public abstract class QualityUpdater {
     protected boolean expiresIn(int daysToExpiration) {
         return item.sellIn < daysToExpiration;
     }
+
+    protected boolean qualityIsMoreThanMaximum() {
+        return item.quality > MAXIMUM_QUALITY;
+    }
 }

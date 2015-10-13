@@ -11,9 +11,13 @@ public class BackstagePassesQualityUpdater extends QualityUpdater {
 
     @Override
     public void update() {
-        if (isExpired()) {
-            setQualityToMinimum();
-        } else if (canIncreaseQuality()) {
+        changeQuality();
+
+        changeQualityAgain();
+    }
+
+    private void changeQuality() {
+        if (canIncreaseQuality()) {
             if (expiresIn(FIVE_DAYS)) {
                 increaseQualityBy(3);
             } else if (expiresIn(TEN_DAYS)) {
@@ -24,4 +28,9 @@ public class BackstagePassesQualityUpdater extends QualityUpdater {
         }
     }
 
+    private void changeQualityAgain() {
+        if (isExpired()) {
+            setQualityToMinimum();
+        }
+    }
 }

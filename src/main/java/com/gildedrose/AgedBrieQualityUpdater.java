@@ -8,23 +8,19 @@ public class AgedBrieQualityUpdater extends QualityUpdater {
 
     @Override
     public void update() {
-        increaseQuality();
+        changeQuality();
 
-        setQualityToMaximum();
+        changeQualityAgain();
     }
 
-    private void increaseQuality() {
+    private void changeQuality() {
         int rate = isExpired()
                         ? 2
                         : 1;
         increaseQualityBy(rate);
     }
 
-    private boolean qualityIsMoreThanMaximum() {
-        return item.quality > MAXIMUM_QUALITY;
-    }
-
-    private void setQualityToMaximum() {
+    private void changeQualityAgain() {
         if (qualityIsMoreThanMaximum()) {
             item.quality = MAXIMUM_QUALITY;
         }
