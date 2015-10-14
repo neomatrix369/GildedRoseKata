@@ -13,7 +13,7 @@ public class GildedRoseTest {
     private static final int MAX_ITEMS = 2000;
     private static final long SOME_FIXED_SEED = 100;
     private static final int MINIMUM_VALUE = -51;
-    private static final int MAXIMUM_VALUE = 100;
+    private static final int MAXIMUM_VALUE = 101;
 
     private Random random = new Random(SOME_FIXED_SEED);
 
@@ -62,7 +62,7 @@ public class GildedRoseTest {
     }
 
     private String randomItemName() {
-        return itemNames[0 + random.nextInt(itemNames.length - 1)];
+        return itemNames[0 + random.nextInt(itemNames.length)];
     }
 
     private int getRandomBetween(int minimumIndex, int maximumIndex) {
