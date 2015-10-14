@@ -16,18 +16,18 @@ class GildedRose {
             if (AGED_BRIE.equals(item.name)
                     || BACKSTAGE_PASSES.equals(item.name)) {
                 if (item.quality < 50) {
-                    item.quality = item.quality + 1;
+                    increaseQualityOf(item);
 
                     if (BACKSTAGE_PASSES.equals(item.name)) {
                         if (item.sellIn < 11) {
                             if (item.quality < 50) {
-                                item.quality = item.quality + 1;
+                                increaseQualityOf(item);
                             }
                         }
 
                         if (item.sellIn < 6) {
                             if (item.quality < 50) {
-                                item.quality = item.quality + 1;
+                                increaseQualityOf(item);
                             }
                         }
                     }
@@ -37,7 +37,7 @@ class GildedRose {
                     if (SULFURAS.equals(item.name)) {
 
                     } else {
-                        item.quality = item.quality - 1;
+                        decreaseQualityOf(item);
                     }
                 }
             }
@@ -45,27 +45,43 @@ class GildedRose {
             if (SULFURAS.equals(item.name)) {
 
             } else {
-                item.sellIn = item.sellIn - 1;
+                decreaseSellInOf(item);
             }
 
             if (item.sellIn < 0) {
                 if (AGED_BRIE.equals(item.name)) {
                     if (item.quality < 50) {
-                        item.quality = item.quality + 1;
+                        increaseQualityOf(item);
                     }
                 } else {
                     if (BACKSTAGE_PASSES.equals(item.name)) {
-                        item.quality = item.quality - item.quality;
+                        setQualityToZero(item);
                     } else {
                         if (item.quality > 0) {
                             if (SULFURAS.equals(item.name)) {
                                 continue;
                             }
-                            item.quality = item.quality - 1;
+                            decreaseQualityOf(item);
                         }
                     }
                 }
             }
         }
+    }
+
+    private void decreaseSellInOf(Item item) {
+        item.sellIn = item.sellIn - 1;
+    }
+
+    private void setQualityToZero(Item item) {
+        item.quality = 0;
+    }
+
+    private void decreaseQualityOf(Item item) {
+        item.quality = item.quality - 1;
+    }
+
+    private void increaseQualityOf(Item item) {
+        item.quality = item.quality + 1;
     }
 }
