@@ -22,6 +22,10 @@ class GildedRose {
         for (Item item : items) {
             if (AGED_BRIE.equals(item.name)) {
                 increaseQualityOf(item);
+                decreaseSellInOf(item);
+                if (isExpired(item)) {
+                    increaseQualityOf(item);
+                }
             } else if (BACKSTAGE_PASSES.equals(item.name)) {
                 increaseQualityOf(item);
 
@@ -33,34 +37,45 @@ class GildedRose {
                     if (item.sellIn < SIX_DAYS) {
                         increaseQualityOf(item);
                     }
-                }
-            } else if (SULFURAS.equals(item.name)) {
 
-            } else {
-                decreaseQualityOf(item);
-            }
-
-            if (AGED_BRIE.equals(item.name)) {
-                decreaseSellInOf(item);
-                if (isExpired(item)) {
-                    increaseQualityOf(item);
-                }
-            } else {
-                if (BACKSTAGE_PASSES.equals(item.name)) {
                     decreaseSellInOf(item);
                     if (isExpired(item)) {
                         setQualityToMinimum(item);
                     }
+                }
+            } else if (SULFURAS.equals(item.name)) {
+                if (isExpired(item)) {
+                    continue;
+                }
+            } else {
+                decreaseQualityOf(item);
+                decreaseSellInOf(item);
+                if (isExpired(item)) {
+                    decreaseQualityOf(item);
+                }
+            }
+
+            if (AGED_BRIE.equals(item.name)) {
+//                decreaseSellInOf(item);
+//                if (isExpired(item)) {
+//                    increaseQualityOf(item);
+//                }
+            } else {
+                if (BACKSTAGE_PASSES.equals(item.name)) {
+//                    decreaseSellInOf(item);
+//                    if (isExpired(item)) {
+//                        setQualityToMinimum(item);
+//                    }
                 } else {
                     if (SULFURAS.equals(item.name)) {
-                        if (isExpired(item)) {
-                            continue;
-                        }
+//                        if (isExpired(item)) {
+//                            continue;
+//                        }
                     } else {
-                        decreaseSellInOf(item);
-                        if (isExpired(item)) {
-                            decreaseQualityOf(item);
-                        }
+//                        decreaseSellInOf(item);
+//                        if (isExpired(item)) {
+//                            decreaseQualityOf(item);
+//                        }
                     }
                 }
             }
