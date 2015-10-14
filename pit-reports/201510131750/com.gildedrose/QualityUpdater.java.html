@@ -1,0 +1,1282 @@
+<html>
+<head>
+<style type='text/css'>
+html, body, div, span, p, blockquote, pre {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+body{
+	line-height: 1;
+	color: black;
+	background: white;
+	margin-left: 20px;
+}
+
+.src { 
+	border: 1px solid #dddddd;
+	padding-top: 10px;
+	padding-right: 5px;
+	padding-left: 5px;
+	font-family: Consolas, Courier, monospace;
+}
+
+
+.covered {background-color: #ddffdd}
+.uncovered {background-color: #ffdddd}
+.killed {background-color: #aaffaa}
+.survived {background-color: #ffaaaa}
+.uncertain {background-color: #dde7ef}
+.run_error {background-color: #dde7ef}
+.na {background-color: #eeeeee}
+.timed_out {background-color: #dde7ef}
+.non_viable {background-color: #aaffaa}
+.memory_error {background-color: #dde7ef}
+.not_started {background-color: #dde7ef; color : red}
+.no_coverage {background-color: #ffaaaa}
+
+
+.pop {outline:none; }
+.pop strong {line-height:30px;}
+.pop {text-decoration:none;}
+.pop span { z-index:10;display:none; padding:14px 20px; margin-top:-30px; margin-left:28px; width:800px; line-height:16px; word-wrap:break-word; }
+.pop:hover span{ display:inline; position:absolute; color:#111; border:1px solid #DCA; background:#fffAF0;}
+
+.pop span { border-radius:4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; -moz-box-shadow: 5px 5px 8px #CCC; -webkit-box-shadow: 5px 5px 8px #CCC; box-shadow: 5px 5px 8px #CCC; }
+</style>
+
+</head>
+<body>
+
+
+<h1>QualityUpdater.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_1'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package com.gildedrose;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_2'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_3'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>public abstract class QualityUpdater {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_4'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    protected final Item item;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_5'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_6'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    protected static final int MINIMUM_QUALITY = 0;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_7'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_8'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    protected static final int MAXIMUM_QUALITY = 50;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_9'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    protected static final int MINIMUM_SELL_IN = 0;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_10'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_11'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    protected static final int NO_CHANGE_TO_QUALITY = 0;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_12'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    protected static final int NORMAL_RATE_OF_CHANGE_OF_QUALITY = 1;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_13'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_14'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    public QualityUpdater(Item item) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_15'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.item = item;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_16'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_17'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_18'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public abstract void update();</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_19'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    protected abstract int rateOfChange();</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_20'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_21'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    boolean isExpired() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_22'/>
+22
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_22'>3</a>
+<span>
+1. isExpired : changed conditional boundary &rarr; KILLED<br/>
+2. isExpired : negated conditional &rarr; KILLED<br/>
+3. isExpired : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return item.sellIn &#60; MINIMUM_SELL_IN;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_23'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_24'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_25'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    void increaseQualityBy(int rate) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_26'/>
+26
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_26'>1</a>
+<span>
+1. increaseQualityBy : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (canIncreaseQuality()) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_27'/>
+27
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_27'>1</a>
+<span>
+1. increaseQualityBy : Replaced integer addition with subtraction &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            item.quality += rate;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_28'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_29'/>
+29
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_29'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_30'/>
+30
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_30'>1</a>
+<span>
+1. increaseQualityBy : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (canSetQualityToMaximum()) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_31'/>
+31
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_31'>1</a>
+<span>
+1. increaseQualityBy : removed call to com/gildedrose/QualityUpdater::setQualityToMaximum &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            setQualityToMaximum();</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_32'/>
+32
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_32'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_33'/>
+33
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_33'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_34'/>
+34
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_34'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_35'/>
+35
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_35'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    void decreaseQualityBy(int rate) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_36'/>
+36
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_36'>1</a>
+<span>
+1. decreaseQualityBy : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (canDecreaseQuality()) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_37'/>
+37
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_37'>1</a>
+<span>
+1. decreaseQualityBy : Replaced integer subtraction with addition &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            item.quality -= rate;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_38'/>
+38
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_38'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_39'/>
+39
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_39'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_40'/>
+40
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_40'>1</a>
+<span>
+1. decreaseQualityBy : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (canSetQualityToMinimum()) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_41'/>
+41
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_41'>1</a>
+<span>
+1. decreaseQualityBy : removed call to com/gildedrose/QualityUpdater::setQualityToMinimum &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            setQualityToMinimum();</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_42'/>
+42
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_42'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_43'/>
+43
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_43'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_44'/>
+44
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_44'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_45'/>
+45
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_45'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private boolean canDecreaseQuality() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_46'/>
+46
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_46'>3</a>
+<span>
+1. canDecreaseQuality : changed conditional boundary &rarr; SURVIVED<br/>
+2. canDecreaseQuality : negated conditional &rarr; KILLED<br/>
+3. canDecreaseQuality : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        return item.quality &#62; MINIMUM_QUALITY;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_47'/>
+47
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_47'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_48'/>
+48
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_48'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_49'/>
+49
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_49'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    boolean canSetQualityToMinimum() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_50'/>
+50
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_50'>3</a>
+<span>
+1. canSetQualityToMinimum : changed conditional boundary &rarr; SURVIVED<br/>
+2. canSetQualityToMinimum : negated conditional &rarr; KILLED<br/>
+3. canSetQualityToMinimum : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        return item.quality &#60; MINIMUM_QUALITY;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_51'/>
+51
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_51'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_52'/>
+52
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_52'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_53'/>
+53
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_53'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    void setQualityToMinimum() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_54'/>
+54
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_54'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        item.quality = MINIMUM_QUALITY;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_55'/>
+55
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_55'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_56'/>
+56
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_56'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_57'/>
+57
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_57'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    protected boolean canIncreaseQuality() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_58'/>
+58
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_58'>3</a>
+<span>
+1. canIncreaseQuality : changed conditional boundary &rarr; SURVIVED<br/>
+2. canIncreaseQuality : negated conditional &rarr; KILLED<br/>
+3. canIncreaseQuality : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        return item.quality &#60; MAXIMUM_QUALITY;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_59'/>
+59
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_59'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_60'/>
+60
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_60'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_61'/>
+61
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_61'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    protected boolean expiresIn(int daysToExpiration) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_62'/>
+62
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_62'>3</a>
+<span>
+1. expiresIn : changed conditional boundary &rarr; KILLED<br/>
+2. expiresIn : negated conditional &rarr; KILLED<br/>
+3. expiresIn : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return item.sellIn &#60;= daysToExpiration;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_63'/>
+63
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_63'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_64'/>
+64
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_64'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_65'/>
+65
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_65'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    protected boolean canSetQualityToMaximum() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_66'/>
+66
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_66'>3</a>
+<span>
+1. canSetQualityToMaximum : changed conditional boundary &rarr; SURVIVED<br/>
+2. canSetQualityToMaximum : negated conditional &rarr; KILLED<br/>
+3. canSetQualityToMaximum : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        return item.quality &#62; MAXIMUM_QUALITY;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_67'/>
+67
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_67'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_68'/>
+68
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_68'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_69'/>
+69
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_69'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    protected void setQualityToMaximum() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_70'/>
+70
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_70'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        item.quality = MAXIMUM_QUALITY;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_71'/>
+71
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_71'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_72'/>
+72
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_72'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_22'>22</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_22'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isExpired<br/><b>Killed by : </b>com.gildedrose.BackstagePassesQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Backstage Passes is set to 4, if Sell In days is near the expiry date and quality is 1: Quality of item Backstage passes to a TAFKAL80ETC concert with a sell in days of 0, with quality of 1, changes to quality of {5}, as sell in day changes to 4](com.gildedrose.BackstagePassesQualityUpdaterShould)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>isExpired<br/><b>Killed by : </b>com.gildedrose.StandardQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Standard item decreases by 1, if Sell In days is not past the date and quality is 2: Quality of item Any item with a sell in days of 1, with quality of 2, changes to quality of {5}, as sell in day changes to 1](com.gildedrose.StandardQualityUpdaterShould)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>isExpired<br/><b>Killed by : </b>com.gildedrose.StandardQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Standard item decreases by 1, if Sell In days is not past the date and quality is 2: Quality of item Any item with a sell in days of 1, with quality of 2, changes to quality of {5}, as sell in day changes to 1](com.gildedrose.StandardQualityUpdaterShould)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_26'>26</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_26'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>increaseQualityBy<br/><b>Killed by : </b>com.gildedrose.AgedBrieQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Aged Brie increases, if quality is less than 50 as Sell In days decreases: Quality of item Aged Brie with a sell in days of 1, with quality of 1, changes to quality of {5}, as sell in day changes to 2](com.gildedrose.AgedBrieQualityUpdaterShould)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_27'>27</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_27'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>increaseQualityBy<br/><b>Killed by : </b>com.gildedrose.AgedBrieQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Aged Brie increases, if quality is less than 50 as Sell In days decreases: Quality of item Aged Brie with a sell in days of 1, with quality of 1, changes to quality of {5}, as sell in day changes to 2](com.gildedrose.AgedBrieQualityUpdaterShould)</span></span> Replaced integer addition with subtraction &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_30'>30</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_30'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>increaseQualityBy<br/><b>Killed by : </b>com.gildedrose.AgedBrieQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Aged Brie increases, if quality is less than 50 as Sell In days decreases: Quality of item Aged Brie with a sell in days of 1, with quality of 1, changes to quality of {5}, as sell in day changes to 2](com.gildedrose.AgedBrieQualityUpdaterShould)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_31'>31</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_31'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>increaseQualityBy<br/><b>Killed by : </b>com.gildedrose.AgedBrieQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Aged Brie increases by 1, but not past 50 even when item is expired: Quality of item Aged Brie with a sell in days of -1, with quality of 49, changes to quality of {5}, as sell in day changes to 50](com.gildedrose.AgedBrieQualityUpdaterShould)</span></span> removed call to com/gildedrose/QualityUpdater::setQualityToMaximum &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_36'>36</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_36'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>decreaseQualityBy<br/><b>Killed by : </b>com.gildedrose.StandardQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Standard item decreases by 1, if Sell In days is not past the date and quality is 2: Quality of item Any item with a sell in days of 1, with quality of 2, changes to quality of {5}, as sell in day changes to 1](com.gildedrose.StandardQualityUpdaterShould)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_37'>37</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_37'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>decreaseQualityBy<br/><b>Killed by : </b>com.gildedrose.StandardQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Standard item decreases by 1, if Sell In days is not past the date and quality is 2: Quality of item Any item with a sell in days of 1, with quality of 2, changes to quality of {5}, as sell in day changes to 1](com.gildedrose.StandardQualityUpdaterShould)</span></span> Replaced integer subtraction with addition &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_40'>40</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_40'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>decreaseQualityBy<br/><b>Killed by : </b>com.gildedrose.StandardQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Standard item decreases by 1, if Sell In days is not past the date and quality is 2: Quality of item Any item with a sell in days of 1, with quality of 2, changes to quality of {5}, as sell in day changes to 1](com.gildedrose.StandardQualityUpdaterShould)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_41'>41</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_41'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>decreaseQualityBy<br/><b>Killed by : </b>com.gildedrose.ConjuredQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Conjured item decreases to 0, when Sell In is 1 and Quality is 1: Quality of item Conjured with a sell in days of 1, with quality of 1, changes to quality of {5}, as sell in day changes to 0](com.gildedrose.ConjuredQualityUpdaterShould)</span></span> removed call to com/gildedrose/QualityUpdater::setQualityToMinimum &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_46'>46</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_46'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>canDecreaseQuality<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; SURVIVED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>canDecreaseQuality<br/><b>Killed by : </b>com.gildedrose.StandardQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Standard item decreases by 1, if Sell In days is not past the date and quality is 2: Quality of item Any item with a sell in days of 1, with quality of 2, changes to quality of {5}, as sell in day changes to 1](com.gildedrose.StandardQualityUpdaterShould)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>canDecreaseQuality<br/><b>Killed by : </b>com.gildedrose.StandardQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Standard item decreases by 1, if Sell In days is not past the date and quality is 2: Quality of item Any item with a sell in days of 1, with quality of 2, changes to quality of {5}, as sell in day changes to 1](com.gildedrose.StandardQualityUpdaterShould)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_50'>50</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_50'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>canSetQualityToMinimum<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; SURVIVED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>canSetQualityToMinimum<br/><b>Killed by : </b>com.gildedrose.StandardQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Standard item decreases by 1, if Sell In days is not past the date and quality is 2: Quality of item Any item with a sell in days of 1, with quality of 2, changes to quality of {5}, as sell in day changes to 1](com.gildedrose.StandardQualityUpdaterShould)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>canSetQualityToMinimum<br/><b>Killed by : </b>com.gildedrose.StandardQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Standard item decreases by 1, if Sell In days is not past the date and quality is 2: Quality of item Any item with a sell in days of 1, with quality of 2, changes to quality of {5}, as sell in day changes to 1](com.gildedrose.StandardQualityUpdaterShould)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_58'>58</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_58'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>canIncreaseQuality<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; SURVIVED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>canIncreaseQuality<br/><b>Killed by : </b>com.gildedrose.AgedBrieQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Aged Brie increases, if quality is less than 50 as Sell In days decreases: Quality of item Aged Brie with a sell in days of 1, with quality of 1, changes to quality of {5}, as sell in day changes to 2](com.gildedrose.AgedBrieQualityUpdaterShould)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>canIncreaseQuality<br/><b>Killed by : </b>com.gildedrose.AgedBrieQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Aged Brie increases, if quality is less than 50 as Sell In days decreases: Quality of item Aged Brie with a sell in days of 1, with quality of 1, changes to quality of {5}, as sell in day changes to 2](com.gildedrose.AgedBrieQualityUpdaterShould)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_62'>62</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_62'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>expiresIn<br/><b>Killed by : </b>com.gildedrose.BackstagePassesQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Backstage Passes increases by 3, if quality is less than 50 and Sell In days is 5: Quality of item Backstage passes to a TAFKAL80ETC concert with a sell in days of 5, with quality of 1, changes to quality of {5}, as sell in day changes to 4](com.gildedrose.BackstagePassesQualityUpdaterShould)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>expiresIn<br/><b>Killed by : </b>com.gildedrose.BackstagePassesQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Backstage Passes increases by 3, if quality is less than 50 and Sell In days is 5: Quality of item Backstage passes to a TAFKAL80ETC concert with a sell in days of 5, with quality of 1, changes to quality of {5}, as sell in day changes to 4](com.gildedrose.BackstagePassesQualityUpdaterShould)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>expiresIn<br/><b>Killed by : </b>com.gildedrose.BackstagePassesQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Backstage Passes increases by 3, if quality is less than 50 and Sell In days is 5: Quality of item Backstage passes to a TAFKAL80ETC concert with a sell in days of 5, with quality of 1, changes to quality of {5}, as sell in day changes to 4](com.gildedrose.BackstagePassesQualityUpdaterShould)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ada9c0c_66'>66</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ada9c0c_66'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>canSetQualityToMaximum<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; SURVIVED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>canSetQualityToMaximum<br/><b>Killed by : </b>com.gildedrose.AgedBrieQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Aged Brie increases, if quality is less than 50 as Sell In days decreases: Quality of item Aged Brie with a sell in days of 1, with quality of 1, changes to quality of {5}, as sell in day changes to 2](com.gildedrose.AgedBrieQualityUpdaterShould)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>canSetQualityToMaximum<br/><b>Killed by : </b>com.gildedrose.AgedBrieQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Aged Brie increases, if quality is less than 50 as Sell In days decreases: Quality of item Aged Brie with a sell in days of 1, with quality of 1, changes to quality of {5}, as sell in day changes to 2](com.gildedrose.AgedBrieQualityUpdaterShould)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>INCREMENTS_MUTATOR</li>
+<li class='mutator'>VOID_METHOD_CALL_MUTATOR</li>
+<li class='mutator'>RETURN_VALS_MUTATOR</li>
+<li class='mutator'>MATH_MUTATOR</li>
+<li class='mutator'>NEGATE_CONDITIONALS_MUTATOR</li>
+<li class='mutator'>INVERT_NEGS_MUTATOR</li>
+<li class='mutator'>CONDITIONALS_BOUNDARY_MUTATOR</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>com.gildedrose.StandardQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Standard item decreases by 1, if Sell In days is near expiry and quality is 2: Quality of item Any item with a sell in days of 0, with quality of 2, changes to quality of {5}, as sell in day changes to 1](com.gildedrose.StandardQualityUpdaterShould) (6 ms)</li><li>com.gildedrose.BackstagePassesQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Backstage Passes is set to 0, if item is past sell in date (expired) and quality is 1: Quality of item Backstage passes to a TAFKAL80ETC concert with a sell in days of -1, with quality of 1, changes to quality of {5}, as sell in day changes to 0](com.gildedrose.BackstagePassesQualityUpdaterShould) (2 ms)</li><li>com.gildedrose.ConjuredQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Conjured item stays at 0, when Sell In is 1 and Quality is 0: Quality of item Conjured with a sell in days of 1, with quality of 0, changes to quality of {5}, as sell in day changes to 0](com.gildedrose.ConjuredQualityUpdaterShould) (1 ms)</li><li>com.gildedrose.AgedBrieQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Aged Brie increases, but not past 50 as Sell In days decreases: Quality of item Aged Brie with a sell in days of 1, with quality of 50, changes to quality of {5}, as sell in day changes to 50](com.gildedrose.AgedBrieQualityUpdaterShould) (4 ms)</li><li>com.gildedrose.ConjuredQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Conjured item decreases by 4 (twice as fast as normal), when Sell In is -1 and Quality is 6: Quality of item Conjured with a sell in days of -1, with quality of 6, changes to quality of {5}, as sell in day changes to 2](com.gildedrose.ConjuredQualityUpdaterShould) (3 ms)</li><li>com.gildedrose.AgedBrieQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Aged Brie increases as Sell In days decreases: Quality of item Aged Brie with a sell in days of 2, with quality of 1, changes to quality of {5}, as sell in day changes to 2](com.gildedrose.AgedBrieQualityUpdaterShould) (23 ms)</li><li>com.gildedrose.StandardQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Standard item decreases by 2 (twice as fast as normal), if Sell In days is past the date and quality is 2: Quality of item Any item with a sell in days of -1, with quality of 2, changes to quality of {5}, as sell in day changes to 0](com.gildedrose.StandardQualityUpdaterShould) (1 ms)</li><li>com.gildedrose.StandardQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Standard item decreases by 1, if Sell In days is not past the date and quality is 2: Quality of item Any item with a sell in days of 1, with quality of 2, changes to quality of {5}, as sell in day changes to 1](com.gildedrose.StandardQualityUpdaterShould) (0 ms)</li><li>com.gildedrose.BackstagePassesQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Backstage Passes increases by 1, if quality is less than 50 and Sell In days is 11: Quality of item Backstage passes to a TAFKAL80ETC concert with a sell in days of 11, with quality of 1, changes to quality of {5}, as sell in day changes to 2](com.gildedrose.BackstagePassesQualityUpdaterShould) (4 ms)</li><li>com.gildedrose.BackstagePassesQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Backstage Passes increases by 2, if quality is less than 50 and Sell In days is 10: Quality of item Backstage passes to a TAFKAL80ETC concert with a sell in days of 10, with quality of 1, changes to quality of {5}, as sell in day changes to 3](com.gildedrose.BackstagePassesQualityUpdaterShould) (5 ms)</li><li>com.gildedrose.ConjuredQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Conjured item decreases to 0, when Sell In is 1 and Quality is 1: Quality of item Conjured with a sell in days of 1, with quality of 1, changes to quality of {5}, as sell in day changes to 0](com.gildedrose.ConjuredQualityUpdaterShould) (1 ms)</li><li>com.gildedrose.AgedBrieQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Aged Brie increases, if quality is less than 50 as Sell In days decreases: Quality of item Aged Brie with a sell in days of 1, with quality of 1, changes to quality of {5}, as sell in day changes to 2](com.gildedrose.AgedBrieQualityUpdaterShould) (2 ms)</li><li>com.gildedrose.StandardQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Standard item decreases by 2 (twice as fast as normal), if Sell In days is past the date and quality is 4: Quality of item Any item with a sell in days of -1, with quality of 4, changes to quality of {5}, as sell in day changes to 2](com.gildedrose.StandardQualityUpdaterShould) (1 ms)</li><li>com.gildedrose.AgedBrieQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Aged Brie increases by 1, but not past 50 even when item is expired: Quality of item Aged Brie with a sell in days of -1, with quality of 49, changes to quality of {5}, as sell in day changes to 50](com.gildedrose.AgedBrieQualityUpdaterShould) (4 ms)</li><li>com.gildedrose.BackstagePassesQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Backstage Passes increases by 3, if quality is less than 50 and Sell In days is 5: Quality of item Backstage passes to a TAFKAL80ETC concert with a sell in days of 5, with quality of 1, changes to quality of {5}, as sell in day changes to 4](com.gildedrose.BackstagePassesQualityUpdaterShould) (2 ms)</li><li>com.gildedrose.StandardQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality Standard item stays the same, if quality is 0 to start with: Quality of item Any item with a sell in days of 1, with quality of 0, changes to quality of {5}, as sell in day changes to 0](com.gildedrose.StandardQualityUpdaterShould) (3 ms)</li><li>com.gildedrose.ConjuredQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Conjured item decreases to 0, when Sell In is near expiry and Quality is 2: Quality of item Conjured with a sell in days of 0, with quality of 2, changes to quality of {5}, as sell in day changes to 0](com.gildedrose.ConjuredQualityUpdaterShould) (1 ms)</li><li>com.gildedrose.BackstagePassesQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Backstage Passes is set to 4, if Sell In days is near the expiry date and quality is 1: Quality of item Backstage passes to a TAFKAL80ETC concert with a sell in days of 0, with quality of 1, changes to quality of {5}, as sell in day changes to 4](com.gildedrose.BackstagePassesQualityUpdaterShould) (4 ms)</li><li>com.gildedrose.AgedBrieQualityUpdaterShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Aged Brie stays at 50 even when item is expired, and sell in days continue to decrease: Quality of item Aged Brie with a sell in days of -1, with quality of 50, changes to quality of {5}, as sell in day changes to 50](com.gildedrose.AgedBrieQualityUpdaterShould) (2 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.1.7
+
+</body>
+</html>

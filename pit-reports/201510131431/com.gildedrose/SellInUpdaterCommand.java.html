@@ -1,0 +1,385 @@
+<html>
+<head>
+<style type='text/css'>
+html, body, div, span, p, blockquote, pre {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+body{
+	line-height: 1;
+	color: black;
+	background: white;
+	margin-left: 20px;
+}
+
+.src { 
+	border: 1px solid #dddddd;
+	padding-top: 10px;
+	padding-right: 5px;
+	padding-left: 5px;
+	font-family: Consolas, Courier, monospace;
+}
+
+
+.covered {background-color: #ddffdd}
+.uncovered {background-color: #ffdddd}
+.killed {background-color: #aaffaa}
+.survived {background-color: #ffaaaa}
+.uncertain {background-color: #dde7ef}
+.run_error {background-color: #dde7ef}
+.na {background-color: #eeeeee}
+.timed_out {background-color: #dde7ef}
+.non_viable {background-color: #aaffaa}
+.memory_error {background-color: #dde7ef}
+.not_started {background-color: #dde7ef; color : red}
+.no_coverage {background-color: #ffaaaa}
+
+
+.pop {outline:none; }
+.pop strong {line-height:30px;}
+.pop {text-decoration:none;}
+.pop span { z-index:10;display:none; padding:14px 20px; margin-top:-30px; margin-left:28px; width:800px; line-height:16px; word-wrap:break-word; }
+.pop:hover span{ display:inline; position:absolute; color:#111; border:1px solid #DCA; background:#fffAF0;}
+
+.pop span { border-radius:4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; -moz-box-shadow: 5px 5px 8px #CCC; -webkit-box-shadow: 5px 5px 8px #CCC; box-shadow: 5px 5px 8px #CCC; }
+</style>
+
+</head>
+<body>
+
+
+<h1>SellInUpdaterCommand.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37b56ac7_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37b56ac7_1'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package com.gildedrose;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37b56ac7_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37b56ac7_2'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37b56ac7_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37b56ac7_3'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>public class SellInUpdaterCommand {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37b56ac7_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37b56ac7_4'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public void update(Item item) {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37b56ac7_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37b56ac7_5'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        SellInUpdater sellInUpdater;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37b56ac7_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37b56ac7_6'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37b56ac7_7'/>
+7
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37b56ac7_7'>2</a>
+<span>
+1. update : negated conditional &rarr; SURVIVED<br/>
+2. update : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        switch (item.name) {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37b56ac7_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37b56ac7_8'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            case Constants.SULFURAS: {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37b56ac7_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37b56ac7_9'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                sellInUpdater = new SulfurasSellInUpdater(item);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37b56ac7_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37b56ac7_10'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                break;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37b56ac7_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37b56ac7_11'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37b56ac7_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37b56ac7_12'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37b56ac7_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37b56ac7_13'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            case Constants.CONJURED:</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37b56ac7_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37b56ac7_14'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            default: sellInUpdater = new StandardSellInUpdater(item);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37b56ac7_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37b56ac7_15'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37b56ac7_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37b56ac7_16'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37b56ac7_17'/>
+17
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37b56ac7_17'>1</a>
+<span>
+1. update : removed call to com/gildedrose/SellInUpdater::update &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        sellInUpdater.update();</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37b56ac7_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37b56ac7_18'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37b56ac7_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37b56ac7_19'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@37b56ac7_7'>7</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@37b56ac7_7'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>update<br/><b>Killed by : </b>com.gildedrose.GildedRoseByImplShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The sell in and quality of Sulfuras does not change, quality stays at 80: Quality of item Sulfuras, Hand of Ragnaros with a sell in days of 1, with quality of 80, changes to quality of 80, as sell in day changes to 1](com.gildedrose.GildedRoseByImplShould)</span></span> negated conditional &rarr; KILLED</p> <p class='SURVIVED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>update<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@37b56ac7_17'>17</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@37b56ac7_17'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>update<br/><b>Killed by : </b>com.gildedrose.GildedRoseByImplShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Standard item decreases by 1, if Sell In days is not past the date and quality is 2: Quality of item Any item with a sell in days of 1, with quality of 2, changes to quality of 1, as sell in day changes to 0](com.gildedrose.GildedRoseByImplShould)</span></span> removed call to com/gildedrose/SellInUpdater::update &rarr; KILLED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>INCREMENTS_MUTATOR</li>
+<li class='mutator'>VOID_METHOD_CALL_MUTATOR</li>
+<li class='mutator'>RETURN_VALS_MUTATOR</li>
+<li class='mutator'>MATH_MUTATOR</li>
+<li class='mutator'>NEGATE_CONDITIONALS_MUTATOR</li>
+<li class='mutator'>INVERT_NEGS_MUTATOR</li>
+<li class='mutator'>CONDITIONALS_BOUNDARY_MUTATOR</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>com.gildedrose.GildedRoseByImplShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Standard item decreases by 2 (twice as fast as normal), if Sell In days is past the date and quality is 4: Quality of item Any item with a sell in days of -1, with quality of 4, changes to quality of 2, as sell in day changes to -2](com.gildedrose.GildedRoseByImplShould) (3 ms)</li><li>com.gildedrose.GildedRoseByImplShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Standard item decreases by 2 (twice as fast as normal), if Sell In days is near expiry and quality is 2: Quality of item Any item with a sell in days of 0, with quality of 2, changes to quality of 0, as sell in day changes to -1](com.gildedrose.GildedRoseByImplShould) (4 ms)</li><li>com.gildedrose.GildedRoseByImplShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Aged Brie increases by 2, if its past the Sell in date, only if quality is less than 50: Quality of item Aged Brie with a sell in days of 0, with quality of 47, changes to quality of 49, as sell in day changes to -1](com.gildedrose.GildedRoseByImplShould) (6 ms)</li><li>com.gildedrose.GildedRoseByImplShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Conjured item decreases to 0, when Sell In is 1 and Quality is 1: Quality of item Conjured with a sell in days of 1, with quality of 1, changes to quality of 0, as sell in day changes to 0](com.gildedrose.GildedRoseByImplShould) (4 ms)</li><li>com.gildedrose.GildedRoseByImplShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Conjured item stays at 0, when Sell In is 1 and Quality is 0: Quality of item Conjured with a sell in days of 1, with quality of 0, changes to quality of 0, as sell in day changes to 0](com.gildedrose.GildedRoseByImplShould) (3 ms)</li><li>com.gildedrose.GildedRoseByImplShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Standard item decreases by 2 (twice as fast as normal), if Sell In days is past the date and quality is 2: Quality of item Any item with a sell in days of -1, with quality of 2, changes to quality of 0, as sell in day changes to -2](com.gildedrose.GildedRoseByImplShould) (3 ms)</li><li>com.gildedrose.GildedRoseByImplShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The sell in and quality of Sulfuras does not change, quality stays at 80: Quality of item Sulfuras, Hand of Ragnaros with a sell in days of 1, with quality of 80, changes to quality of 80, as sell in day changes to 1](com.gildedrose.GildedRoseByImplShould) (4 ms)</li><li>com.gildedrose.GildedRoseByImplShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Aged Brie increases, but not past 50 as Sell In days decreases: Quality of item Aged Brie with a sell in days of 1, with quality of 50, changes to quality of 50, as sell in day changes to 0](com.gildedrose.GildedRoseByImplShould) (5 ms)</li><li>com.gildedrose.GildedRoseByImplShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Aged Brie increases by 1, but not past 50 even when item is expired: Quality of item Aged Brie with a sell in days of -1, with quality of 49, changes to quality of 50, as sell in day changes to -2](com.gildedrose.GildedRoseByImplShould) (7 ms)</li><li>com.gildedrose.GildedRoseByImplShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Standard item decreases by 1, if Sell In days is not past the date and quality is 2: Quality of item Any item with a sell in days of 1, with quality of 2, changes to quality of 1, as sell in day changes to 0](com.gildedrose.GildedRoseByImplShould) (3 ms)</li><li>com.gildedrose.GildedRoseByImplShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Aged Brie increases as Sell In days decreases: Quality of item Aged Brie with a sell in days of 2, with quality of 1, changes to quality of 2, as sell in day changes to 1](com.gildedrose.GildedRoseByImplShould) (8 ms)</li><li>com.gildedrose.GildedRoseByImplShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Backstage Passes is set to 0, if Sell In days is past the date and quality is 1: Quality of item Backstage passes to a TAFKAL80ETC concert with a sell in days of 0, with quality of 1, changes to quality of 0, as sell in day changes to -1](com.gildedrose.GildedRoseByImplShould) (4 ms)</li><li>com.gildedrose.GildedRoseByImplShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality Standard item stays the same, if quality is 0 to start with: Quality of item Any item with a sell in days of 1, with quality of 0, changes to quality of 0, as sell in day changes to 0](com.gildedrose.GildedRoseByImplShould) (65 ms)</li><li>com.gildedrose.GildedRoseByImplShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Aged Brie increases, if quality is less than 50 as Sell In days decreases: Quality of item Aged Brie with a sell in days of 1, with quality of 1, changes to quality of 2, as sell in day changes to 0](com.gildedrose.GildedRoseByImplShould) (5 ms)</li><li>com.gildedrose.GildedRoseByImplShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Aged Brie stays at 50 even when item is expired, and sell in days continue to decrease: Quality of item Aged Brie with a sell in days of -1, with quality of 50, changes to quality of 50, as sell in day changes to -2](com.gildedrose.GildedRoseByImplShould) (17 ms)</li><li>com.gildedrose.GildedRoseByImplShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Conjured item decreases to 0 and Sell In becomes -1, when Sell In is near expiry and Quality is 2: Quality of item Conjured with a sell in days of 0, with quality of 2, changes to quality of 0, as sell in day changes to -1](com.gildedrose.GildedRoseByImplShould) (5 ms)</li><li>com.gildedrose.GildedRoseByImplShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Backstage Passes increases by 1, if quality is less than 50 and Sell In days is 11: Quality of item Backstage passes to a TAFKAL80ETC concert with a sell in days of 11, with quality of 1, changes to quality of 2, as sell in day changes to 10](com.gildedrose.GildedRoseByImplShould) (13 ms)</li><li>com.gildedrose.GildedRoseByImplShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Backstage Passes increases by 2, if quality is less than 50 and Sell In days is 10: Quality of item Backstage passes to a TAFKAL80ETC concert with a sell in days of 10, with quality of 1, changes to quality of 3, as sell in day changes to 9](com.gildedrose.GildedRoseByImplShould) (4 ms)</li><li>com.gildedrose.GildedRoseByImplShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Backstage Passes increases by 3, if quality is less than 50 and Sell In days is 5: Quality of item Backstage passes to a TAFKAL80ETC concert with a sell in days of 5, with quality of 1, changes to quality of 4, as sell in day changes to 4](com.gildedrose.GildedRoseByImplShould) (4 ms)</li><li>com.gildedrose.GildedRoseByImplShould.change_quality_item_with_respective_sellin_date_and_starting_quality[The quality of Conjured item decreases by 4 (twice as fast as normal), when Sell In is -1 and Quality is 6: Quality of item Conjured with a sell in days of -1, with quality of 6, changes to quality of 2, as sell in day changes to -2](com.gildedrose.GildedRoseByImplShould) (14 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.1.7
+
+</body>
+</html>
