@@ -46,17 +46,24 @@ class GildedRose {
                 decreaseSellInOf(item);
             }
 
-            if (isExpired(item)) {
-                if (AGED_BRIE.equals(item.name)) {
+            if (AGED_BRIE.equals(item.name)) {
+                if (isExpired(item)) {
                     increaseQualityOf(item);
-                } else {
-                    if (BACKSTAGE_PASSES.equals(item.name)) {
+                }
+            } else {
+                if (BACKSTAGE_PASSES.equals(item.name)) {
+                    if (isExpired(item)) {
                         setQualityToMinimum(item);
-                    } else {
-                        if (SULFURAS.equals(item.name)) {
+                    }
+                } else {
+                    if (SULFURAS.equals(item.name)) {
+                        if (isExpired(item)) {
                             continue;
                         }
-                        decreaseQualityOf(item);
+                    } else {
+                        if (isExpired(item)) {
+                            decreaseQualityOf(item);
+                        }
                     }
                 }
             }
