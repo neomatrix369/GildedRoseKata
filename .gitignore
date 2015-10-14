@@ -6,7 +6,7 @@
 .*
 !.gitignore
 
-!/lib/*.jar
+!lib/*.jar
 
 # Java
 /target/
