@@ -20,24 +20,23 @@ class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
-            if (AGED_BRIE.equals(item.name)
-                    || BACKSTAGE_PASSES.equals(item.name)) {
-                    increaseQualityOf(item);
+            if (AGED_BRIE.equals(item.name)) {
+                increaseQualityOf(item);
+            } else if (BACKSTAGE_PASSES.equals(item.name)) {
+                increaseQualityOf(item);
 
-                    if (BACKSTAGE_PASSES.equals(item.name)) {
-                        if (item.sellIn < ELEVEN_DAYS) {
-                            increaseQualityOf(item);
-                        }
+                if (BACKSTAGE_PASSES.equals(item.name)) {
+                    if (item.sellIn < ELEVEN_DAYS) {
+                        increaseQualityOf(item);
+                    }
 
-                        if (item.sellIn < SIX_DAYS) {
-                            increaseQualityOf(item);
-                        }
+                    if (item.sellIn < SIX_DAYS) {
+                        increaseQualityOf(item);
                     }
-            } else {
-                if (item.quality > MINIMUM_QUALITY) {
-                    if (!SULFURAS.equals(item.name)) {
-                        decreaseQualityOf(item);
-                    }
+                }
+            } else if (item.quality > MINIMUM_QUALITY) {
+                if (!SULFURAS.equals(item.name)) {
+                    decreaseQualityOf(item);
                 }
             }
 
