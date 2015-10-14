@@ -22,26 +22,27 @@ class GildedRose {
         for (Item item : items) {
             if (AGED_BRIE.equals(item.name)) {
                 increaseQualityOf(item);
+
                 decreaseSellInOf(item);
+
                 if (isExpired(item)) {
                     increaseQualityOf(item);
                 }
             } else if (BACKSTAGE_PASSES.equals(item.name)) {
                 increaseQualityOf(item);
 
-                if (BACKSTAGE_PASSES.equals(item.name)) {
-                    if (item.sellIn < ELEVEN_DAYS) {
-                        increaseQualityOf(item);
-                    }
+                if (item.sellIn < ELEVEN_DAYS) {
+                    increaseQualityOf(item);
+                }
 
-                    if (item.sellIn < SIX_DAYS) {
-                        increaseQualityOf(item);
-                    }
+                if (item.sellIn < SIX_DAYS) {
+                    increaseQualityOf(item);
+                }
 
-                    decreaseSellInOf(item);
-                    if (isExpired(item)) {
-                        setQualityToMinimum(item);
-                    }
+                decreaseSellInOf(item);
+
+                if (isExpired(item)) {
+                    setQualityToMinimum(item);
                 }
             } else if (SULFURAS.equals(item.name)) {
                 if (isExpired(item)) {
@@ -49,7 +50,9 @@ class GildedRose {
                 }
             } else {
                 decreaseQualityOf(item);
+
                 decreaseSellInOf(item);
+
                 if (isExpired(item)) {
                     decreaseQualityOf(item);
                 }
