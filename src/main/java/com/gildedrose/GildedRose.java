@@ -21,42 +21,55 @@ class GildedRose {
     public void updateQuality() {
         for (Item item : items) {
             if (AGED_BRIE.equals(item.name)) {
-                increaseQualityOf(item);
-
-                decreaseSellInOf(item);
-
-                if (isExpired(item)) {
-                    increaseQualityOf(item);
-                }
+                updateAgedBrie(item);
             } else if (BACKSTAGE_PASSES.equals(item.name)) {
-                increaseQualityOf(item);
-
-                if (item.sellIn < ELEVEN_DAYS) {
-                    increaseQualityOf(item);
-                }
-
-                if (item.sellIn < SIX_DAYS) {
-                    increaseQualityOf(item);
-                }
-
-                decreaseSellInOf(item);
-
-                if (isExpired(item)) {
-                    setQualityToMinimum(item);
-                }
+                updateBackstagePasses(item);
             } else if (SULFURAS.equals(item.name)) {
-                if (isExpired(item)) {
-                    continue;
-                }
+                updateSulfuras(item);
             } else {
-                decreaseQualityOf(item);
-
-                decreaseSellInOf(item);
-
-                if (isExpired(item)) {
-                    decreaseQualityOf(item);
-                }
+                updateStandardItem(item);
             }
+        }
+    }
+
+    private void updateAgedBrie(Item item) {
+        increaseQualityOf(item);
+
+        decreaseSellInOf(item);
+
+        if (isExpired(item)) {
+            increaseQualityOf(item);
+        }
+    }
+
+    private void updateBackstagePasses(Item item) {
+        increaseQualityOf(item);
+
+        if (item.sellIn < ELEVEN_DAYS) {
+            increaseQualityOf(item);
+        }
+
+        if (item.sellIn < SIX_DAYS) {
+            increaseQualityOf(item);
+        }
+
+        decreaseSellInOf(item);
+
+        if (isExpired(item)) {
+            setQualityToMinimum(item);
+        }
+    }
+
+    private void updateSulfuras(Item item) {
+    }
+
+    private void updateStandardItem(Item item) {
+        decreaseQualityOf(item);
+
+        decreaseSellInOf(item);
+
+        if (isExpired(item)) {
+            decreaseQualityOf(item);
         }
     }
 
