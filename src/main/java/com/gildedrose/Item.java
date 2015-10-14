@@ -4,6 +4,7 @@ public class Item {
 
     private static final int MAXIMUM_QUALITY = 50;
     private static final int MINIMUM_QUALITY = 0;
+
     private static final int ZERO_DAYS = 0;
     private static final int ELEVEN_DAYS = 11;
     private static final int SIX_DAYS = 6;
@@ -88,5 +89,9 @@ public class Item {
         if (isExpired()) {
             decreaseQuality();
         }
+    }
+
+    public boolean is(String itemName) {
+        return itemName.equals(name);
     }
 }
