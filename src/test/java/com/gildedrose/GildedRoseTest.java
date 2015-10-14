@@ -19,7 +19,11 @@ public class GildedRoseTest {
 
     private Item[] randomItems = new Item[MAX_ITEMS];
 
-    // We have excluded "Conjured Mana Cake" from the list as this item is not available yet
+    /**
+        We have excluded "Conjured Mana Cake" from the list as this item is not available yet
+        will be added to the list below or part as a separate test once the implementation for it
+        is in place
+     */
     private String[] itemNames = {
             "+5 Dexterity Vest",
             "Aged Brie",
