@@ -40,18 +40,14 @@ class GildedRose {
                 decreaseQualityOf(item);
             }
 
-            if (SULFURAS.equals(item.name)) {
-
-            } else {
-                decreaseSellInOf(item);
-            }
-
             if (AGED_BRIE.equals(item.name)) {
+                decreaseSellInOf(item);
                 if (isExpired(item)) {
                     increaseQualityOf(item);
                 }
             } else {
                 if (BACKSTAGE_PASSES.equals(item.name)) {
+                    decreaseSellInOf(item);
                     if (isExpired(item)) {
                         setQualityToMinimum(item);
                     }
@@ -61,6 +57,7 @@ class GildedRose {
                             continue;
                         }
                     } else {
+                        decreaseSellInOf(item);
                         if (isExpired(item)) {
                             decreaseQualityOf(item);
                         }
