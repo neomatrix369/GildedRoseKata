@@ -5,6 +5,13 @@ class GildedRose {
     private static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
     private static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
 
+    private static final int MINIMUM_QUALITY = 0;
+    private static final int MAXIMUM_QUALITY = 50;
+
+    private static final int ZERO_DAYS = 0;
+    private static final int SIX_DAYS = 6;
+    private static final int ELEVEN_DAYS = 11;
+
     Item[] items;
 
     public GildedRose(Item[] items) {
@@ -15,25 +22,25 @@ class GildedRose {
         for (Item item : items) {
             if (AGED_BRIE.equals(item.name)
                     || BACKSTAGE_PASSES.equals(item.name)) {
-                if (item.quality < 50) {
+                if (item.quality < MAXIMUM_QUALITY) {
                     increaseQualityOf(item);
 
                     if (BACKSTAGE_PASSES.equals(item.name)) {
-                        if (item.sellIn < 11) {
-                            if (item.quality < 50) {
+                        if (item.sellIn < ELEVEN_DAYS) {
+                            if (item.quality < MAXIMUM_QUALITY) {
                                 increaseQualityOf(item);
                             }
                         }
 
-                        if (item.sellIn < 6) {
-                            if (item.quality < 50) {
+                        if (item.sellIn < SIX_DAYS) {
+                            if (item.quality < MAXIMUM_QUALITY) {
                                 increaseQualityOf(item);
                             }
                         }
                     }
                 }
             } else {
-                if (item.quality > 0) {
+                if (item.quality > MINIMUM_QUALITY) {
                     if (SULFURAS.equals(item.name)) {
 
                     } else {
@@ -48,16 +55,16 @@ class GildedRose {
                 decreaseSellInOf(item);
             }
 
-            if (item.sellIn < 0) {
+            if (isExpired(item)) {
                 if (AGED_BRIE.equals(item.name)) {
-                    if (item.quality < 50) {
+                    if (item.quality < MAXIMUM_QUALITY) {
                         increaseQualityOf(item);
                     }
                 } else {
                     if (BACKSTAGE_PASSES.equals(item.name)) {
-                        setQualityToZero(item);
+                        setQualityToMinimum(item);
                     } else {
-                        if (item.quality > 0) {
+                        if (item.quality > MINIMUM_QUALITY) {
                             if (SULFURAS.equals(item.name)) {
                                 continue;
                             }
@@ -69,12 +76,16 @@ class GildedRose {
         }
     }
 
+    private boolean isExpired(Item item) {
+        return item.sellIn < ZERO_DAYS;
+    }
+
     private void decreaseSellInOf(Item item) {
         item.sellIn = item.sellIn - 1;
     }
 
-    private void setQualityToZero(Item item) {
-        item.quality = 0;
+    private void setQualityToMinimum(Item item) {
+        item.quality = MINIMUM_QUALITY;
     }
 
     private void decreaseQualityOf(Item item) {
