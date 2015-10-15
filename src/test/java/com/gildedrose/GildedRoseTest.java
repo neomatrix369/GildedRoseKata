@@ -7,6 +7,10 @@ import org.junit.Test;
 
 import java.util.Random;
 
+import static com.gildedrose.GildedRose.AGED_BRIE;
+import static com.gildedrose.GildedRose.BACKSTAGE_PASSES;
+import static com.gildedrose.GildedRose.SULFURAS;
+
 @UseReporter(QuietReporter.class)
 public class GildedRoseTest {
 
@@ -26,10 +30,10 @@ public class GildedRoseTest {
      */
     private String[] itemNames = {
             "+5 Dexterity Vest",
-            "Aged Brie",
+            AGED_BRIE,
             "Elixir of the Mongoose",
-            "Sulfuras, Hand of Ragnaros",
-            "Backstage passes to a TAFKAL80ETC concert",
+            SULFURAS,
+            BACKSTAGE_PASSES,
     };
 
     @Test
