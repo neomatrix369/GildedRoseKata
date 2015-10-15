@@ -66,7 +66,7 @@ public class GildedRoseTest {
     }
 
     private String randomItemName() {
-        return itemNames[0 + random.nextInt(itemNames.length)];
+        return itemNames[random.nextInt(itemNames.length)];
     }
 
     private int getRandomBetween(int minimumIndex, int maximumIndex) {
