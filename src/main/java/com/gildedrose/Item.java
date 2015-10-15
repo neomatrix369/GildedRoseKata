@@ -26,8 +26,8 @@ public class Item {
         return this.name + ", " + this.sellIn + ", " + this.quality;
     }
 
-    void setQualityToMinimum() {
-        quality = MINIMUM_QUALITY;
+    public boolean is(String itemName) {
+        return itemName.equals(name);
     }
 
     void decreaseSellIn() {
@@ -48,6 +48,10 @@ public class Item {
         if (quality > MINIMUM_QUALITY) {
             quality = quality - 1;
         }
+    }
+
+    void setQualityToMinimum() {
+        quality = MINIMUM_QUALITY;
     }
 
     void updateAgedBrie() {
@@ -89,9 +93,5 @@ public class Item {
         if (isExpired()) {
             decreaseQuality();
         }
-    }
-
-    public boolean is(String itemName) {
-        return itemName.equals(name);
     }
 }
