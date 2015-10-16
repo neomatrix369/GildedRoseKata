@@ -1,6 +1,9 @@
 package com.gildedrose;
 
 public class BackstagePasses extends Item {
+    private static final Days ELEVEN_DAYS = new Days(11);
+    private static final Days SIX_DAYS = new Days(6);
+
     public BackstagePasses(String name, SellIn sellIn, Quality quality) {
         super(name, sellIn, quality);
     }
@@ -9,11 +12,11 @@ public class BackstagePasses extends Item {
         increaseQuality();
 
         if (is(GildedRose.BACKSTAGE_PASSES)) {
-            if (expiresIn(GildedRose.ELEVEN_DAYS)) {
+            if (expiresIn(ELEVEN_DAYS)) {
                 increaseQuality();
             }
 
-            if (expiresIn(GildedRose.SIX_DAYS)) {
+            if (expiresIn(SIX_DAYS)) {
                 increaseQuality();
             }
         }
