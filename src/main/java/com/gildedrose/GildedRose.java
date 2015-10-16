@@ -8,14 +8,14 @@ class GildedRose {
     protected static final Days ELEVEN_DAYS = new Days(11);
     protected static final Days SIX_DAYS = new Days(6);
 
-    Item[] items;
+    private final Items items;
 
-    public GildedRose(Item[] items) {
+    public GildedRose(Items items) {
         this.items = items;
     }
 
-    public void updateQuality(Item[] items) {
-        for (Item item : items) {
+    public void updateQuality() {
+        for (Item item : items.getList()) {
             if (item.is(AGED_BRIE)) {
                 item.updateAgedBrie();
             } else if (item.is(BACKSTAGE_PASSES)) {

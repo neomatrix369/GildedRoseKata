@@ -6,9 +6,6 @@ import org.approvaltests.reporters.QuietReporter;
 import org.approvaltests.reporters.UseReporter;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static net.java.quickcheck.generator.PrimitiveGenerators.fixedValues;
 import static net.java.quickcheck.generator.PrimitiveGenerators.integers;
 import static net.java.quickcheck.generator.iterable.Iterables.toIterable;
@@ -25,7 +22,7 @@ public class GildedRoseTest {
     private static final int SELL_IN_DAYS_NO_OF_RUNS = 25;
     private static final int QUALITY_NO_OF_RUNS = 65;
 
-    private List<Item> itemList = new ArrayList<>();
+    private Items itemList = new Items();
 
     private SeedInfo seedInfo = new SeedInfo();
 
@@ -34,11 +31,10 @@ public class GildedRoseTest {
     should_generate_golden_master_for_gilded_rose() throws Exception {
         generateRandomItems();
 
-        Item[] randomItems = itemList.toArray(new Item[]{});
-        GildedRose gildedRose = new GildedRose(randomItems);
-        gildedRose.updateQuality(gildedRose.items);
+        GildedRose gildedRose = new GildedRose(itemList);
+        gildedRose.updateQuality();
 
-        Approvals.verify(getStringVersionOf(randomItems));
+        Approvals.verify(getStringVersionOf(itemList));
     }
 
     public void generateRandomItems() {
@@ -57,14 +53,15 @@ public class GildedRoseTest {
         for (String itemName: itemNamesList) {
             for (int days: sellInDaysList) {
                 for (int quality: qualityList) {
-                    itemList.add(new Item(itemName, new SellIn(new Days(days)), new Quality(quality)));
+                    Item item = Product.create(itemName, new SellIn(new Days(days)), new Quality(quality));
+                    itemList.add(item);
                 }
             }
         }
     }
-    private String getStringVersionOf(Item[] items) {
+    private String getStringVersionOf(Items items) {
         StringBuilder result = new StringBuilder();
-        for (Item item: items) {
+        for (Item item: items.getList()) {
             result.append(item);
             result.append("\r");
         }
