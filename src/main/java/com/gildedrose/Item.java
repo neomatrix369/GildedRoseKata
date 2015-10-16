@@ -42,4 +42,8 @@ public class Item {
     void decreaseSellIn() {
         sellIn.decrease();
     }
+
+    boolean is(String itemName) {
+        return name.equals(itemName);
+    }
 }

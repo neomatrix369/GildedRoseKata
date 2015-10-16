@@ -16,12 +16,12 @@ class GildedRose {
 
     public void updateQuality(Item[] items) {
         for (Item item : items) {
-            if (item.name.equals(AGED_BRIE)) {
+            if (item.is(AGED_BRIE)) {
                 updateAgedBrie(item);
-            } else if (item.name.equals(BACKSTAGE_PASSES)) {
+            } else if (item.is(BACKSTAGE_PASSES)) {
                 updateBackstagePasses(item);
             } else {
-                if (item.name.equals(SULFURAS)) {
+                if (item.is(SULFURAS)) {
 
                 } else {
                     updateStandardItem(item);
@@ -43,7 +43,7 @@ class GildedRose {
     private void updateBackstagePasses(Item item) {
         item.increaseQuality();
 
-        if (item.name.equals(BACKSTAGE_PASSES)) {
+        if (item.is(BACKSTAGE_PASSES)) {
             if (item.expiresIn(ELEVEN_DAYS)) {
                 item.increaseQuality();
             }
