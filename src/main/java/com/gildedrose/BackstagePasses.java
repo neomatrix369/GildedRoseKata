@@ -11,14 +11,12 @@ public class BackstagePasses extends Item {
     public void update() {
         increaseQuality();
 
-        if (is(Product.BACKSTAGE_PASSES)) {
-            if (expiresIn(ELEVEN_DAYS)) {
-                increaseQuality();
-            }
+        if (expiresIn(ELEVEN_DAYS)) {
+            increaseQuality();
+        }
 
-            if (expiresIn(SIX_DAYS)) {
-                increaseQuality();
-            }
+        if (expiresIn(SIX_DAYS)) {
+            increaseQuality();
         }
 
         decreaseSellIn();
