@@ -17,7 +17,7 @@ public class AgedBrieShould {
     }
 
     @Test public void
-    increase_quality_by_2_when_item_is_expired() {
+    increase_quality_twice_as_fast_when_item_is_expired() {
         Item item = new AgedBrie(Product.AGED_BRIE, getSellInFor(0), getQualityOf(9));
 
         item.update();
