@@ -21,12 +21,14 @@ public class Quality {
         }
     }
 
-    public boolean canIncrease() {
+    private boolean canIncrease() {
         return value < MAXIMUM_QUALITY;
     }
 
     public void increase() {
-        value++;
+        if (canIncrease()) {
+            value++;
+        }
     }
 
     public void setToMinimum() {

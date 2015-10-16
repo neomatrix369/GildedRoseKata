@@ -19,10 +19,6 @@ public class Item {
         return this.name + ", " + this.sellIn + ", " + this.quality;
     }
 
-    public boolean canIncreaseQuality() {
-        return quality.canIncrease();
-    }
-
     public void decreaseQuality() {
         quality.decrease();
     }

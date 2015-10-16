@@ -22,21 +22,15 @@ class GildedRose {
                     item.decreaseQuality();
                 }
             } else {
-                if (item.canIncreaseQuality()) {
-                    item.increaseQuality();
+                item.increaseQuality();
 
-                    if (item.name.equals(BACKSTAGE_PASSES)) {
-                        if (item.expiresIn(ELEVEN_DAYS)) {
-                            if (item.canIncreaseQuality()) {
-                                item.increaseQuality();
-                            }
-                        }
+                if (item.name.equals(BACKSTAGE_PASSES)) {
+                    if (item.expiresIn(ELEVEN_DAYS)) {
+                        item.increaseQuality();
+                    }
 
-                        if (item.expiresIn(SIX_DAYS)) {
-                            if (item.canIncreaseQuality()) {
-                                item.increaseQuality();
-                            }
-                        }
+                    if (item.expiresIn(SIX_DAYS)) {
+                        item.increaseQuality();
                     }
                 }
             }
@@ -55,9 +49,7 @@ class GildedRose {
                         item.setQualityToMinimum();
                     }
                 } else {
-                    if (item.canIncreaseQuality()) {
-                        item.increaseQuality();
-                    }
+                    item.increaseQuality();
                 }
             }
         }
