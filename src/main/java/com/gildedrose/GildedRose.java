@@ -16,17 +16,7 @@ class GildedRose {
 
     public void updateQuality() {
         for (Item item : items.getList()) {
-            if (item.is(AGED_BRIE)) {
-                item.updateAgedBrie();
-            } else if (item.is(BACKSTAGE_PASSES)) {
-                item.updateBackstagePasses();
-            } else {
-                if (item.is(SULFURAS)) {
-                    item.updateSulfuras();
-                } else {
-                    item.updateStandardItem();
-                }
-            }
+            item.update();
         }
     }
 }
