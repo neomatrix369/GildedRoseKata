@@ -45,19 +45,19 @@ public class GildedRoseTest {
         seedInfo.restore(FIXED_SEED);
 
         // We have excluded "Conjured Mana Cake" from the list as this item is not available yet
-        Iterable<String> itemNameIterable = toIterable(fixedValues(
+        Iterable<String> itemNamesList = toIterable(fixedValues(
                 "+5 Dexterity Vest",
                 "Aged Brie",
                 "Elixir of the Mongoose",
                 "Sulfuras, Hand of Ragnaros",
                 "Backstage passes to a TAFKAL80ETC concert"), ITEM_NAME_NO_OF_RUNS);
-        Iterable<Integer> sellInIterable = toIterable(integers(MINIMUM_SELL_IN_DAYS, MAXIMUM_SELL_IN_DAYS), SELL_IN_DAYS_NO_OF_RUNS);
-        Iterable<Integer> qualityIterable = toIterable(integers(MINIMUM_QUALITY, MAXIMUM_QUALITY), QUALITY_NO_OF_RUNS);
+        Iterable<Integer> sellInDaysList = toIterable(integers(MINIMUM_SELL_IN_DAYS, MAXIMUM_SELL_IN_DAYS), SELL_IN_DAYS_NO_OF_RUNS);
+        Iterable<Integer> qualityList = toIterable(integers(MINIMUM_QUALITY, MAXIMUM_QUALITY), QUALITY_NO_OF_RUNS);
 
-        for (String itemName: itemNameIterable) {
-            for (int days: sellInIterable) {
-                for (int quality: qualityIterable) {
-                    itemList.add(new Item(itemName, new SellIn(new Days(days)   ), new Quality(quality)));
+        for (String itemName: itemNamesList) {
+            for (int days: sellInDaysList) {
+                for (int quality: qualityList) {
+                    itemList.add(new Item(itemName, new SellIn(new Days(days)), new Quality(quality)));
                 }
             }
         }
