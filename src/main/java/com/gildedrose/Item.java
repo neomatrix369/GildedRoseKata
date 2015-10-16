@@ -1,5 +1,8 @@
 package com.gildedrose;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 public class Item {
 
     public String name;
@@ -14,38 +17,63 @@ public class Item {
         this.quality = quality;
     }
 
-    boolean is(String itemName) {
+    protected boolean is(String itemName) {
         return name.equals(itemName);
     }
 
-    public void decreaseQuality() {
+    protected void decreaseQuality() {
         quality.decrease();
     }
 
-    public void increaseQuality() {
+    protected void increaseQuality() {
         quality.increase();
     }
 
-    void setQualityToMinimum() {
+    protected void setQualityToMinimum() {
         quality.setToMinimum();
     }
 
-    boolean isExpired() {
+    protected boolean isExpired() {
         return sellIn.isPastExpiryDay();
     }
 
-    boolean expiresIn(Days days) {
+    protected boolean expiresIn(Days days) {
         return sellIn.isPast(days);
     }
 
-    void decreaseSellIn() {
+    protected void decreaseSellIn() {
         sellIn.decrease();
     }
+
+
+    public void update() {}
 
     @Override
     public String toString() {
         return this.name + ", " + this.sellIn + ", " + this.quality;
     }
 
-    public void update() {}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Item item = (Item) o;
+
+        return new EqualsBuilder()
+                .append(name, item.name)
+                .append(sellIn, item.sellIn)
+                .append(quality, item.quality)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(name)
+                .append(sellIn)
+                .append(quality)
+                .toHashCode();
+    }
 }
