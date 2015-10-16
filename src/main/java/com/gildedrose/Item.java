@@ -14,9 +14,8 @@ public class Item {
         this.quality = quality;
     }
 
-    @Override
-    public String toString() {
-        return this.name + ", " + this.sellIn + ", " + this.quality;
+    boolean is(String itemName) {
+        return name.equals(itemName);
     }
 
     public void decreaseQuality() {
@@ -43,7 +42,8 @@ public class Item {
         sellIn.decrease();
     }
 
-    boolean is(String itemName) {
-        return name.equals(itemName);
+    @Override
+    public String toString() {
+        return this.name + ", " + this.sellIn + ", " + this.quality;
     }
 }
