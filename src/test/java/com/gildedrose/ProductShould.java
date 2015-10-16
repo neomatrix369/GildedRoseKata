@@ -22,9 +22,9 @@ public class ProductShould {
     public static Collection<Object[]> data() {
         return Arrays.asList(
                 new Object[][] {
-                        {GildedRose.AGED_BRIE, AgedBrie.class},
-                        {GildedRose.BACKSTAGE_PASSES, BackstagePasses.class},
-                        {GildedRose.SULFURAS, Sulfuras.class},
+                        {Product.AGED_BRIE, AgedBrie.class},
+                        {Product.BACKSTAGE_PASSES, BackstagePasses.class},
+                        {Product.SULFURAS, Sulfuras.class},
                         {"Any other type of item", StandardItem.class},
                 }
         );

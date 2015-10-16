@@ -11,7 +11,7 @@ public class BackstagePasses extends Item {
     public void update() {
         increaseQuality();
 
-        if (is(GildedRose.BACKSTAGE_PASSES)) {
+        if (is(Product.BACKSTAGE_PASSES)) {
             if (expiresIn(ELEVEN_DAYS)) {
                 increaseQuality();
             }
