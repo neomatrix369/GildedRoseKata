@@ -10,7 +10,7 @@ public class Days {
         this.value = value;
     }
 
-    public boolean isLessThan(Days days) {
+    public boolean isPast(Days days) {
         return value < days.asNumber();
     }
 

@@ -24,6 +24,6 @@ public class DaysShould {
 
         Days anotherDayValue = new Days(5);
 
-        assertTrue(aDayValue.isLessThan(anotherDayValue));
+        assertTrue(aDayValue.isPast(anotherDayValue));
     }
 }
