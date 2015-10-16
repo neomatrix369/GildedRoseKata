@@ -36,7 +36,7 @@ public class GildedRoseTest {
 
         Item[] randomItems = itemList.toArray(new Item[]{});
         GildedRose gildedRose = new GildedRose(randomItems);
-        gildedRose.updateQuality();
+        GildedRose.updateQuality(gildedRose.items);
 
         Approvals.verify(getStringVersionOf(randomItems));
     }
@@ -57,7 +57,7 @@ public class GildedRoseTest {
         for (String itemName: itemNameIterable) {
             for (int sellIn: sellInIterable) {
                 for (int quality: qualityIterable) {
-                    itemList.add(new Item(itemName, sellIn, quality));
+                    itemList.add(new Item(itemName, sellIn, new Quality(quality)));
                 }
             }
         }

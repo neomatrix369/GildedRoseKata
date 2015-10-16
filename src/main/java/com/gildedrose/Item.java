@@ -6,9 +6,9 @@ public class Item {
 
     public int sellIn;
 
-    public int quality;
+    public Quality quality;
 
-    public Item(String name, int sellIn, int quality) {
+    public Item(String name, int sellIn, Quality quality) {
         this.name = name;
         this.sellIn = sellIn;
         this.quality = quality;
@@ -17,5 +17,21 @@ public class Item {
    @Override
    public String toString() {
         return this.name + ", " + this.sellIn + ", " + this.quality;
+    }
+
+    public boolean canDecreaseQuality() {
+        return quality.canDecrease();
+    }
+
+    public boolean canIncreaseQuality() {
+        return quality.canIncrease();
+    }
+
+    public void decreaseQuality() {
+        quality.decrease();
+    }
+
+    public void increaseQuality() {
+        quality.increase();
     }
 }
