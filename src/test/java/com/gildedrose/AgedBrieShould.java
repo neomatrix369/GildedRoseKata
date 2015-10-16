@@ -37,5 +37,4 @@ public class AgedBrieShould {
     private SellIn getSellInFor(int days) {
         return new SellIn(new Days(days));
     }
-
 }
