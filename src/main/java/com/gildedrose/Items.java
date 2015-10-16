@@ -14,4 +14,10 @@ public class Items {
     public void add(Item item) {
         items.add(item);
     }
+
+    void update() {
+        for (Item item : getList()) {
+            item.update();
+        }
+    }
 }

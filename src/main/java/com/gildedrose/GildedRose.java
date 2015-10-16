@@ -15,8 +15,7 @@ class GildedRose {
     }
 
     public void updateQuality() {
-        for (Item item : items.getList()) {
-            item.update();
-        }
+        items.update();
     }
+
 }
