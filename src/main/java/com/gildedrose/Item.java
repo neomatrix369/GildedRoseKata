@@ -4,9 +4,9 @@ public class Item {
 
     public String name;
 
-    public SellIn sellIn;
+    private SellIn sellIn;
 
-    public Quality quality;
+    private Quality quality;
 
     public Item(String name, SellIn sellIn, Quality quality) {
         this.name = name;
@@ -14,13 +14,9 @@ public class Item {
         this.quality = quality;
     }
 
-   @Override
-   public String toString() {
+    @Override
+    public String toString() {
         return this.name + ", " + this.sellIn + ", " + this.quality;
-    }
-
-    public boolean canDecreaseQuality() {
-        return quality.canDecrease();
     }
 
     public boolean canIncreaseQuality() {

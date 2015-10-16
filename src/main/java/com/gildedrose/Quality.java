@@ -11,12 +11,14 @@ public class Quality {
         this.value = value;
     }
 
-    public boolean canDecrease() {
+    private boolean canDecrease() {
         return value > MINIMUM_QUALITY;
     }
 
     public void decrease() {
-        value--;
+        if (canDecrease()) {
+            value--;
+        }
     }
 
     public boolean canIncrease() {
