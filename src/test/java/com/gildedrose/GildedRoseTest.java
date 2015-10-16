@@ -22,22 +22,20 @@ public class GildedRoseTest {
     private static final int SELL_IN_DAYS_NO_OF_RUNS = 25;
     private static final int QUALITY_NO_OF_RUNS = 65;
 
-    private Items itemList = new Items();
-
     private SeedInfo seedInfo = new SeedInfo();
 
     @UseReporter(QuietReporter.class)
     @Test public void
     should_generate_golden_master_for_gilded_rose() throws Exception {
-        generateRandomItems();
+        Items items = generateRandomItems();
 
-        GildedRose gildedRose = new GildedRose(itemList);
+        GildedRose gildedRose = new GildedRose(items);
         gildedRose.updateQuality();
 
-        Approvals.verify(getStringVersionOf(itemList));
+        Approvals.verify(items.toString());
     }
 
-    public void generateRandomItems() {
+    public Items generateRandomItems() {
         seedInfo.restore(FIXED_SEED);
 
         // We have excluded "Conjured Mana Cake" from the list as this item is not available yet
@@ -50,21 +48,19 @@ public class GildedRoseTest {
         Iterable<Integer> sellInDaysList = toIterable(integers(MINIMUM_SELL_IN_DAYS, MAXIMUM_SELL_IN_DAYS), SELL_IN_DAYS_NO_OF_RUNS);
         Iterable<Integer> qualityList = toIterable(integers(MINIMUM_QUALITY, MAXIMUM_QUALITY), QUALITY_NO_OF_RUNS);
 
+        return createItemsFrom(itemNamesList, sellInDaysList, qualityList);
+    }
+
+    private Items createItemsFrom(Iterable<String> itemNamesList, Iterable<Integer> sellInDaysList, Iterable<Integer> qualityList) {
+        Items items = new Items();
         for (String itemName: itemNamesList) {
             for (int days: sellInDaysList) {
                 for (int quality: qualityList) {
                     Item item = Product.create(itemName, new SellIn(new Days(days)), new Quality(quality));
-                    itemList.add(item);
+                    items.add(item);
                 }
             }
         }
-    }
-    private String getStringVersionOf(Items items) {
-        StringBuilder result = new StringBuilder();
-        for (Item item: items.getList()) {
-            result.append(item);
-            result.append("\r");
-        }
-        return result.toString();
+        return items;
     }
 }
