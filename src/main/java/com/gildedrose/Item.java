@@ -46,4 +46,47 @@ public class Item {
     public String toString() {
         return this.name + ", " + this.sellIn + ", " + this.quality;
     }
+
+    void updateAgedBrie() {
+        increaseQuality();
+
+        decreaseSellIn();
+
+        if (isExpired()) {
+            increaseQuality();
+        }
+    }
+
+    void updateBackstagePasses() {
+        increaseQuality();
+
+        if (is(GildedRose.BACKSTAGE_PASSES)) {
+            if (expiresIn(GildedRose.ELEVEN_DAYS)) {
+                increaseQuality();
+            }
+
+            if (expiresIn(GildedRose.SIX_DAYS)) {
+                increaseQuality();
+            }
+        }
+
+        decreaseSellIn();
+
+        if (isExpired()) {
+            setQualityToMinimum();
+        }
+    }
+
+    void updateSulfuras() {
+    }
+
+    void updateStandardItem() {
+        decreaseQuality();
+
+        decreaseSellIn();
+
+        if (isExpired()) {
+            decreaseQuality();
+        }
+    }
 }

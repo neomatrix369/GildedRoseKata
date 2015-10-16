@@ -17,59 +17,17 @@ class GildedRose {
     public void updateQuality(Item[] items) {
         for (Item item : items) {
             if (item.is(AGED_BRIE)) {
-                updateAgedBrie(item);
+                item.updateAgedBrie();
             } else if (item.is(BACKSTAGE_PASSES)) {
-                updateBackstagePasses(item);
+                item.updateBackstagePasses();
             } else {
                 if (item.is(SULFURAS)) {
-                    updateSulfuras(item);
+                    item.updateSulfuras();
                 } else {
-                    updateStandardItem(item);
+                    item.updateStandardItem();
                 }
             }
         }
     }
 
-    private void updateAgedBrie(Item item) {
-        item.increaseQuality();
-
-        item.decreaseSellIn();
-
-        if (item.isExpired()) {
-            item.increaseQuality();
-        }
-    }
-
-    private void updateBackstagePasses(Item item) {
-        item.increaseQuality();
-
-        if (item.is(BACKSTAGE_PASSES)) {
-            if (item.expiresIn(ELEVEN_DAYS)) {
-                item.increaseQuality();
-            }
-
-            if (item.expiresIn(SIX_DAYS)) {
-                item.increaseQuality();
-            }
-        }
-
-        item.decreaseSellIn();
-
-        if (item.isExpired()) {
-            item.setQualityToMinimum();
-        }
-    }
-
-    private void updateSulfuras(Item item) {
-    }
-
-    private void updateStandardItem(Item item) {
-        item.decreaseQuality();
-
-        item.decreaseSellIn();
-
-        if (item.isExpired()) {
-            item.decreaseQuality();
-        }
-    }
 }
