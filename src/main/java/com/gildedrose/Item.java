@@ -42,11 +42,6 @@ public class Item {
         sellIn.decrease();
     }
 
-    @Override
-    public String toString() {
-        return this.name + ", " + this.sellIn + ", " + this.quality;
-    }
-
     void updateAgedBrie() {
         increaseQuality();
 
@@ -88,5 +83,10 @@ public class Item {
         if (isExpired()) {
             decreaseQuality();
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.name + ", " + this.sellIn + ", " + this.quality;
     }
 }
