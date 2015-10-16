@@ -22,7 +22,7 @@ class GildedRose {
                 updateBackstagePasses(item);
             } else {
                 if (item.is(SULFURAS)) {
-                    updateSulfurus(item);
+                    updateSulfuras(item);
                 } else {
                     updateStandardItem(item);
                 }
@@ -60,7 +60,7 @@ class GildedRose {
         }
     }
 
-    private void updateSulfurus(Item item) {
+    private void updateSulfuras(Item item) {
     }
 
     private void updateStandardItem(Item item) {
