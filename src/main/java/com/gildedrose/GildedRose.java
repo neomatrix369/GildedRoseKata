@@ -5,13 +5,16 @@ class GildedRose {
     protected static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
     protected static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
 
+    protected static final Days ELEVEN_DAYS = new Days(11);
+    protected static final Days SIX_DAYS = new Days(6);
+
     Item[] items;
 
     public GildedRose(Item[] items) {
         this.items = items;
     }
 
-    public static void updateQuality(Item[] items) {
+    public void updateQuality(Item[] items) {
         for (Item item : items) {
             if (!item.name.equals(AGED_BRIE)
                     && !item.name.equals(BACKSTAGE_PASSES)) {
@@ -25,13 +28,13 @@ class GildedRose {
                     item.increaseQuality();
 
                     if (item.name.equals(BACKSTAGE_PASSES)) {
-                        if (item.sellIn < 11) {
+                        if (item.expiresIn(ELEVEN_DAYS)) {
                             if (item.canIncreaseQuality()) {
                                 item.increaseQuality();
                             }
                         }
 
-                        if (item.sellIn < 6) {
+                        if (item.expiresIn(SIX_DAYS)) {
                             if (item.canIncreaseQuality()) {
                                 item.increaseQuality();
                             }
@@ -41,10 +44,10 @@ class GildedRose {
             }
 
             if (!item.name.equals(SULFURAS)) {
-                item.sellIn--;
+                item.decreaseSellIn();
             }
 
-            if (item.sellIn < 0) {
+            if (item.isExpired()) {
                 if (!item.name.equals(AGED_BRIE)) {
                     if (!item.name.equals(BACKSTAGE_PASSES)) {
                         if (item.canDecreaseQuality()) {
@@ -53,7 +56,7 @@ class GildedRose {
                             }
                         }
                     } else {
-                        item.quality.setToMinimum();
+                        item.setQualityToMinimum();
                     }
                 } else {
                     if (item.canIncreaseQuality()) {
@@ -63,4 +66,5 @@ class GildedRose {
             }
         }
     }
+
 }

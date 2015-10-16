@@ -4,11 +4,11 @@ public class Item {
 
     public String name;
 
-    public int sellIn;
+    public SellIn sellIn;
 
     public Quality quality;
 
-    public Item(String name, int sellIn, Quality quality) {
+    public Item(String name, SellIn sellIn, Quality quality) {
         this.name = name;
         this.sellIn = sellIn;
         this.quality = quality;
@@ -33,5 +33,21 @@ public class Item {
 
     public void increaseQuality() {
         quality.increase();
+    }
+
+    void setQualityToMinimum() {
+        quality.setToMinimum();
+    }
+
+    boolean isExpired() {
+        return sellIn.isPastMinimumDays();
+    }
+
+    boolean expiresIn(Days days) {
+        return sellIn.isPast(days);
+    }
+
+    void decreaseSellIn() {
+        sellIn.decrease();
     }
 }

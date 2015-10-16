@@ -36,7 +36,7 @@ public class GildedRoseTest {
 
         Item[] randomItems = itemList.toArray(new Item[]{});
         GildedRose gildedRose = new GildedRose(randomItems);
-        GildedRose.updateQuality(gildedRose.items);
+        gildedRose.updateQuality(gildedRose.items);
 
         Approvals.verify(getStringVersionOf(randomItems));
     }
@@ -55,9 +55,9 @@ public class GildedRoseTest {
         Iterable<Integer> qualityIterable = toIterable(integers(MINIMUM_QUALITY, MAXIMUM_QUALITY), QUALITY_NO_OF_RUNS);
 
         for (String itemName: itemNameIterable) {
-            for (int sellIn: sellInIterable) {
+            for (int days: sellInIterable) {
                 for (int quality: qualityIterable) {
-                    itemList.add(new Item(itemName, sellIn, new Quality(quality)));
+                    itemList.add(new Item(itemName, new SellIn(new Days(days)   ), new Quality(quality)));
                 }
             }
         }

@@ -2,8 +2,8 @@ package com.gildedrose;
 
 public class Quality {
 
-    protected static final int MINIMUM_QUALITY = 0;
-    protected static final int MAXIMUM_QUALITY = 50;
+    private static final int MINIMUM_QUALITY = 0;
+    private static final int MAXIMUM_QUALITY = 50;
 
     private int value;
 
@@ -33,6 +33,6 @@ public class Quality {
 
     @Override
     public String toString() {
-        return ""+value;
+        return String.valueOf(value);
     }
 }
