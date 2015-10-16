@@ -22,7 +22,7 @@ class GildedRose {
                 updateBackstagePasses(item);
             } else {
                 if (item.is(SULFURAS)) {
-
+                    updateSulfurus(item);
                 } else {
                     updateStandardItem(item);
                 }
@@ -58,6 +58,9 @@ class GildedRose {
         if (item.isExpired()) {
             item.setQualityToMinimum();
         }
+    }
+
+    private void updateSulfurus(Item item) {
     }
 
     private void updateStandardItem(Item item) {
