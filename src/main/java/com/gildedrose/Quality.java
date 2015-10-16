@@ -1,9 +1,12 @@
 package com.gildedrose;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 public class Quality {
 
-    private static final int MINIMUM_QUALITY = 0;
-    private static final int MAXIMUM_QUALITY = 50;
+    public static final Quality MINIMUM_QUALITY = new Quality(0);
+    public static final Quality MAXIMUM_QUALITY = new Quality(50);
 
     private int value;
 
@@ -12,7 +15,7 @@ public class Quality {
     }
 
     private boolean canDecrease() {
-        return value > MINIMUM_QUALITY;
+        return value > MINIMUM_QUALITY.value;
     }
 
     public void decrease() {
@@ -22,7 +25,7 @@ public class Quality {
     }
 
     private boolean canIncrease() {
-        return value < MAXIMUM_QUALITY;
+        return value < MAXIMUM_QUALITY.value;
     }
 
     public void increase() {
@@ -32,7 +35,27 @@ public class Quality {
     }
 
     public void setToMinimum() {
-        value = MINIMUM_QUALITY;
+        value = MINIMUM_QUALITY.value;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Quality quality = (Quality) o;
+
+        return new EqualsBuilder()
+                .append(value, quality.value)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(value)
+                .toHashCode();
     }
 
     @Override

@@ -22,7 +22,7 @@ public class SellIn {
         return String.valueOf(days.asNumber());
     }
 
-    boolean isPastMinimumDays() {
+    boolean isPastExpiryDay() {
         return isPast(MINIMUM_DAYS);
     }
 }

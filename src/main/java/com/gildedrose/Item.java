@@ -32,7 +32,7 @@ public class Item {
     }
 
     boolean isExpired() {
-        return sellIn.isPastMinimumDays();
+        return sellIn.isPastExpiryDay();
     }
 
     boolean expiresIn(Days days) {
