@@ -7,7 +7,7 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-public class ItemShould {
+public class ItemSellInShould {
 
     private static final Quality QUALITY_NOT_USED = null;
     private static final SellIn SELL_IN_NOT_USED = null;
@@ -39,36 +39,6 @@ public class ItemShould {
     indicate_if_an_item_does_not_expires_in_given_number_of_days() {
         Item actualItem = new Item("YetAnotherItem", new SellIn(ELEVEN_DAYS), QUALITY_NOT_USED);
         assertFalse(actualItem.expiresIn(NINE_DAYS));
-    }
-
-    @Test public void
-    decrease_quality_via_the_quality_collaborator() {
-        Quality qualityMock = mock(Quality.class);
-        Item actualItem = new Item("ItemWithMock", SELL_IN_NOT_USED, qualityMock);
-
-        actualItem.decreaseQuality();
-
-        verify(qualityMock).decreaseBy(Quality.NORMAL_QUALITY_CHANGE_RATE);
-    }
-
-    @Test public void
-    increase_quality_via_the_quality_collaborator() {
-        Quality qualityMock = mock(Quality.class);
-        Item actualItem = new Item("ItemWithMock", SELL_IN_NOT_USED, qualityMock);
-
-        actualItem.increaseQuality();
-
-        verify(qualityMock).increase();
-    }
-
-    @Test public void
-    set_quality_to_its_minimum_via_the_quality_collaborator() {
-        Quality qualityMock = mock(Quality.class);
-        Item actualItem = new Item("ItemWithMock", SELL_IN_NOT_USED, qualityMock);
-
-        actualItem.setQualityToMinimum();
-
-        verify(qualityMock).setToMinimum();
     }
 
     @Test public void

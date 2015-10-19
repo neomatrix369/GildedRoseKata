@@ -2,6 +2,8 @@ package com.gildedrose;
 
 import org.junit.Test;
 
+import static com.gildedrose.Quality.MAXIMUM_QUALITY;
+import static com.gildedrose.Quality.MINIMUM_QUALITY;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -20,11 +22,11 @@ public class QualityShould {
 
     @Test public void
     not_increase_quality_when_quality_has_reached_its_maximum_value() {
-        Quality actualQuality = Quality.MAXIMUM_QUALITY;
+        Quality actualQuality = MAXIMUM_QUALITY;
 
         actualQuality.increase();
 
-        assertThat(actualQuality, is(equalTo(Quality.MAXIMUM_QUALITY)));
+        assertThat(actualQuality, is(equalTo(MAXIMUM_QUALITY)));
     }
 
     @Test
@@ -39,11 +41,11 @@ public class QualityShould {
 
     @Test public void
     not_decrease_quality_when_quality_has_reached_its_minimum_value() {
-        Quality actualQuality = Quality.MINIMUM_QUALITY;
+        Quality actualQuality = MINIMUM_QUALITY;
 
         actualQuality.decrease();
 
-        assertThat(actualQuality, is(equalTo(Quality.MINIMUM_QUALITY)));
+        assertThat(actualQuality, is(equalTo(MINIMUM_QUALITY)));
     }
 
     @Test public void
@@ -52,7 +54,6 @@ public class QualityShould {
 
         actualQuality.setToMinimum();
 
-        assertThat(actualQuality, is(equalTo(Quality.MINIMUM_QUALITY)));
+        assertThat(actualQuality, is(equalTo(MINIMUM_QUALITY)));
     }
-
 }

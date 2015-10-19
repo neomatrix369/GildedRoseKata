@@ -14,16 +14,11 @@ public class DaysShould {
 
         actualDayValue.decrease();
 
-        Days expectedDayValue = new Days(2);
-        assertThat(actualDayValue, is(equalTo(expectedDayValue)));
+        assertThat(actualDayValue, is(equalTo(new Days(2))));
     }
 
     @Test public void
     validate_if_one_day_value_is_less_than_the_other() {
-        Days aDayValue = new Days(4);
-
-        Days anotherDayValue = new Days(5);
-
-        assertTrue(aDayValue.isPast(anotherDayValue));
+        assertTrue(new Days(4).isPast(new Days(5)));
     }
 }

@@ -50,6 +50,5 @@ public class GildedRoseTest {
         gildedRose.updateQuality();
 
         return item.toString();
-
     }
 }
