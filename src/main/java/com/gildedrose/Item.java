@@ -6,8 +6,6 @@ public class Item {
     private static final int MINIMUM_QUALITY = 0;
 
     private static final int ZERO_DAYS = 0;
-    private static final int ELEVEN_DAYS = 11;
-    private static final int SIX_DAYS = 6;
 
     public String name;
 
@@ -54,44 +52,5 @@ public class Item {
         quality = MINIMUM_QUALITY;
     }
 
-    void updateAgedBrie() {
-        increaseQuality();
-
-        decreaseSellIn();
-
-        if (isExpired()) {
-            increaseQuality();
-        }
-    }
-
-    void updateBackstagePasses() {
-        increaseQuality();
-
-        if (sellIn < ELEVEN_DAYS) {
-            increaseQuality();
-        }
-
-        if (sellIn < SIX_DAYS) {
-            increaseQuality();
-        }
-
-        decreaseSellIn();
-
-        if (isExpired()) {
-            setQualityToMinimum();
-        }
-    }
-
-    void updateSulfuras() {
-    }
-
-    void updateStandardItem() {
-        decreaseQuality();
-
-        decreaseSellIn();
-
-        if (isExpired()) {
-            decreaseQuality();
-        }
-    }
+    public void update() {}
 }

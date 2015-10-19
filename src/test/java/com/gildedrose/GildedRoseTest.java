@@ -7,9 +7,9 @@ import org.junit.Test;
 
 import java.util.Random;
 
-import static com.gildedrose.GildedRose.AGED_BRIE;
-import static com.gildedrose.GildedRose.BACKSTAGE_PASSES;
-import static com.gildedrose.GildedRose.SULFURAS;
+import static com.gildedrose.Product.AGED_BRIE;
+import static com.gildedrose.Product.BACKSTAGE_PASSES;
+import static com.gildedrose.Product.SULFURAS;
 
 @UseReporter(QuietReporter.class)
 public class GildedRoseTest {
@@ -24,9 +24,9 @@ public class GildedRoseTest {
     private Item[] randomItems = new Item[MAX_ITEMS];
 
     /**
-        We have excluded "Conjured Mana Cake" from the list as this item is not available yet
-        will be added to the list below or part as a separate test once the implementation for it
-        is in place
+     * We have excluded "Conjured Mana Cake" from the list as this item is not available yet
+     * will be added to the list below or part as a separate test once the implementation for it
+     * is in place
      */
     private String[] itemNames = {
             "+5 Dexterity Vest",
@@ -52,7 +52,7 @@ public class GildedRoseTest {
 
     private void generateRandomItems() {
         for (int index = 0; index < MAX_ITEMS; index++) {
-            randomItems[index] = new Item(randomItemName(), randomSellIn(), randomQuality());
+            randomItems[index] = Product.create(randomItemName(), randomSellIn(), randomQuality());
         }
     }
 
@@ -75,7 +75,7 @@ public class GildedRoseTest {
 
     private String getStringVersionOf(Item[] items) {
         StringBuilder result = new StringBuilder();
-        for (Item item: items) {
+        for (Item item : items) {
             result.append(item);
             result.append("\r");
         }
