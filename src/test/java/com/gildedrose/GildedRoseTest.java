@@ -7,9 +7,7 @@ import org.junit.Test;
 
 import java.util.Random;
 
-import static com.gildedrose.Product.AGED_BRIE;
-import static com.gildedrose.Product.BACKSTAGE_PASSES;
-import static com.gildedrose.Product.SULFURAS;
+import static com.gildedrose.Product.*;
 
 @UseReporter(QuietReporter.class)
 public class GildedRoseTest {

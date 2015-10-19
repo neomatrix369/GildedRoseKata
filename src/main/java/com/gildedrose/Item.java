@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-public class Item {
+public abstract class Item {
 
     private static final int MAXIMUM_QUALITY = 50;
     private static final int MINIMUM_QUALITY = 0;
@@ -22,10 +22,6 @@ public class Item {
     @Override
     public String toString() {
         return this.name + ", " + this.sellIn + ", " + this.quality;
-    }
-
-    public boolean is(String itemName) {
-        return itemName.equals(name);
     }
 
     void decreaseSellIn() {
@@ -52,5 +48,5 @@ public class Item {
         quality = MINIMUM_QUALITY;
     }
 
-    public void update() {}
+    public abstract void update();
 }

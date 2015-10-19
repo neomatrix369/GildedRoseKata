@@ -7,7 +7,10 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.Collection;
 
-import static com.gildedrose.Product.*;
+import static com.gildedrose.Product.AGED_BRIE;
+import static com.gildedrose.Product.BACKSTAGE_PASSES;
+import static com.gildedrose.Product.SULFURAS;
+
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertThat;
 
