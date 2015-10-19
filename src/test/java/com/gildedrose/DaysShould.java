@@ -19,6 +19,6 @@ public class DaysShould {
 
     @Test public void
     validate_if_one_day_value_is_less_than_the_other() {
-        assertTrue(new Days(4).isPast(new Days(5)));
+        assertTrue(new Days(4).isLessOrEqualTo(new Days(5)));
     }
 }

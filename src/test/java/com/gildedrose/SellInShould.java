@@ -27,7 +27,7 @@ public class SellInShould {
 
     @Test public void
     indicate_that_sell_in_is_past_another_sell_in_value() {
-        assertTrue(getSellInFor(TWELVE_DAYS).isPast(new Days(THIRTEEN_DAYS)));
+        assertTrue(getSellInFor(TWELVE_DAYS).expiresIn(new Days(THIRTEEN_DAYS)));
     }
 
     @Test public void

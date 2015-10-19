@@ -22,6 +22,17 @@ public class BackstagePassesShould {
 
     @Test
     public void
+    increase_quality_by_1_if_item_is_11_days_from_expiring() {
+        Item actualItem = createBackstagePassesUsing(new SellIn(new Days(11)), new Quality(7));
+
+        actualItem.update();
+
+        Item expectedItem = createBackstagePassesUsing(new SellIn(new Days(10)), new Quality(8));
+        assertThat(actualItem, is(expectedItem));
+    }
+
+    @Test
+    public void
     increase_quality_by_2_if_item_is_10_days_from_expiring() {
         Item actualItem = createBackstagePassesUsing(new SellIn(new Days(10)), new Quality(7));
 
@@ -30,6 +41,18 @@ public class BackstagePassesShould {
         Item expectedItem = createBackstagePassesUsing(new SellIn(new Days(9)), new Quality(9));
         assertThat(actualItem, is(expectedItem));
     }
+
+    @Test
+    public void
+    increase_quality_by_2_if_item_is_6_days_from_expiring() {
+        Item actualItem = createBackstagePassesUsing(new SellIn(new Days(6)), new Quality(5));
+
+        actualItem.update();
+
+        Item expectedItem = createBackstagePassesUsing(new SellIn(new Days(5)), new Quality(7));
+        assertThat(actualItem, is(expectedItem));
+    }
+
     @Test
     public void
     increase_quality_by_3_if_item_is_5_days_from_expiring() {

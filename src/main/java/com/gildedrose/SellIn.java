@@ -12,8 +12,8 @@ public class SellIn {
         this.days = days;
     }
 
-    public boolean isPast(Days days) {
-        return this.days.isPast(days);
+    public boolean expiresIn(Days days) {
+        return this.days.isLessOrEqualTo(days);
     }
 
     public void decrease() {
@@ -21,7 +21,7 @@ public class SellIn {
     }
 
     boolean isPastExpiryDay() {
-        return isPast(MINIMUM_DAYS);
+        return days.isLessThan(MINIMUM_DAYS);
     }
 
     @Override

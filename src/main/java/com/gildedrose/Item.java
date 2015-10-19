@@ -48,7 +48,7 @@ public class Item {
     }
 
     protected boolean expiresIn(Days days) {
-        return sellIn.isPast(days);
+        return sellIn.expiresIn(days);
     }
 
     protected void decreaseSellIn() {
