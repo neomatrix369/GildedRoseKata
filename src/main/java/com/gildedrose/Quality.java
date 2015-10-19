@@ -28,6 +28,18 @@ public class Quality {
         if (canDecrease()) {
             value -= rate;
         }
+
+        setToMinimumIfBelowMinimum();
+    }
+
+    private void setToMinimumIfBelowMinimum() {
+        if (qualityIsBelowMinimum()) {
+            setToMinimum();
+        }
+    }
+
+    private boolean qualityIsBelowMinimum() {
+        return value < MINIMUM_QUALITY.value;
     }
 
     private boolean canIncrease() {
