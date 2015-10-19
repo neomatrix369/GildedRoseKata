@@ -2,27 +2,28 @@ package com.gildedrose;
 
 import org.junit.Test;
 
+import static com.gildedrose.Product.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 public class AgedBrieShould {
     @Test public void
     increase_quality_by_1_when_not_expired() {
-        Item item = new AgedBrie(Product.AGED_BRIE, getSellInFor(1), getQualityOf(9));
+        Item item = new AgedBrie(AGED_BRIE, getSellInFor(1), getQualityOf(9));
 
         item.update();
 
-        Item expectedItem = createItemUsing(Product.AGED_BRIE, getSellInFor(0), getQualityOf(10));
+        Item expectedItem = createItemUsing(AGED_BRIE, getSellInFor(0), getQualityOf(10));
         assertThat(item, is(expectedItem));
     }
 
     @Test public void
     increase_quality_twice_as_fast_when_item_is_expired() {
-        Item item = new AgedBrie(Product.AGED_BRIE, getSellInFor(0), getQualityOf(9));
+        Item item = new AgedBrie(AGED_BRIE, getSellInFor(0), getQualityOf(9));
 
         item.update();
 
-        Item expectedItem = createItemUsing(Product.AGED_BRIE, getSellInFor(-1), getQualityOf(11));
+        Item expectedItem = createItemUsing(AGED_BRIE, getSellInFor(-1), getQualityOf(11));
         assertThat(item, is(expectedItem));
     }
 
