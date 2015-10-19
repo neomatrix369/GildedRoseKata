@@ -11,7 +11,7 @@ public class BackstagePasses extends Item {
     }
 
     public void update() {
-        increaseQualityBy(getRateOfChange());
+        increaseQualityBy(getNormalRateOfChange());
 
         decreaseSellIn();
 
@@ -19,7 +19,7 @@ public class BackstagePasses extends Item {
     }
 
     @Override
-    public int getRateOfChange() {
+    public int getNormalRateOfChange() {
         if (expiresIn(FIVE_DAYS)) {
             return 3 * NORMAL_RATE_OF_CHANGE;
         } else if (expiresIn(TEN_DAYS)) {

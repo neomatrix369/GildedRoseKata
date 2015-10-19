@@ -57,7 +57,7 @@ public class Item {
 
     public void update() {}
 
-    public int getRateOfChange() {
+    public int getNormalRateOfChange() {
         return isExpired()
                     ? 2 * NORMAL_RATE_OF_CHANGE
                     : NORMAL_RATE_OF_CHANGE;
