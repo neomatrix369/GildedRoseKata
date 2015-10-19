@@ -9,14 +9,16 @@ import static org.junit.Assert.assertTrue;
 
 public class SellInShould {
 
+    protected static final int MINIMUM_DAYS = 0;
+
     protected static final int TEN_DAYS = 10;
+    protected static final int ELEVEN_DAYS = 11;
     protected static final int TWELVE_DAYS = 12;
     protected static final int THIRTEEN_DAYS = 13;
-    protected static final int MINIMUM_DAYS = 0;
 
     @Test public void
     decrease_day_count_with_every_passing_day() {
-        SellIn actualSellIn = getSellInFor(11);
+        SellIn actualSellIn = getSellInFor(ELEVEN_DAYS);
 
         actualSellIn.decrease();
 
@@ -40,5 +42,4 @@ public class SellInShould {
     private SellIn getSellInFor(int days) {
         return new SellIn(new Days(days));
     }
-
 }

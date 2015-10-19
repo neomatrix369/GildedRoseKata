@@ -39,7 +39,7 @@ public class ProductShould {
     }
 
     @Test public void
-    return_an_item_of_the_respective_type_from_its_itemName() {
+    return_an_item_of_the_respective_type_from_the_itemName() {
         Item actualItemType = create(itemName, SELL_IN_NOT_USED, QUALITY_NOT_USED);
 
         assertThat(actualItemType, instanceOf(expectedItemType));
