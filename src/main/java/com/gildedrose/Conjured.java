@@ -11,12 +11,11 @@ public class Conjured extends Item {
     }
 
     public void update() {
-        decreaseQualityBy(CONJURED_ITEM_QUALITY_CHANGE_RATE);
-
         decreaseSellIn();
 
-        if (isExpired()) {
-            decreaseQualityBy(CONJURED_ITEM_QUALITY_CHANGE_RATE);
-        }
+        int rate = isExpired()
+                        ? 2 * CONJURED_ITEM_QUALITY_CHANGE_RATE
+                        : CONJURED_ITEM_QUALITY_CHANGE_RATE;
+        decreaseQualityBy(rate);
     }
 }
