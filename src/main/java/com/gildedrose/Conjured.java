@@ -16,9 +16,10 @@ public class Conjured extends Item {
         decreaseQualityBy(getRateOfChange());
     }
 
-    private int getRateOfChange() {
+    @Override
+    public int getRateOfChange() {
         return isExpired()
-                            ? 2 * CONJURED_ITEM_QUALITY_CHANGE_RATE
-                            : CONJURED_ITEM_QUALITY_CHANGE_RATE;
+                    ? 2 * CONJURED_ITEM_QUALITY_CHANGE_RATE
+                    : CONJURED_ITEM_QUALITY_CHANGE_RATE;
     }
 }

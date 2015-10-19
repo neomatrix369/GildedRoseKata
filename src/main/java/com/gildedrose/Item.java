@@ -57,6 +57,12 @@ public class Item {
 
     public void update() {}
 
+    public int getRateOfChange() {
+        return isExpired()
+                    ? 2 * NORMAL_RATE_OF_CHANGE
+                    : NORMAL_RATE_OF_CHANGE;
+    }
+
     @Override
     public String toString() {
         return this.name + ", " + this.sellIn + ", " + this.quality;

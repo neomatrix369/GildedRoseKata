@@ -18,19 +18,20 @@ public class BackstagePasses extends Item {
         setQualityToMinimumIfItemExpires();
     }
 
-    private void setQualityToMinimumIfItemExpires() {
-        if (isExpired()) {
-            setQualityToMinimum();
-        }
-    }
-
-    private int getRateOfChange() {
+    @Override
+    public int getRateOfChange() {
         if (expiresIn(FIVE_DAYS)) {
             return 3 * NORMAL_RATE_OF_CHANGE;
         } else if (expiresIn(TEN_DAYS)) {
             return 2 * NORMAL_RATE_OF_CHANGE;
         } else {
             return NORMAL_RATE_OF_CHANGE;
+        }
+    }
+
+    private void setQualityToMinimumIfItemExpires() {
+        if (isExpired()) {
+            setQualityToMinimum();
         }
     }
 }
