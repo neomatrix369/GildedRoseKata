@@ -35,9 +35,25 @@ public class Quality {
     }
 
     public void increase() {
+        increaseBy(NORMAL_QUALITY_CHANGE_RATE);
+    }
+
+    public void increaseBy(int rate) {
         if (canIncrease()) {
-            value++;
+            value += rate;
         }
+
+        setToMaximumIfItExceeds();
+    }
+
+    private void setToMaximumIfItExceeds() {
+        if (exceedsMaximum()) {
+            value = MAXIMUM_QUALITY.value;
+        }
+    }
+
+    private boolean exceedsMaximum() {
+        return value > MAXIMUM_QUALITY.value;
     }
 
     public void setToMinimum() {

@@ -3,6 +3,8 @@ package com.gildedrose;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import static com.gildedrose.Quality.NORMAL_QUALITY_CHANGE_RATE;
+
 public class Item {
 
     public String name;
@@ -22,7 +24,7 @@ public class Item {
     }
 
     protected void decreaseQuality() {
-        decreaseQualityBy(Quality.NORMAL_QUALITY_CHANGE_RATE);
+        decreaseQualityBy(NORMAL_QUALITY_CHANGE_RATE);
     }
 
     protected void decreaseQualityBy(int rate) {
@@ -30,7 +32,11 @@ public class Item {
     }
 
     protected void increaseQuality() {
-        quality.increase();
+        increaseQualityBy(NORMAL_QUALITY_CHANGE_RATE);
+    }
+
+    protected void increaseQualityBy(int rate) {
+        quality.increaseBy(rate);
     }
 
     protected void setQualityToMinimum() {
