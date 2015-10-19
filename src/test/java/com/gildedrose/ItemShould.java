@@ -48,7 +48,7 @@ public class ItemShould {
 
         actualItem.decreaseQuality();
 
-        verify(qualityMock).decrease();
+        verify(qualityMock).decreaseBy(Quality.NORMAL_QUALITY_CHANGE_RATE);
     }
 
     @Test public void
@@ -80,5 +80,4 @@ public class ItemShould {
 
         verify(sellInMock).decrease();
     }
-
 }

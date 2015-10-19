@@ -8,6 +8,8 @@ public class Quality {
     public static final Quality MINIMUM_QUALITY = new Quality(0);
     public static final Quality MAXIMUM_QUALITY = new Quality(50);
 
+    public static final int NORMAL_QUALITY_CHANGE_RATE = 1;
+
     private int value;
 
     public Quality(int value) {
@@ -19,8 +21,12 @@ public class Quality {
     }
 
     public void decrease() {
+        decreaseBy(NORMAL_QUALITY_CHANGE_RATE);
+    }
+
+    public void decreaseBy(int rate) {
         if (canDecrease()) {
-            value--;
+            value -= rate;
         }
     }
 

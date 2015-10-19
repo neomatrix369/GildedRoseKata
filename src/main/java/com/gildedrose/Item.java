@@ -22,7 +22,11 @@ public class Item {
     }
 
     protected void decreaseQuality() {
-        quality.decrease();
+        decreaseQualityBy(Quality.NORMAL_QUALITY_CHANGE_RATE);
+    }
+
+    protected void decreaseQualityBy(int rate) {
+        quality.decreaseBy(rate);
     }
 
     protected void increaseQuality() {
