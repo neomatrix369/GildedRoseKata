@@ -6,7 +6,7 @@
 .*
 !.gitignore
 
-!/lib/*.jar
+!/lib/ApprovalTests.013/ApprovalTests.jar
 
 # Java
 /target/
