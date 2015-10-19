@@ -9,11 +9,11 @@ public class Conjured extends Item {
     public void update() {
         decreaseSellIn();
 
-        decreaseQualityBy(getNormalRateOfChange());
+        decreaseQualityBy(getRateOfChange());
     }
 
     @Override
-    public int getNormalRateOfChange() {
-        return 2 * super.getNormalRateOfChange();
+    public int getRateOfChange() {
+        return 2 * super.getRateOfChange();
     }
 }

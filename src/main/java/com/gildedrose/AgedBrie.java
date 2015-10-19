@@ -9,6 +9,6 @@ public class AgedBrie extends Item {
     public void update() {
         decreaseSellIn();
 
-        increaseQualityBy(getNormalRateOfChange());
+        increaseQualityBy(getRateOfChange());
     }
 }

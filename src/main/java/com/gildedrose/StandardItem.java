@@ -8,6 +8,6 @@ public class StandardItem extends Item {
     public void update() {
         decreaseSellIn();
 
-        decreaseQualityBy(getNormalRateOfChange());
+        decreaseQualityBy(getRateOfChange());
     }
 }
