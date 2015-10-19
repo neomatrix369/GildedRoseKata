@@ -3,7 +3,7 @@ package com.gildedrose;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-import static com.gildedrose.Quality.NORMAL_QUALITY_CHANGE_RATE;
+import static com.gildedrose.Quality.NORMAL_RATE_OF_CHANGE;
 
 public class Item {
 
@@ -24,7 +24,7 @@ public class Item {
     }
 
     protected void decreaseQuality() {
-        decreaseQualityBy(NORMAL_QUALITY_CHANGE_RATE);
+        decreaseQualityBy(NORMAL_RATE_OF_CHANGE);
     }
 
     protected void decreaseQualityBy(int rate) {
@@ -32,7 +32,7 @@ public class Item {
     }
 
     protected void increaseQuality() {
-        increaseQualityBy(NORMAL_QUALITY_CHANGE_RATE);
+        increaseQualityBy(NORMAL_RATE_OF_CHANGE);
     }
 
     protected void increaseQualityBy(int rate) {

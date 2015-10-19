@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-import static com.gildedrose.Quality.NORMAL_QUALITY_CHANGE_RATE;
+import static com.gildedrose.Quality.NORMAL_RATE_OF_CHANGE;
 
 public class AgedBrie extends Item {
     public AgedBrie(String name, SellIn sellIn, Quality quality) {
@@ -12,8 +12,8 @@ public class AgedBrie extends Item {
         decreaseSellIn();
 
         int rate = isExpired()
-                        ? 2 * NORMAL_QUALITY_CHANGE_RATE
-                        : NORMAL_QUALITY_CHANGE_RATE;
+                        ? 2 * NORMAL_RATE_OF_CHANGE
+                        : NORMAL_RATE_OF_CHANGE;
         increaseQualityBy(rate);
     }
 }

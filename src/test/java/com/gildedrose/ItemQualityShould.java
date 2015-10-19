@@ -3,7 +3,7 @@ package com.gildedrose;
 import org.junit.Before;
 import org.junit.Test;
 
-import static com.gildedrose.Quality.NORMAL_QUALITY_CHANGE_RATE;
+import static com.gildedrose.Quality.NORMAL_RATE_OF_CHANGE;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -24,14 +24,14 @@ public class ItemQualityShould {
     decrease_quality_via_the_quality_collaborator() {
         actualItem.decreaseQuality();
 
-        verify(qualityMock).decreaseBy(NORMAL_QUALITY_CHANGE_RATE);
+        verify(qualityMock).decreaseBy(NORMAL_RATE_OF_CHANGE);
     }
 
     @Test public void
     increase_quality_via_the_quality_collaborator() {
         actualItem.increaseQuality();
 
-        verify(qualityMock).increaseBy(NORMAL_QUALITY_CHANGE_RATE);
+        verify(qualityMock).increaseBy(NORMAL_RATE_OF_CHANGE);
     }
 
     @Test public void

@@ -8,7 +8,7 @@ public class Quality {
     public static final Quality MINIMUM_QUALITY = new Quality(0);
     public static final Quality MAXIMUM_QUALITY = new Quality(50);
 
-    public static final int NORMAL_QUALITY_CHANGE_RATE = 1;
+    public static final int NORMAL_RATE_OF_CHANGE = 1;
 
     private int value;
 
@@ -21,7 +21,7 @@ public class Quality {
     }
 
     public void decrease() {
-        decreaseBy(NORMAL_QUALITY_CHANGE_RATE);
+        decreaseBy(NORMAL_RATE_OF_CHANGE);
     }
 
     public void decreaseBy(int rate) {
@@ -47,7 +47,7 @@ public class Quality {
     }
 
     public void increase() {
-        increaseBy(NORMAL_QUALITY_CHANGE_RATE);
+        increaseBy(NORMAL_RATE_OF_CHANGE);
     }
 
     public void increaseBy(int rate) {
