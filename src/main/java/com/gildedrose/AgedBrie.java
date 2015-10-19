@@ -11,9 +11,12 @@ public class AgedBrie extends Item {
     public void update() {
         decreaseSellIn();
 
-        int rate = isExpired()
-                        ? 2 * NORMAL_RATE_OF_CHANGE
-                        : NORMAL_RATE_OF_CHANGE;
-        increaseQualityBy(rate);
+        increaseQualityBy(getRateOfChange());
+    }
+
+    private int getRateOfChange() {
+        return isExpired()
+                            ? 2 * NORMAL_RATE_OF_CHANGE
+                            : NORMAL_RATE_OF_CHANGE;
     }
 }

@@ -13,9 +13,12 @@ public class Conjured extends Item {
     public void update() {
         decreaseSellIn();
 
-        int rate = isExpired()
-                        ? 2 * CONJURED_ITEM_QUALITY_CHANGE_RATE
-                        : CONJURED_ITEM_QUALITY_CHANGE_RATE;
-        decreaseQualityBy(rate);
+        decreaseQualityBy(getRateOfChange());
+    }
+
+    private int getRateOfChange() {
+        return isExpired()
+                            ? 2 * CONJURED_ITEM_QUALITY_CHANGE_RATE
+                            : CONJURED_ITEM_QUALITY_CHANGE_RATE;
     }
 }

@@ -11,20 +11,26 @@ public class BackstagePasses extends Item {
     }
 
     public void update() {
-        int rate;
-        if (expiresIn(FIVE_DAYS)) {
-            rate = 3 * NORMAL_RATE_OF_CHANGE;
-        } else if (expiresIn(TEN_DAYS)) {
-            rate = 2 * NORMAL_RATE_OF_CHANGE;
-        } else {
-            rate = NORMAL_RATE_OF_CHANGE;
-        }
-        increaseQualityBy(rate);
+        increaseQualityBy(getRateOfChange());
 
         decreaseSellIn();
 
+        setQualityToMinimumIfItemExpires();
+    }
+
+    private void setQualityToMinimumIfItemExpires() {
         if (isExpired()) {
             setQualityToMinimum();
+        }
+    }
+
+    private int getRateOfChange() {
+        if (expiresIn(FIVE_DAYS)) {
+            return 3 * NORMAL_RATE_OF_CHANGE;
+        } else if (expiresIn(TEN_DAYS)) {
+            return 2 * NORMAL_RATE_OF_CHANGE;
+        } else {
+            return NORMAL_RATE_OF_CHANGE;
         }
     }
 }
