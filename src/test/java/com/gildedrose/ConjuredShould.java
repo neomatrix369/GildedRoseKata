@@ -15,5 +15,15 @@ public class ConjuredShould {
 
         Item expectedItemQuality = new Conjured(Product.CONJURED, new SellIn(new Days(9)), new Quality(10));
         assertThat(actualItemQuality, is(equalTo(expectedItemQuality)));
-    } 
+    }
+
+    @Test public void
+    degrade_in_quality_twice_as_fast_its_does_when_expired() {
+        Conjured actualConjuredItem = new Conjured(Product.CONJURED, new SellIn(new Days(0)), new Quality(9));
+
+        actualConjuredItem.update();
+
+        Conjured expectedConjuredItem = new Conjured(Product.CONJURED, new SellIn(new Days(-1)), new Quality(5));
+        assertThat(actualConjuredItem, is(equalTo(expectedConjuredItem)));
+    }
 }

@@ -15,6 +15,4 @@ public class Product {
             default: return new StandardItem(itemName, sellIn, quality);
         }
     }
-
-
 }
