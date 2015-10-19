@@ -45,7 +45,6 @@ public class Item {
         sellIn.decrease();
     }
 
-
     public void update() {}
 
     @Override
