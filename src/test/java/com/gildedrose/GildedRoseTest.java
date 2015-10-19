@@ -4,12 +4,10 @@ import net.java.quickcheck.junit.SeedInfo;
 import org.approvaltests.Approvals;
 import org.approvaltests.reporters.QuietReporter;
 import org.approvaltests.reporters.UseReporter;
+import org.junit.Ignore;
 import org.junit.Test;
 
-import static com.gildedrose.Product.AGED_BRIE;
-import static com.gildedrose.Product.BACKSTAGE_PASSES;
-import static com.gildedrose.Product.SULFURAS;
-import static com.gildedrose.Product.create;
+import static com.gildedrose.Product.*;
 import static net.java.quickcheck.generator.PrimitiveGenerators.fixedValues;
 import static net.java.quickcheck.generator.PrimitiveGenerators.integers;
 import static net.java.quickcheck.generator.iterable.Iterables.toIterable;
@@ -28,6 +26,7 @@ public class GildedRoseTest {
 
     private SeedInfo seedInfo = new SeedInfo();
 
+    @Ignore
     @UseReporter(QuietReporter.class)
     @Test public void
     should_generate_golden_master_for_gilded_rose() throws Exception {
