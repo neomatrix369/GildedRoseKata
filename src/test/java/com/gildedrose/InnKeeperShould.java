@@ -7,12 +7,12 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.Collection;
 
-import static com.gildedrose.Product.*;
+import static com.gildedrose.InnKeeper.*;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.junit.Assert.assertThat;
 
 @RunWith(Parameterized.class)
-public class ProductShould {
+public class InnKeeperShould {
 
     private static final SellIn SELL_IN_NOT_USED = null;
     private static final Quality QUALITY_NOT_USED = null;
@@ -33,7 +33,7 @@ public class ProductShould {
     }
 
 
-    public ProductShould(String itemName, Class<Item> expectedItemType) {
+    public InnKeeperShould(String itemName, Class<Item> expectedItemType) {
         this.itemName = itemName;
         this.expectedItemType = expectedItemType;
     }

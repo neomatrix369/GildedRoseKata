@@ -7,7 +7,7 @@ import org.approvaltests.reporters.UseReporter;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import static com.gildedrose.Product.*;
+import static com.gildedrose.InnKeeper.*;
 import static net.java.quickcheck.generator.PrimitiveGenerators.fixedValues;
 import static net.java.quickcheck.generator.PrimitiveGenerators.integers;
 import static net.java.quickcheck.generator.iterable.Iterables.toIterable;

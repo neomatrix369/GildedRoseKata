@@ -39,8 +39,8 @@ public class ItemsShould {
     }
 
     private Items createItemsListFromInstances() {
-        item1 = Product.create(Product.AGED_BRIE, new SellIn(new Days(10)), new Quality(10));
-        item2 = Product.create(Product.BACKSTAGE_PASSES, new SellIn(new Days(5)), new Quality(20));
+        item1 = InnKeeper.create(InnKeeper.AGED_BRIE, new SellIn(new Days(10)), new Quality(10));
+        item2 = InnKeeper.create(InnKeeper.BACKSTAGE_PASSES, new SellIn(new Days(5)), new Quality(20));
 
         return putItemsIntoItemsList(item1, item2);
     }
