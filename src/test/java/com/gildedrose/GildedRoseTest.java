@@ -6,7 +6,7 @@ import org.approvaltests.reporters.UseReporter;
 import org.junit.Before;
 import org.junit.Test;
 
-import static com.gildedrose.Product.*;
+import static com.gildedrose.InnKeeper.*;
 
 @UseReporter(QuietReporter.class)
 public class GildedRoseTest {
@@ -42,7 +42,7 @@ public class GildedRoseTest {
     }
 
     public String update(String itemName, Integer days, Integer quality) {
-        Item item = Product.create(itemName, new SellIn(new Days(days)), new Quality(quality));
+        Item item = InnKeeper.create(itemName, new SellIn(new Days(days)), new Quality(quality));
         Items items = new Items();
         items.add(item);
 
