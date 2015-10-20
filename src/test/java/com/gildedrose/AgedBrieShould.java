@@ -2,7 +2,7 @@ package com.gildedrose;
 
 import org.junit.Test;
 
-import static com.gildedrose.Product.AGED_BRIE;
+import static com.gildedrose.InnKeeper.AGED_BRIE;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 

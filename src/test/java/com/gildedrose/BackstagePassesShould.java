@@ -2,7 +2,7 @@ package com.gildedrose;
 
 import org.junit.Test;
 
-import static com.gildedrose.Product.BACKSTAGE_PASSES;
+import static com.gildedrose.InnKeeper.BACKSTAGE_PASSES;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 

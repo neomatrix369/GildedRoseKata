@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import java.util.Random;
 
-import static com.gildedrose.Product.*;
+import static com.gildedrose.InnKeeper.*;
 
 @UseReporter(QuietReporter.class)
 public class GildedRoseTest {
@@ -50,7 +50,7 @@ public class GildedRoseTest {
 
     private void generateRandomItems() {
         for (int index = 0; index < MAX_ITEMS; index++) {
-            randomItems[index] = Product.create(randomItemName(), randomSellIn(), randomQuality());
+            randomItems[index] = InnKeeper.create(randomItemName(), randomSellIn(), randomQuality());
         }
     }
 

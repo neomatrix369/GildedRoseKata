@@ -7,15 +7,15 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.Collection;
 
-import static com.gildedrose.Product.AGED_BRIE;
-import static com.gildedrose.Product.BACKSTAGE_PASSES;
-import static com.gildedrose.Product.SULFURAS;
+import static com.gildedrose.InnKeeper.AGED_BRIE;
+import static com.gildedrose.InnKeeper.BACKSTAGE_PASSES;
+import static com.gildedrose.InnKeeper.SULFURAS;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertThat;
 
 @RunWith(Parameterized.class)
-public class ProductShould {
+public class InnKeeperShould {
 
     private final String itemName;
     private final Class itemType;
@@ -32,7 +32,7 @@ public class ProductShould {
         );
     }
 
-    public ProductShould(String itemName, Class itemType) {
+    public InnKeeperShould(String itemName, Class itemType) {
         this.itemName = itemName;
         this.itemType = itemType;
 
@@ -40,7 +40,7 @@ public class ProductShould {
 
     @Test public void
     return_an_item_of_the_respective_type_by_name() {
-        Item actualItemType = Product.create(itemName, 1, 1);
+        Item actualItemType = InnKeeper.create(itemName, 1, 1);
 
         assertThat(actualItemType, instanceOf(itemType));
     } 
