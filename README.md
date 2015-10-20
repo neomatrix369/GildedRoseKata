@@ -1,7 +1,7 @@
 # GildedRoseKata
 A number of solutions to the Gilded Rose Kata implemented in Java using various refactoring methods and Java testing tools.
 
-Problem has been solved in 3 of the 5 ways already, 4th Solution is underway:
+Problem has been solved in 6 different ways, mainly learning a lot of Refactoring techniques and concepts about Domain objects. Also some tools on code coverage and writing tests (especially Golden Master):
 
 *Solution 1* 
 
