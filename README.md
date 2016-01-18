@@ -52,3 +52,8 @@ _scmMutationCoverage goal_
 The scm mutation coverage goal analyses only classes that match the filters and the source file has a given status         within the project source control system (by default ADDED or MODIFIED). This provides a quick way to check the            coverage of changes prior to checking code in / pushing code to a repository.
     
 `$ mvn org.pitest:pitest-maven:scmMutationCoverage -Dinclude=ADDED,UNKNOWN -DmutationThreshold=85`
+
+
+All three combined:
+
+`mvn -DwithHistory org.pitest:pitest-maven:mutationCoverage org.pitest:pitest-maven:scmMutationCoverage -Dinclude=ADDED,UNKNOWN -DmutationThreshold=85`
