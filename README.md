@@ -44,6 +44,7 @@ It can be run directly from the commandline
 This will output an html report to target/pit-reports/YYYYMMDDHHMI.
     
 To speed-up repeated analysis of the same codebase set the withHistory parameter to true.
+
 `$ mvn -DwithHistory org.pitest:pitest-maven:mutationCoverage`
     
 _scmMutationCoverage goal_
