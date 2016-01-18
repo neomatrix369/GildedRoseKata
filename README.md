@@ -30,3 +30,24 @@ Problem has been solved in 6 different ways, mainly learning a lot of Refactorin
 *Solution 6*
 
     git checkout Solution6
+    
+
+*PiTest coverage plugin documentation*
+
+_mutationCoverage goal_
+    
+The mutation coverage goal analyses all classes in the codebase that match the target tests and target classes filters.
+It can be run directly from the commandline
+    
+`$ mvn org.pitest:pitest-maven:mutationCoverage`
+    
+This will output an html report to target/pit-reports/YYYYMMDDHHMI.
+    
+To speed-up repeated analysis of the same codebase set the withHistory parameter to true.
+`$ mvn -DwithHistory org.pitest:pitest-maven:mutationCoverage`
+    
+_scmMutationCoverage goal_
+    
+The scm mutation coverage goal analyses only classes that match the filters and the source file has a given status         within the project source control system (by default ADDED or MODIFIED). This provides a quick way to check the            coverage of changes prior to checking code in / pushing code to a repository.
+    
+`$ mvn org.pitest:pitest-maven:scmMutationCoverage -Dinclude=ADDED,UNKNOWN -DmutationThreshold=85`
