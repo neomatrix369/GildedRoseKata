@@ -56,4 +56,4 @@ The scm mutation coverage goal analyses only classes that match the filters and 
 
 All three combined:
 
-`mvn -DwithHistory org.pitest:pitest-maven:mutationCoverage org.pitest:pitest-maven:scmMutationCoverage -Dinclude=ADDED,UNKNOWN -DmutationThreshold=85`
+`$ mvn -DwithHistory org.pitest:pitest-maven:mutationCoverage org.pitest:pitest-maven:scmMutationCoverage -Dinclude=ADDED,UNKNOWN -DmutationThreshold=85`
