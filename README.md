@@ -32,7 +32,7 @@ Problem has been solved in 6 different ways, mainly learning a lot of Refactorin
     git checkout Solution6
     
 
-*PiTest coverage plugin documentation*
+**PiTest coverage plugin documentation**
 
 _mutationCoverage goal_
     
