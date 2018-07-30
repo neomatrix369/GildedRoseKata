@@ -2,36 +2,80 @@ package com.gildedrose;
 
 public class Item {
 
-    public String name;
+    String name;
 
-    public int sellIn;
+    private int sellIn;
 
-    public int quality;
+    private int quality;
 
-    public Item(String name, int sellIn, int quality) {
+    Item(String name, int sellIn, int quality) {
         this.name = name;
         this.sellIn = sellIn;
         this.quality = quality;
     }
 
-    public void decreaseSellIn() {
-        sellIn = sellIn - 1;
-    }
-
     @Override
-   public String toString() {
+    public String toString() {
         return this.name + ", " + this.sellIn + ", " + this.quality;
     }
 
-   void increaseQuality() {
+    private void decreaseSellIn() {
+        sellIn = sellIn - 1;
+    }
+
+    private void increaseQuality() {
         quality = quality + 1;
     }
 
-   public void decreaseQuality() {
+    private void decreaseQuality() {
         quality = quality - 1;
     }
 
-   public void setQualityToZero() {
+    private void setQualityToZero() {
         quality = 0;
+    }
+
+    void updateBackstagePass() {
+        if (quality < 50) {
+            increaseQuality();
+
+            if ((sellIn < 11) && (quality < 50)) {
+                increaseQuality();
+            }
+
+            if ((sellIn < 6) && (quality < 50)) {
+                increaseQuality();
+            }
+        }
+
+        decreaseSellIn();
+
+        if (sellIn < 0) {
+            setQualityToZero();
+        }
+    }
+
+    void updateAgedBrie() {
+        decreaseSellIn();
+
+        if (quality < 50) {
+            increaseQuality();
+        }
+
+        if (sellIn < 0 && quality < 50) {
+            increaseQuality();
+        }
+    }
+
+    void updateOthers() {
+        decreaseSellIn();
+
+        if (quality > 0) {
+            decreaseQuality();
+        }
+
+        if (sellIn < 0 && quality > 0) {
+            decreaseQuality();
+        }
     }
 }
