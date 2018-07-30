@@ -24,10 +24,8 @@ class GildedRose {
 
                 item.decreaseSellIn();
 
-                if (item.sellIn < 0) {
-                    if (item.quality > 0) {
-                        item.decreaseQuality();
-                    }
+                if (item.sellIn < 0 && item.quality > 0) {
+                    item.decreaseQuality();
                 }
             }
         }
@@ -60,10 +58,8 @@ class GildedRose {
 
         item.decreaseSellIn();
 
-        if (item.sellIn < 0) {
-            if (item.quality < 50) {
-                item.increaseQuality();
-            }
+        if (item.sellIn < 0 && item.quality < 50) {
+            item.increaseQuality();
         }
     }
 }
