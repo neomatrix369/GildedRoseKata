@@ -36,23 +36,19 @@ class GildedRose {
                     }
                 }
             }
-
-            if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
-
-            } else {
-                item.decreaseSellIn();
-            }
-
-
+            
             if (item.name.equals("Aged Brie")) {
+                item.decreaseSellIn();
+
                 if (item.sellIn < 0) {
                     if (item.quality < 50) {
                         item.increaseQuality();
                     }
                 }
             } else {
-
                 if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                    item.decreaseSellIn();
+
                     if (item.sellIn < 0) {
                         item.setQualityToZero();
                     }
@@ -63,6 +59,8 @@ class GildedRose {
                             }
                         }
                     } else {
+                        item.decreaseSellIn();
+                        
                         if (item.sellIn < 0) {
                             if (item.quality > 0) {
 
