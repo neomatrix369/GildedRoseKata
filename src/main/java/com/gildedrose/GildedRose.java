@@ -24,14 +24,8 @@ class GildedRose {
                 if ((item.sellIn < 6) && (item.quality < 50)) {
                     item.increaseQuality();
                 }
-            } else {
-                if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                    if (item.quality > 0) {
-                    }
-                } else {
-                }
             }
-
+            
             if (item.name.equals("Aged Brie")) {
                 item.decreaseSellIn();
 
