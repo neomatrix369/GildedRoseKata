@@ -32,15 +32,16 @@ class GildedRose {
                 if ((item.sellIn < 6) && (item.quality < 50)) {
                     item.increaseQuality();
                 }
-            }
 
-            if (item.name.equals("Aged Brie")) {
-            } else if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                 item.decreaseSellIn();
 
                 if (item.sellIn < 0) {
                     item.setQualityToZero();
                 }
+            }
+
+            if (item.name.equals("Aged Brie")) {
+            } else if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
             } else {
                 if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
                 } else {
